@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="style/s.css">
+
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <title>лид</title>
+</head>
+<body>
+    <div class="header_conteiner">
+        <div class="nav_btn_block">
+            <div class="nav_btn" id="journal_btn">Журнал</div>
+            <div class="nav_btn" id="create_lid">Создать лида</div>
+            <div class="nav_btn" id="create_inq">Сформировать запрос</div>
+            <div class="nav_btn">Отправить в архив</div>
+        </div>
+    </div>
+    <div class="main_conteiner">
+        <div class="list_lid_conteiner">
+            <div class="inq_list_conteiner">
+                <div class="inquire_info_block">
+                    <div class="lid_string">
+                        <h4>Импорт / Пометка по запросу</h4>
+                        <select name="" id="">
+                            <option value="">Черновик</option>
+                            <option value="">Не обработан</option>
+                            <option value="">В обработке</option>
+                            <option value="">Возврат/уточнение</option>
+                            <option value="">Обработан</option>
+                            <option value="">Ожидание обратной связи</option>
+                            <option value="">Завершен</option>
+                            <option value="">Перспективы</option>
+                        </select>
+                    </div>
+                    <div class="lid_string">
+                        <p>Номер запроса - 321312442132</p>
+                    </div>
+                    <div class="lid_string">
+                        <p>Вид транспорта - Не габарит</p>
+                        <p>12:15  12.06.2129</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lid_info_conteiner">
+            <div class="name_lid_block lid_string">
+                <h1 name="name_lid" class="edit_info_text">Название лида</h1>
+                <input type="text" name="name_lid" placeholder="Введите название лида" class="lid_name_inpt edit_info_inpt" id="lid_name_inpt">
+                <button id="btn_edit_lid_nav" class="btn">Редактировать лид</button>
+                <button id="btn_save_lid_nav" class="btn" style="display: none">Сохранить лид</button>
+            </div>
+            <div class="horizontal_line"></div>
+            <div class="status_lid_block lid_string">
+                <p>Статус</p>
+                <select disabled name="satus_lid" id="status_lid" class="status_list dd_list">
+                    <option value="">Неразобран</option>
+                    <option value="">В работе</option>
+                    <option value="">Активный</option>
+                    <option value="">Архив</option>
+                </select>
+            </div>
+            <div class="lid_string">
+                <p>Ответственный</p>
+                <div class="respon_list">Имя пользователя</div>
+            </div>
+            <div class="lid_string">
+                <p>Источник</p>
+                <select disabled name="source_lid" id="" class="source_list dd_list">
+                    <option value="">Поиск в интернете</option>
+                    <option value="">Рекомендации клиентов</option>
+                    <option value="">Выставка</option>
+                    <option value="">Таможенная база</option>
+                </select>
+            </div>
+            <div class="lid_string">
+                <p>Дата создания</p>
+                <p class="time_creation">15:32 21.01.2019</p>
+            </div>
+            <div class="horizontal_line"></div>
+            <textarea name="" id="" readonly class="dop_info" placeholder="Введите описание лида"></textarea>
+            <h1 class="company_header">Кампания</h1>
+            <form class="lid_info_company_block">
+                    <div class="info_string">
+                        <p>Название</p>
+                        <div class="info_string__block">
+                            <p id="company_name_text" name="name_company" class="company_info_text edit_info_text">Текст какой-то</p>
+                            <div class="edit_block">
+                                <input type="text" name="name_company" placeholder="Введите имя кампании" class="company_info_inpt edit_info_inpt" id="company_name_inpt">
+                                <input type="button" id="del_name_company" class="del_btn del_btn_info">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info_string">
+                        <p>ИНН</p>
+                        <div class="info_string__block">
+                            <p id="company_inn_text" name="inn_company" class="company_info_text edit_info_text">Текст какой-то</p>
+                            <div class="edit_block">
+                                <input type="number" name="inn_company" placeholder="Введите ИНН" class="company_info_inpt edit_info_inpt" id="company_inn_inpt">
+                                <input type="button" id="del_inn_company" class="del_btn del_btn_info">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tel_company_conteiner">
+                        <div class="info_string" id="company_tel_block_1">
+                            <p>Тел.</p>
+                            <div class="info_string__block">
+                                <p id="company_numb_text" name="numb_company" class="company_info_text edit_info_text">Текст какой-то</p>
+                                <div class="edit_block">
+                                    <input type="button" class="add_btn add_btn_info" id="add_company_tel">
+                                    <input type="number" name="numb_company" placeholder="Введите номер" class="company_info_inpt edit_info_inpt" id="company_numb_inpt_1">
+                                    <input type="button" id="del_numb_company_1" class="del_btn del_btn_info">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info_string">
+                        <p>Почта</p>
+                        <div class="info_string__block">
+                            <p id="company_mail_text" name="mail_company" class="company_info_text edit_info_text">Текст какой-то</p>
+                            <div class="edit_block">
+                                <input type="text" name="mail_company" placeholder="Введите почту" class="company_info_inpt edit_info_inpt" id="company_mail_inpt">
+                                <input type="button" id="del_mail_company" class="del_btn del_btn_info">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info_string">
+                        <p>Сайт</p>
+                        <div class="info_string__block">
+                            <p id="company_site_text" name="site_company" class="company_info_text edit_info_text">Текст какой-то</p>
+                            <div class="edit_block">
+                                <input type="text" name="site_company" placeholder="Укажите сайт" class="company_info_inpt edit_info_inpt" id="company_site_inpt">
+                                <input type="button" id="del_site_company" class="del_btn del_btn_info">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info_string">
+                        <p>Соц. сети</p>
+                        <div class="info_string__block">
+                            <p id="company_social_text" name="social_company" class="company_info_text edit_info_text">Текст какой-то</p>
+                            <div class="edit_block">
+                                <input type="button" class="add_btn add_btn_info">
+                                <input type="text" name="social_company" placeholder="Укажите соц. сеть" class="company_info_inpt edit_info_inpt" id="company_social_inpt">
+                                <input type="button" id="del_social_company" class="del_btn del_btn_info">
+                            </div>
+                        </div>
+                    </div>
+            </form>
+            <div class="lid_info__contact_conteiner">
+                <div class="header_contacts">
+                    <h1>Контакты</h1>
+                    <div class="add_new_contact_block add_block">
+                        <input type="button" class="add_btn add_btn_info">
+                        <p>добавить контакт</p>
+                    </div>
+                </div>
+                <div class="contact_item_block">
+                    <div class="info_string contact_item__name">
+                        <h4 id="contact_name_text" name="name_contact" class="contact_info_text edit_info_text">Имя Фамилия отчество</h4>
+                        <input type="text" name="name_contact" placeholder="Введите имя контакта" class="contact_info_inpt edit_info_inpt" id="contact_name_inpt">
+                        <input type="button" id="del_name_contact" class=" del_btn del_btn_info">
+                        <button class="btn show_info_contact">развернуть</button>
+                        <button class="btn hide_info_contact" style="display: none">свернуть</button>
+                    </div>
+                    <div class="info_string">
+                        <p>Тел.</p>
+                        <div class="info_string__block">
+                            <p id="contact_info_numb_text" name="numb_contact" class="contact_info_text edit_info_text">Текст какой-то</p>
+                            <div class="edit_block">
+                                <input type="button" class="add_btn add_btn_info">
+                                <input type="number" name="numb_contact" placeholder="Введите номер" class="contact_info_inpt edit_info_inpt" id="contact_numb_inpt">
+                                <input type="button" id="del_numb_contact" class="del_btn del_btn_info">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info_string">
+                        <p>Почта</p>
+                        <div class="info_string__block">
+                            <p id="contact_mail_text" name="mail_contact" class="contact_info_text edit_info_text">Текст какой-то</p>
+                            <div class="edit_block">
+                                <input type="text" name="mail_contact" placeholder="Введите почту" class="contact_info_inpt edit_info_inpt" id="contact_mail_inpt">
+                                <input type="button" id="del_mail_contact" class="del_btn del_btn_info">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info_string">
+                        <p>Соц. сеть</p>
+                        <div class="info_string__block">
+                            <p id="contact_social_text" name="social_contact" class="contact_info_text edit_info_text">Текст какой-то</p>
+                            <div class="edit_block">
+                                <input type="text" name="social_contact" placeholder="Укажите соц. сеть" class="contact_info_inpt edit_info_inpt" id="contact_social_inpt">
+                                <input type="button" id="del_social_contact" class="del_btn del_btn_info">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lid_string">
+                <p>Отрасль</p>
+                <select disabled name="industry_lid" id="" class="dd_list">
+                    <option value="">пример отрасли</option>
+                </select>
+            </div>
+            <div class="horizontal_line"></div>
+            <div class="lid_tags_block">
+                <div class="header_contacts">
+                    <p>Теги услуг</p>
+                    <div class="add_new_tag add_block">
+                        <input type="button" class="add_btn add_btn_info">
+                        <p>добавить тег</p>
+                    </div>
+                </div>
+                <div class="lid_tags__list">
+                    <div class="list__tag_block">
+                        <p>название тега</p>
+                        <input type="button" class="del_btn del_btn_info">
+                    </div>
+                    <div class="list__tag_block">
+                        <p>название тега</p>
+                        <input type="button" class="del_btn del_btn_info">
+                    </div>
+                    <div class="list__tag_block">
+                        <p>название тега</p>
+                        <input type="button" class="del_btn del_btn_info">
+                    </div>
+                </div>
+                <div class="lid_new_tags_block">
+                    <div class="add_new_tag_block">
+                        <input type="text">
+                        <button class="btn ">Добавить новый тег</button>
+                    </div>
+                </div>
+            </div>
+            <div class="horizontal_line"></div>
+            <div class="access_lid_block lid_string">
+                <p>Доступность</p>
+                <p id="access_btn">посмотреть список &gt;</p>
+            </div>
+        </div>
+        <div class="access_users_conteiner">
+            <div class="access_user__background"></div>
+            <div class="users_window_conteiner">
+                <div class="access_users__block">
+                    <div class="access_executor_block">
+                        <div class="access__title">
+                            <h4>Соисполнители</h4>
+                            <input type="button" class="add_btn" id="add_user_executor">
+                        </div>
+                        <div class="executor_list access__list"></div>
+                    </div>
+                    <div class="access_observer_block">
+                        <div class="access__title">
+                            <h4>Наблюдатели</h4>
+                            <input type="button" class="add_btn" id="add_user_observer">
+                        </div>
+                        <div class="observer_list access__list">
+                            <div class="user_item_block">
+                                    <input id="user_selector" class="user_selector" type="checkbox">
+                                    <label for="user_selector" class="selector_indicator"></label>
+                                <div class="user_item_photo">
+                                    <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                </div>
+                                <div class="user_info_block">
+                                    <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                    <div class="user_info_position">должность</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list_users_all_conteiner">
+                    <div class="access__title">
+                        <h4>Все пользователи</h4>
+                    </div>
+                    <div class="access__list all_users_list">
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

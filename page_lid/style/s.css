@@ -1,0 +1,574 @@
+@font-face {
+  font-family: TheCapt;
+  src: url("fonts/TheCapt.otf");
+}
+@font-face {
+  font-family: ProductSans;
+  src: url("fonts/ProductSans.otf");
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #e2e2e2;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: #fff;
+}
+h1 {
+  font-family: TheCapt;
+  font-weight: inherit;
+  color: #fff;
+  margin: 0;
+  padding: 5px 10px 15px 10px;
+  height: 33px;
+}
+h4 {
+  font-family: ProductSans;
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+  padding: 0 10px 0 0px;
+}
+.btn {
+  border: none;
+  background-color: #292929;
+  color: #fff;
+  height: 30px;
+}
+.btn:hover {
+  cursor: pointer;
+  color: #bf2119;
+  transition-duration: 0.5s;
+}
+input,
+button,
+select {
+  outline: none;
+  border: none;
+}
+input[type=text] {
+  display: none;
+  width: 150px;
+  background-color: #e2e2e2;
+  border-bottom: 3px solid #0070b2;
+  padding-left: 10px;
+}
+input[type=number] {
+  display: none;
+  width: 150px;
+  background-color: #e2e2e2;
+  border-bottom: 3px solid #0070b2;
+  padding-left: 10px;
+}
+.warning_window {
+  display: none;
+  position: absolute;
+  top: 465px;
+  left: 575px;
+  width: 308px;
+  height: 45px;
+  padding: 10px 0 0 20px;
+  color: #000;
+  background-image: url("img/icon_warrning_mes2.png");
+  background-size: 85%;
+  background-repeat: no-repeat;
+}
+p {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+.header_conteiner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #1d1f25;
+  border-bottom: 1px solid #0070b2;
+  z-index: 999;
+}
+.header_conteiner .nav_btn_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.header_conteiner .nav_btn {
+  width: 150px;
+  height: 35px;
+  padding: 15px 15px 0 15px;
+  text-align: center;
+  color: #fff;
+  font-family: ProductSans;
+}
+.header_conteiner .nav_btn:hover {
+  border-bottom: 3px solid #fff;
+  height: 32px;
+  color: #bf2119;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+#create_inq {
+  padding: 5px 15px 10px 15px;
+}
+#create_contr {
+  padding: 5px 15px 10px 15px;
+}
+.main_conteiner {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin-top: 100px;
+}
+/*--------------------------------
+
+
+    контейнер с таблицей ag-grid     
+
+
+----------------------------------*/
+.list_lid_conteiner {
+  width: 100%;
+  box-sizing: content-box;
+  padding: 10px;
+  margin: 0 25px 25px 25px;
+  background-color: #fff;
+}
+.list_lid__grid {
+  width: 750px;
+  height: 450px;
+  max-height: 450px;
+}
+.ag-header {
+  height: 40px;
+  min-height: 40px;
+  background-color: #1d1f25;
+}
+.ag-header-row {
+  border-bottom: 1px solid #0070b2;
+}
+.ag-header-cell-text {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+}
+/*--------------------------------
+
+
+    контейнер со списком запросов привязанных к лиду   
+
+
+----------------------------------*/
+.inq_list_conteiner {
+  width: 100%;
+  max-width: 750px;
+  box-sizing: content-box;
+}
+.inquire_info_block {
+  width: 720px;
+  box-sizing: content-box;
+  background-color: #292929;
+  padding: 5px 15px 5px 15px;
+  margin-top: 15px;
+}
+.inquire_info_block .lid_string {
+  width: 720px;
+}
+.inquire_info_block h4 {
+  width: 400px;
+}
+.inquire_info_block select {
+  width: 200px;
+}
+/*--------------------------------
+
+
+    контейнер с информацией по лиду    
+
+
+----------------------------------*/
+.lid_info_conteiner {
+  display: none;
+  width: 400px;
+  height: 100%;
+  margin-left: 25px;
+  margin-bottom: 25px;
+  padding: 20px 20px 0 20px;
+  background-color: #292929;
+}
+.horizontal_line {
+  width: 100%;
+  height: 3px;
+  margin-bottom: 15px;
+  background-color: #e2e2e2;
+}
+.dd_list {
+  width: 200px;
+  height: 25px;
+  border: none;
+  background-color: #fff;
+  color: #292929;
+}
+.lid_string {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 400px;
+  height: 20px;
+  margin-bottom: 10px;
+}
+#lid_name_inpt {
+  font-family: TheCapt;
+  font-size: 24px;
+  width: 300px;
+  background-color: #292929;
+  color: #fff;
+}
+.name_lid_block {
+  height: 43px;
+  text-align: center;
+  background-color: #292929;
+}
+.name_lid_block h1 {
+  height: 32px;
+}
+.name_lid_block button {
+  width: 150px;
+  height: 30px;
+  margin-top: 6px;
+  background-color: #292929;
+  color: #fff;
+}
+.respon_list {
+  width: 200px;
+  height: 25px;
+  text-align: right;
+  font-weight: bold;
+  color: #fff;
+}
+.respon_list:hover {
+  border-bottom: 1px solid #fff;
+  height: 24px;
+  color: #bf2119;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+.dop_info {
+  width: 376px;
+  height: 70px;
+  max-width: 376px;
+  max-height: 140px;
+  padding: 10px;
+  margin-bottom: 15px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #e2e2e2;
+  color: #000;
+}
+.lid_info_company_block {
+  padding: 15px 15px 8px 15px;
+  border-radius: 10px;
+  background-color: #e2e2e2;
+  margin-bottom: 20px;
+}
+.lid_info_company_block p {
+  color: #000;
+}
+.info_string {
+  display: flex;
+  width: 370px;
+  height: 20px;
+  margin-bottom: 10px;
+}
+.info_string p {
+  width: 100px;
+}
+.info_string__block {
+  width: 200px;
+}
+.info_string__block p {
+  width: 150px;
+  height: 20px;
+  padding: 0;
+  margin-left: 125px;
+  text-align: right;
+}
+.edit_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 275px;
+  height: 25px;
+}
+.add_btn {
+  display: none;
+  width: 20px;
+  height: 20px;
+  margin: 3px 10px 0 0;
+  border: none;
+  border-radius: 50%;
+  opacity: 0.7;
+  background-image: url("img/icon_save_dark.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.add_btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px #1d1f25;
+}
+.del_btn {
+  display: none;
+  width: 20px;
+  height: 20px;
+  margin: 3px 0 0 5px;
+  border: none;
+  background-color: #e2e2e2;
+  background-image: url("img/icon_del.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.del_btn:hover {
+  cursor: pointer;
+  background-image: url("img/icon_del_v2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.edit_info_text {
+  height: 25px;
+}
+.lid_info__contact_conteiner {
+  margin-bottom: 20px;
+}
+.header_contacts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 400px;
+  height: 35px;
+  margin-bottom: 17px;
+}
+.add_block {
+  display: none;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 25px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+}
+.add_block p {
+  padding: 2px 0 0 0;
+}
+.add_block:hover {
+  cursor: pointer;
+  border-bottom: 3px solid #fff;
+  transition-duration: 0.5s;
+}
+.add_block:hover p {
+  color: #bf2119;
+  transition-duration: 0.5s;
+}
+.contact_item_block {
+  width: 370px;
+  height: 25px;
+  padding: 10px 15px 10px 15px;
+  margin-bottom: 10px;
+  background-color: #e2e2e2;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: 1s;
+}
+.contact_item_block button {
+  background-color: #e2e2e2;
+  color: #000;
+}
+.contact_item_block p,
+.contact_item_block h4 {
+  color: #000;
+}
+.contact_item__name {
+  height: 25px;
+}
+.contact_item__name h4 {
+  padding-top: 5px;
+  border: none;
+}
+#contact_name_inpt {
+  width: 350px;
+}
+#contact_name_text {
+  width: 370px;
+}
+.more_info_contact:hover {
+  color: #000;
+  transition-duration: 1s;
+}
+#access_btn {
+  height: 18px;
+}
+#access_btn:hover {
+  color: #bf2119;
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+}
+.lid_tags__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 10px 0 20px 0;
+}
+.list__tag_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  box-sizing: content-box;
+  border-radius: 5px;
+  background-color: #e2e2e2;
+  margin: 0 10px 10px 0;
+  padding-top: 2px;
+}
+.list__tag_block p {
+  color: #000;
+  padding: 0 5px 0px 5px;
+  font-size: 16px;
+}
+.list__tag_block .del_btn {
+  margin: 0 5px 0 0;
+}
+/*--------------------------------
+
+
+        окно со списком доступа    
+
+
+----------------------------------*/
+.access_users_conteiner {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.access_user__background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.6;
+}
+.access_user__background:hover {
+  cursor: pointer;
+}
+.users_window_conteiner {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  height: 600px;
+  box-sizing: content-box;
+  margin-left: -350px;
+  margin-top: -300px;
+  background-color: #292929;
+  box-shadow: 0 0 20px 5px #292929;
+}
+.list_users_all_conteiner {
+  box-sizing: content-box;
+  margin: 20px;
+  overflow: hidden;
+}
+.access_users__block {
+  width: 350px;
+  box-sizing: content-box;
+  height: 540px;
+  padding: 20px 25px 20px 20px;
+  background-color: #292929;
+  overflow-y: scroll;
+}
+.access_executor_block {
+  width: 350px;
+  box-sizing: content-box;
+}
+.access_observer_block {
+  width: 350px;
+  box-sizing: content-box;
+  margin-top: 20px;
+}
+.access__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 348px;
+  height: 35px;
+  background-color: #3b3b3b;
+}
+.access__title h4 {
+  margin: 8px 0 0 15px;
+}
+.access__title input {
+  display: block;
+  margin-top: 8px;
+}
+.access__list {
+  width: 350px;
+  margin-top: 10px;
+  overflow-y: scroll;
+}
+.all_users_list {
+  overflow-y: scroll;
+}
+.user_item_block {
+  display: flex;
+  flex-direction: row;
+  width: 325px;
+  height: 60px;
+  margin: 5px 0 0 0;
+  border: 1px solid #0070b2;
+}
+.selector_indicator {
+  width: 20px;
+  height: 60px;
+  background-color: #bf2119;
+}
+.selector_indicator:hover {
+  cursor: pointer;
+}
+.user_selector:checked + .selector_indicator {
+  background-color: #690;
+}
+.user_selector {
+  display: none;
+}
+.user_item_photo {
+  width: 60px;
+  height: 60px;
+}
+.user_info_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 240px;
+  height: 60px;
+  padding: 0px 0 0px 15px;
+  background-color: #3b3b3b;
+  color: #fff;
+}
+.user_info_name {
+  font-weight: bold;
+}
+.user_info_name:hover {
+  color: #bf2119;
+}

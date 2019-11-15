@@ -1,0 +1,197 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+h1 {
+  color: #fff;
+  margin: 0;
+  padding: 5px 10px 15px 10px;
+  height: 33px;
+}
+h2 {
+  color: #fff;
+}
+h4 {
+  display: none;
+  font-size: 16px;
+  color: #fff;
+  margin: 0;
+  padding: 0 10px 0 0px;
+}
+.btn {
+  border: none;
+  background-color: #292929;
+  color: #fff;
+  height: 30px;
+}
+.btn:hover {
+  cursor: pointer;
+  color: #bf2119;
+  transition-duration: 0.5s;
+}
+input,
+button,
+select {
+  outline: none;
+  border: none;
+}
+input[type=text] {
+  width: 150px;
+  height: 20px;
+  background-color: #e2e2e2;
+  border-bottom: 3px solid #0070b2;
+  padding-left: 10px;
+}
+input[type=number] {
+  width: 150px;
+  height: 20px;
+  background-color: #e2e2e2;
+  border-bottom: 3px solid #0070b2;
+  padding-left: 10px;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #bf2119;
+  transition-duration: 0.5s;
+}
+select {
+  width: 150px;
+  height: 25px;
+  text-align: center;
+  border-bottom: 2px solid #0070b2;
+  background-color: #e2e2e2;
+}
+p {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  padding-bottom: 5px;
+}
+.btn_add {
+  height: 20px;
+  width: 20px;
+  margin-left: 15px;
+}
+.main_conteiner {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 600px;
+}
+/*--------------------------------
+
+
+    контейнер с таблицей ag-grid     
+
+
+----------------------------------*/
+.list_inq_conteiner {
+  width: 50%;
+  height: 600px;
+  margin: 25px 0 25px 25px;
+  box-sizing: border-box;
+}
+.list_inq__grid {
+  box-sizing: content-box;
+  height: 400px;
+  text-align: center;
+}
+/*----------------------------------
+
+
+    контейнер с информацией по лиду      
+
+
+----------------------------------*/
+.inq_string {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.info_inq_conteiner {
+  width: 50%;
+  height: 600px;
+  margin: 25px;
+  box-sizing: inherit;
+}
+.info-inq__block {
+  background-color: #1d1f25;
+  padding: 15px;
+}
+.points__place-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+.tender_block {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.adres-tamoj__block {
+  display: flex;
+  justify-content: flex-start;
+  width: 200px;
+  height: 25px;
+}
+.adres-tamoj__points {
+  display: flex;
+  flex-direction: flex-start;
+  margin-bottom: 15px;
+}
+.adres-tamoj__points div {
+  margin-left: 10px;
+}
+.cargo-info {
+  box-sizing: padding-box;
+  padding: 10px 20px 5px 20px;
+  margin-bottom: 15px;
+  background-color: #e2e2e2;
+}
+.cargo-info .inq_string {
+  margin-bottom: 5px;
+}
+.cargo-info p {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 0 0 0;
+}
+.otdel-perevoz-block {
+  box-sizing: content-box;
+}
+.otdel-perevoz-block textarea {
+  width: 230px;
+  height: 35px;
+  max-width: 230px;
+  max-height: 35px;
+  padding: 5px;
+}
+.rates-block {
+  height: 25px;
+  margin-bottom: 15px;
+}
+.rates-block button {
+  width: 100%;
+  height: 25px;
+}
+#show_list_access {
+  height: 20px;
+  padding: 0 6px 0 6px;
+  color: #fff;
+  background-color: #1d1f25;
+}
+#show_list_access:hover {
+  color: #bf2119;
+  border-bottom: 1px solid #fff;
+}
+#update_last_connect {
+  width: 100px;
+}

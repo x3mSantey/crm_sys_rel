@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="style/s.css">
+
+    
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <title>Запросы</title>
+</head>
+<body>
+    <div class="main_conteiner">
+        <div class="list_inq_conteiner">
+            <div id="list_inq" class="list_inq__grid"></div>
+        </div>
+        <div class="info_inq_conteiner">
+                <div class="info-inq__block">
+                    <div class="name_block inq_string">
+                        <h1 class="name-block__text">Название запроса</h1>
+                        <input type="text" class="name-block__inpt">
+                        <h4 class="date_inq">21.12.2019</h4>
+                    </div>
+                    <div class="inq_string">
+                        <div class="refNumb_block inq_string">
+                            <p>Референсный номер</p>
+                            <h4>2321321312312</h4>
+                        </div>
+                        <div class="status_block inq_string">
+                            <p>Статус</p>
+                            <select name="" id="">
+                                <option value="">Черновик</option>
+                                <option value="">Не обработан</option>
+                                <option value="">В обработке</option>
+                                <option value="">Возврат/уточнение</option>
+                                <option value="">Обработан</option>
+                                <option value="">Ожидание обратной связи</option>
+                                <option value="">Завершен</option>
+                                <option value="">Перспективы</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="inq_string">
+                        <div class="service_block inq_string">
+                            <p>Услуга</p>
+                            <select name="" id="">
+                                <option value="">Таможенное оформление</option>
+                                <option value="">Импорт</option>
+                                <option value="">Экспорт</option>
+                                <option value="">РФ</option>
+                                <option value="">Международная гп.</option>
+                            </select>
+                        </div>
+                        <div class="transport_block inq_string">
+                            <p>Вид транспорта</p>
+                            <select name="" id="">
+                                <option value="">FTL</option>
+                                <option value="">LTL</option>
+                                <option value="">FCL</option>
+                                <option value="">Не габарит</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="lid_string">
+                        <h2 class="transport_text">Вид транспорта</h2>
+                    </div>
+                    <div class="inq_string">
+                        <div class="transp_block inq_string">
+                            <p>Тип транспорта</p>
+                            <select name="" id="">
+                                <option value="">Тип транспорта</option>
+                                <option value="">Тип транспорта</option>
+                                <option value="">Тип транспорта</option>
+                                <option value="">Тип транспорта</option>
+                            </select>
+                        </div>
+                        <div class="loading_block inq_string">
+                            <p>Способ погрузки</p>
+                            <select name="" id="">
+                                <option value="">Зад</option>
+                                <option value="">Бок</option>
+                                <option value="">Верхняя</option>
+                                <option value="">Полная растентовка</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="tender_block">
+                        <p>Тендер</p>
+                        <input type="text" placeholder="Вставте ссылку">
+                        <input type="file">
+                    </div>
+                    <div class="route-block">
+                        <h2 class="route-block__text">Маршрут</h2>
+                        <div class="route-block__table">
+                            
+                        </div>
+                        <div class="route-block__adres-tamoj">
+                            <div class="adres-tamoj__block">
+                                <p class="adres-tamoj__text">Адреса таможни</p>
+                                <button class="btn_add" id="adres-tamoj__btn">"+"</button>
+                            </div>
+                            <div class="adres-tamoj__points">
+                                <div class="points__place-block">
+                                    <p>отправление</p>
+                                    <input type="text" name="" id="">
+                                </div>
+                                <div class="points__place-block">
+                                    <p>назначение</p>
+                                    <input type="text" name="" id="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="cargo-info">
+                            <div class="cargo-info__character-block inq_string">
+                                <p>Характер груза</p>
+                                <input type="text" name="character-block__inpt" id="">
+                                <h4 class="character-block__text"></h4>
+                            </div>
+                            <div class="cargo-info__price-block inq_string">
+                                <p>Стоимость груза</p>
+                                <input type="text" name="price-block__inpt" id="">
+                                <h4 class="price-block__text"></h4>
+                            </div>
+                            <div class="cargo-info__weight-block inq_string">
+                                <p>Вес груза</p>
+                                <input type="text" name="weight-block__inpt" id="">
+                                <h4 class="weight-block__text"></h4>
+                            </div>
+                            <div class="cargo-info__invoise-block inq_string">
+                                <p>Страна в инвойсах</p>
+                                <input type="text" name="invoiseblock__inpt" id="">
+                                <h4 class="ivoise-block__text"></h4>
+                            </div>
+                            <div class="cargo-info__tnved-block inq_string">
+                                <p>Кол-во кодов ТНВЭД</p>
+                                <input type="text" name="tnved-block__inpt" id="">
+                                <h4 class="tnved-block__text"></h4>
+                            </div>
+                            <div class="cargo-info__packing-block inq_string">
+                                <p>Упаковка</p>
+                                <input type="text" name="packing-block__inpt" id="">
+                                <h4 class="packing-block__text"></h4>
+                            </div>
+                            <div class="cargo-info__hazard-block inq_string">
+                                <p>Класс опасности</p>
+                                <input type="text" name="hazard-block__inpt" id="">
+                                <h4 class="hazard-block__text"></h4>
+                            </div>
+                            <div class="cargo-info__frequency-block inq_string">
+                                <p>Регулярность грузоперевозок</p>
+                                <input type="text" name="price_block__inpt" id="">
+                                <h4 class="price-block__text"></h4>
+                            </div>
+                            <div class="cargo-info__temper-block inq_string">
+                                <p>Температурный режим</p>
+                                <input type="text" name="temper-block__inpt" id="">
+                                <h4 class="temper-block__text"></h4>
+                            </div>
+                            <div class="cargo-info__size-block inq_string">
+                                <p>Габариты груза</p>
+                                <input type="text" name="size-block__inpt" id="">
+                                <h4 class="size-block__text"></h4>
+                            </div>
+                        </div>
+                    <div class="inq_string">
+                        <div class="otdel-perevoz-block">
+                            <div class="rates-block">
+                                <button>Ставки</button>
+                            </div>
+                            <div class="tranzit-block inq_string">
+                                <textarea name="" id="" rows="2" placeholder="Информация по транзиту"></textarea>
+                            </div>
+                            <div class="delivery-block inq_string">
+                                <textarea name="" id="" rows="2" placeholder="Укажите срок поставки"></textarea>
+                            </div>
+                        </div>
+                        <div class="otdel-prodaj-block">
+                            <div class="inq_string">
+                                <p>Доступность</p>
+                                <button id="show_list_access">посмотреть список &gt;</button>
+                            </div>
+                            <div class="inq_string">
+                                <p>Последний контакт</p>
+                                <div>
+                                    <p>12.33 12.12.2020</p>
+                                    <button id="update_last_connect">Обновить</button>
+                                </div>
+                            </div>
+                            <button>Редактировать запрос</button>
+                            <button>Сформировать заказ</button>
+                        </div>
+                    </div>
+                    
+                    
+
+                </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
