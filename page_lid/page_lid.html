@@ -16,15 +16,17 @@
 <body>
     <div class="header_conteiner">
         <div class="nav_btn_block">
-            <div class="nav_btn" id="journal_btn">Журнал</div>
+            <div class="nav_btn" id="journal_lid_btn">Журнал лидов</div>
             <div class="nav_btn" id="create_lid">Создать лида</div>
-            <div class="nav_btn" id="create_inq">Сформировать запрос</div>
+            <div class="nav_btn" id="journal_inq_btn">Журнал запросов</div>
+            <a href="../page_inquiry/page_inquiry.html"><div class="nav_btn" id="create_inq">Сформировать запрос</div></a>
             <div class="nav_btn">Отправить в архив</div>
         </div>
     </div>
     <div class="main_conteiner">
         <div class="list_lid_conteiner">
             <div class="inq_list_conteiner">
+                <div class="horizontal_line"></div>
                 <div class="inquire_info_block">
                     <div class="lid_string">
                         <h4>Импорт / Пометка по запросу</h4>
@@ -59,7 +61,7 @@
             <div class="horizontal_line"></div>
             <div class="status_lid_block lid_string">
                 <p>Статус</p>
-                <select disabled name="satus_lid" id="status_lid" class="status_list dd_list">
+                <select disabled name="status_lid" id="status_lid" class="status_list dd_list">
                     <option value="">Неразобран</option>
                     <option value="">В работе</option>
                     <option value="">Активный</option>
@@ -155,7 +157,7 @@
             <div class="lid_info__contact_conteiner">
                 <div class="header_contacts">
                     <h1>Контакты</h1>
-                    <div class="add_new_contact_block add_block">
+                    <div class="add_new_contact_block add_block" value="0">
                         <input type="button" class="add_btn add_btn_info">
                         <p>добавить контакт</p>
                     </div>
