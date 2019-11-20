@@ -1,21 +1,41 @@
+@font-face {
+  font-family: TheCapt;
+  src: url("fonts/TheCapt.otf");
+}
+@font-face {
+  font-family: ProductSans;
+  src: url("fonts/ProductSans.otf");
+}
 body,
 html {
   margin: 0;
   padding: 0;
-  background-color: #fff;
+  background-color: #e2e2e2;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: #fff;
 }
 h1 {
+  font-family: TheCapt;
+  font-weight: inherit;
   color: #fff;
   margin: 0;
   padding: 5px 10px 15px 10px;
   height: 33px;
 }
 h2 {
+  font-family: TheCapt;
+  font-weight: inherit;
   color: #fff;
+  margin: 0;
+  padding: 5px 10px 15px 10px;
 }
 h4 {
-  display: none;
-  font-size: 16px;
+  font-family: ProductSans;
+  font-size: 18px;
   color: #fff;
   margin: 0;
   padding: 0 10px 0 0px;
@@ -38,14 +58,12 @@ select {
   border: none;
 }
 input[type=text] {
-  width: 150px;
   height: 20px;
   background-color: #e2e2e2;
   border-bottom: 3px solid #0070b2;
   padding-left: 10px;
 }
 input[type=number] {
-  width: 150px;
   height: 20px;
   background-color: #e2e2e2;
   border-bottom: 3px solid #0070b2;
@@ -53,7 +71,6 @@ input[type=number] {
 }
 button:hover {
   cursor: pointer;
-  background-color: #bf2119;
   transition-duration: 0.5s;
 }
 select {
@@ -75,12 +92,84 @@ p {
   width: 20px;
   margin-left: 15px;
 }
+.del_btn {
+  width: 20px;
+  height: 20px;
+  margin: 3px 0 0 5px;
+  border: none;
+  background-color: #e2e2e2;
+  background-image: url("img/icon_del.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.del_btn:hover {
+  cursor: pointer;
+  background-image: url("img/icon_del_v2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.edit_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 275px;
+  height: 25px;
+}
+/*--------------------------------
+
+
+    контейнер заголовка   
+
+
+----------------------------------*/
+.header_conteiner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #1d1f25;
+  border-bottom: 1px solid #0070b2;
+  z-index: 999;
+}
+.header_conteiner .nav_btn_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.header_conteiner .nav_btn {
+  width: 150px;
+  height: 35px;
+  padding: 15px 15px 0 15px;
+  text-align: center;
+  color: #fff;
+  font-family: ProductSans;
+}
+.header_conteiner .nav_btn:hover {
+  border-bottom: 3px solid #fff;
+  height: 32px;
+  color: #bf2119;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+/*--------------------------------
+
+
+    контейнер с основной информацией    
+
+
+----------------------------------*/
 .main_conteiner {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
-  height: 600px;
+  box-sizing: content-box;
+  margin-top: 75px;
 }
 /*--------------------------------
 
@@ -93,12 +182,31 @@ p {
   width: 50%;
   height: 600px;
   margin: 25px 0 25px 25px;
+  padding: 10px;
   box-sizing: border-box;
+  background-color: #fff;
 }
 .list_inq__grid {
   box-sizing: content-box;
   height: 400px;
   text-align: center;
+}
+.list_route__grid {
+  box-sizing: content-box;
+  height: 100px;
+  text-align: center;
+}
+.ag-header-cell-label {
+  text-align: center;
+}
+#list_route_deliv .ag-header-cell-text {
+  width: 100%;
+  font-size: 12px;
+  color: #fff;
+}
+.ag-row-hover {
+  color: #000;
+  background-color: #e2e2e2;
 }
 /*----------------------------------
 
@@ -107,22 +215,48 @@ p {
 
 
 ----------------------------------*/
+.inq_string_big {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  margin-bottom: 10px;
+}
 .inq_string {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: 295px;
   margin-bottom: 10px;
 }
 .info_inq_conteiner {
-  width: 50%;
-  height: 600px;
-  margin: 25px;
-  box-sizing: inherit;
+  width: 630px;
+  margin: 25px 25px 25px 0;
+  box-sizing: content-box;
 }
 .info-inq__block {
-  background-color: #1d1f25;
-  padding: 15px;
+  width: 600px;
+  padding: 0 15px 15px 15px;
+  background-color: #292929;
+}
+.name_block {
+  position: sticky;
+  top: 51px;
+  background-color: #292929;
+  border-bottom: 3px solid #0070b2;
+  z-index: 999;
+  padding: 15px 0 12px 0;
+}
+#name-block__inpt {
+  width: 400px;
+  height: 40px;
+  border-bottom: 0px solid #0070b2;
+  background-color: #292929;
+  font-family: TheCapt;
+  font-size: 32px;
+  color: #fff;
+}
+.route-block__table {
+  width: 600px;
+  box-sizing: content-box;
 }
 .points__place-block {
   display: flex;
@@ -150,19 +284,29 @@ p {
   margin-left: 10px;
 }
 .cargo-info {
-  box-sizing: padding-box;
-  padding: 10px 20px 5px 20px;
+  padding: 5px 20px 5px 20px;
   margin-bottom: 15px;
   background-color: #e2e2e2;
+  border-radius: 10px;
 }
-.cargo-info .inq_string {
+.cargo-info .inq_string_big {
+  width: 560px;
   margin-bottom: 5px;
 }
 .cargo-info p {
+  width: 220px;
   color: #000;
   font-size: 16px;
   font-weight: bold;
   padding: 5px 0 0 0;
+}
+.edit_info_inpt {
+  width: 220px;
+}
+.cargo_text {
+  display: none;
+  width: 200px;
+  text-align: right;
 }
 .otdel-perevoz-block {
   box-sizing: content-box;

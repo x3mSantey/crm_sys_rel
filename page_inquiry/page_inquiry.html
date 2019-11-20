@@ -15,90 +15,104 @@
     <title>Запросы</title>
 </head>
 <body>
+    <div class="header_conteiner">
+        <div class="nav_btn_block">
+            <a href="../page_lid/page_lid.html"><div class="nav_btn" id="journal_lid_btn">Журнал лидов</div></a>
+            <div class="nav_btn" id="create_lid">Создать лида</div>
+            <div class="nav_btn" id="journal_inq_btn" onclick="journalInq.showJournalInq()">Журнал запросов</div>
+            <a href="../page_inquiry/page_inquiry.html"><div class="nav_btn" id="create_inq">Сформировать запрос</div></a>
+            <div class="nav_btn">Отправить в архив</div>
+        </div>
+    </div>
     <div class="main_conteiner">
         <div class="list_inq_conteiner">
-            <div id="list_inq" class="list_inq__grid"></div>
         </div>
         <div class="info_inq_conteiner">
                 <div class="info-inq__block">
-                    <div class="name_block inq_string">
-                        <h1 class="name-block__text">Название запроса</h1>
-                        <input type="text" class="name-block__inpt">
-                        <h4 class="date_inq">21.12.2019</h4>
+                    <div class="name_block inq_string_big">
+                        <input type="text" id="name-block__inpt" placeholder="Введите название лида" name='name_inq' readonly>
+                        <button id="btn_edit_inq_nav" class="btn" onclick="inqInfo.InqEditModeOn()" >Редактировать лид</button>
+                        <button id="btn_save_inq_nav" class="btn" style="display: none" onclick="inqInfo.InqEditModeOff()" >Сохранить лид</button>
                     </div>
-                    <div class="inq_string">
+                    <div class="inq_string_big">
                         <div class="refNumb_block inq_string">
                             <p>Референсный номер</p>
-                            <h4>2321321312312</h4>
-                        </div>
+                            <p name="red_number_inq">2321321312312</p>
+                        </div> 
                         <div class="status_block inq_string">
                             <p>Статус</p>
-                            <select name="" id="">
-                                <option value="">Черновик</option>
-                                <option value="">Не обработан</option>
-                                <option value="">В обработке</option>
-                                <option value="">Возврат/уточнение</option>
-                                <option value="">Обработан</option>
-                                <option value="">Ожидание обратной связи</option>
-                                <option value="">Завершен</option>
-                                <option value="">Перспективы</option>
+                            <select name="status_inq" id="" disabled>
+                                <option value="Черновик">Черновик</option>
+                                <option value="Не обработан">Не обработан</option>
+                                <option value="В обработке">В обработке</option>
+                                <option value="Возврат/уточнение">Возврат/уточнение</option>
+                                <option value="Обработан">Обработан</option>
+                                <option value="Ожидание обратной связи">Ожидание обратной связи</option>
+                                <option value="Завершен">Завершен</option>
+                                <option value="Перспективы">Перспективы</option>
                             </select>
                         </div>
                     </div>
-                    <div class="inq_string">
+                    <div class="inq_string_big">
                         <div class="service_block inq_string">
                             <p>Услуга</p>
-                            <select name="" id="">
-                                <option value="">Таможенное оформление</option>
-                                <option value="">Импорт</option>
-                                <option value="">Экспорт</option>
-                                <option value="">РФ</option>
-                                <option value="">Международная гп.</option>
+                            <select name="service_inq" id="" disabled>
+                                <option value="Таможенное оформление">Таможенное оформление</option>
+                                <option value="Импорт">Импорт</option>
+                                <option value="Экспорт">Экспорт</option>
+                                <option value="РФ">РФ</option>
+                                <option value="Международная гп.">Международная гп.</option>
                             </select>
                         </div>
                         <div class="transport_block inq_string">
                             <p>Вид транспорта</p>
-                            <select name="" id="">
-                                <option value="">FTL</option>
-                                <option value="">LTL</option>
-                                <option value="">FCL</option>
-                                <option value="">Не габарит</option>
+                            <select name="view_trans_inq" id="" disabled>
+                                <option value="FTL">FTL</option>
+                                <option value="LTL">LTL</option>
+                                <option value="FCL">FCL</option>
+                                <option value="Не габарит">Не габарит</option>
                             </select>
                         </div>
                     </div>
-                    <div class="lid_string">
+                    <div class="inq_string_big">
                         <h2 class="transport_text">Вид транспорта</h2>
                     </div>
-                    <div class="inq_string">
+                    <div class="inq_string_big">
                         <div class="transp_block inq_string">
                             <p>Тип транспорта</p>
-                            <select name="" id="">
-                                <option value="">Тип транспорта</option>
-                                <option value="">Тип транспорта</option>
-                                <option value="">Тип транспорта</option>
-                                <option value="">Тип транспорта</option>
+                            <select name="type_transp_inq" id="" disabled>
+                                <option value="Тип транспорта">Тип транспорта</option>
+                                <option value="Тип транспорта">Тип транспорта</option>
+                                <option value="Тип транспорта">Тип транспорта</option>
+                                <option value="Тип транспорта">Тип транспорта</option>
                             </select>
                         </div>
                         <div class="loading_block inq_string">
                             <p>Способ погрузки</p>
-                            <select name="" id="">
-                                <option value="">Зад</option>
-                                <option value="">Бок</option>
-                                <option value="">Верхняя</option>
-                                <option value="">Полная растентовка</option>
+                            <select name="loading_inq" id="" disabled>
+                                <option value="Зад">Зад</option>
+                                <option value="Бок">Бок</option>
+                                <option value="Верхняя">Верхняя</option>
+                                <option value="Полная растентовка">Полная растентовка</option>
                             </select>
                         </div>
                     </div>
-                    <div class="tender_block">
-                        <p>Тендер</p>
-                        <input type="text" placeholder="Вставте ссылку">
-                        <input type="file">
+                    <div class="tender_block inq_string_big">
+                        <div class="inq_string">
+                            <p>Тендер</p>
+                            <div>
+                                <input type="text" name="url_tender" placeholder="Вставте ссылку" readonly>
+                                <input type="file">
+                            </div>
+                        </div>
+                        <div class="inq_string">
+                            <p class="">Дата создания</p>
+                            <p class="date_inq">21.12.2019</p>
+                        </div>
                     </div>
                     <div class="route-block">
                         <h2 class="route-block__text">Маршрут</h2>
-                        <div class="route-block__table">
-                            
-                        </div>
+                        <div class="route-block__table"></div>
                         <div class="route-block__adres-tamoj">
                             <div class="adres-tamoj__block">
                                 <p class="adres-tamoj__text">Адреса таможни</p>
@@ -107,77 +121,107 @@
                             <div class="adres-tamoj__points">
                                 <div class="points__place-block">
                                     <p>отправление</p>
-                                    <input type="text" name="" id="">
+                                    <input type="text" name="start_tamoj" id="" readonly>
                                 </div>
                                 <div class="points__place-block">
                                     <p>назначение</p>
-                                    <input type="text" name="" id="">
+                                    <input type="text" name="finish_tamoj" id="" readonly>
                                 </div>
                             </div>
                         </div>
                     </div>
                         <div class="cargo-info">
-                            <div class="cargo-info__character-block inq_string">
+                            <div class="cargo-info__character-block inq_string_big">
                                 <p>Характер груза</p>
-                                <input type="text" name="character-block__inpt" id="">
-                                <h4 class="character-block__text"></h4>
+                                <p class="character-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="character-block__inpt" placeholder="Введите характер груза" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_character_cargo" class="del_btn ">
+                                </div>
                             </div>
-                            <div class="cargo-info__price-block inq_string">
+                            <div class="cargo-info__price-block inq_string_big">
                                 <p>Стоимость груза</p>
-                                <input type="text" name="price-block__inpt" id="">
-                                <h4 class="price-block__text"></h4>
+                                <p class="price-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="price-block__inpt" placeholder="Введите стоимость груза" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_price_cargo" class="del_btn ">
+                                </div>
                             </div>
-                            <div class="cargo-info__weight-block inq_string">
+                            <div class="cargo-info__weight-block inq_string_big">
                                 <p>Вес груза</p>
-                                <input type="text" name="weight-block__inpt" id="">
-                                <h4 class="weight-block__text"></h4>
+                                <p class="weight-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="weight-block__inpt" placeholder="Введите вес груза" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_weight_cargo" class="del_btn ">
+                                </div>
                             </div>
-                            <div class="cargo-info__invoise-block inq_string">
+                            <div class="cargo-info__invoise-block inq_string_big">
                                 <p>Страна в инвойсах</p>
-                                <input type="text" name="invoiseblock__inpt" id="">
-                                <h4 class="ivoise-block__text"></h4>
+                                <p class="ivoise-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="ivoise-block__inpt" placeholder="Введите страну в инвойсах" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_ivoise_cargo" class="del_btn ">
+                                </div>
                             </div>
-                            <div class="cargo-info__tnved-block inq_string">
+                            <div class="cargo-info__tnved-block inq_string_big">
                                 <p>Кол-во кодов ТНВЭД</p>
-                                <input type="text" name="tnved-block__inpt" id="">
-                                <h4 class="tnved-block__text"></h4>
+                                <p class="tnved-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="tnved-block__inpt" placeholder="Укажите Кол-во кодов ТНВЭД" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_tnved_cargo" class="del_btn ">
+                                </div>
                             </div>
-                            <div class="cargo-info__packing-block inq_string">
+                            <div class="cargo-info__packing-block inq_string_big">
                                 <p>Упаковка</p>
-                                <input type="text" name="packing-block__inpt" id="">
-                                <h4 class="packing-block__text"></h4>
+                                <p class="packing-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="packing-block__inpt" placeholder="Укажите упаковку" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_packing_cargo" class="del_btn ">
+                                </div>
                             </div>
-                            <div class="cargo-info__hazard-block inq_string">
+                            <div class="cargo-info__hazard-block inq_string_big">
                                 <p>Класс опасности</p>
-                                <input type="text" name="hazard-block__inpt" id="">
-                                <h4 class="hazard-block__text"></h4>
+                                <p class="hazard-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="hazard-block__inpt" placeholder="Введите класс опасности" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_hazard_cargo" class="del_btn ">
+                                </div>
                             </div>
-                            <div class="cargo-info__frequency-block inq_string">
+                            <div class="cargo-info__frequency-block inq_string_big">
                                 <p>Регулярность грузоперевозок</p>
-                                <input type="text" name="price_block__inpt" id="">
-                                <h4 class="price-block__text"></h4>
+                                <p class="frequency-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="frequency-block__inpt" placeholder="Регулярность грузоперевозок" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_frequency_cargo" class="del_btn ">
+                                </div>
                             </div>
-                            <div class="cargo-info__temper-block inq_string">
+                            <div class="cargo-info__temper-block inq_string_big">
                                 <p>Температурный режим</p>
-                                <input type="text" name="temper-block__inpt" id="">
-                                <h4 class="temper-block__text"></h4>
+                                <p class="temper-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="temper-block__inpt" placeholder="Температурный режим" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_temper_cargo" class="del_btn ">
+                                </div>
                             </div>
-                            <div class="cargo-info__size-block inq_string">
+                            <div class="cargo-info__size-block inq_string_big">
                                 <p>Габариты груза</p>
-                                <input type="text" name="size-block__inpt" id="">
-                                <h4 class="size-block__text"></h4>
+                                <p class="size-block__text cargo_text"></p>
+                                <div class="edit_block">
+                                    <input readonly type="text" name="size-block__inpt" placeholder="Введите размер груза" class="edit_info_inpt" id="">
+                                    <input type="button" id="del_size_cargo" class="del_btn ">
+                                </div>
                             </div>
                         </div>
-                    <div class="inq_string">
+                    <div class="inq_string_big">
                         <div class="otdel-perevoz-block">
                             <div class="rates-block">
                                 <button>Ставки</button>
                             </div>
                             <div class="tranzit-block inq_string">
-                                <textarea name="" id="" rows="2" placeholder="Информация по транзиту"></textarea>
+                                <textarea name="" id="" rows="2" placeholder="Информация по транзиту" readonly></textarea>
                             </div>
                             <div class="delivery-block inq_string">
-                                <textarea name="" id="" rows="2" placeholder="Укажите срок поставки"></textarea>
+                                <textarea name="" id="" rows="2" placeholder="Укажите срок поставки" readonly></textarea>
                             </div>
                         </div>
                         <div class="otdel-prodaj-block">

@@ -13,25 +13,42 @@ $sec-text-color = #9D9C9C
 
 $green-indicator = #669900
 
+@font-face
+    font-family TheCapt 
+    src url(fonts/TheCapt.otf)
+
+@font-face
+    font-family ProductSans 
+    src url(fonts/ProductSans.otf)
 
 body, html 
     margin 0
     padding 0
-    background-color $main-text-color
+    background-color $grey
+
+a   
+    text-decoration none 
+    &:visited
+        color $main-text-color
 
 h1
+    font-family TheCapt 
+    font-weight inherit
     color $main-text-color
     margin 0
     padding 5px 10px 15px 10px
     height 33px
 
-h2 
+h2
+    font-family TheCapt 
+    font-weight inherit
     color $main-text-color
-
+    margin 0
+    padding 5px 10px 15px 10px
 
 h4
-    display none
-    font-size 16px
+    font-family ProductSans
+    font-size 18px
     color $main-text-color
     margin 0
     padding 0 10px 0 0px
@@ -52,14 +69,12 @@ input, button, select
     border none
 
 input[type=text]
-    width 150px
     height 20px
     background-color $grey
     border-bottom 3px solid $blue
     padding-left 10px
 
 input[type=number]
-    width 150px
     height 20px
     background-color $grey
     border-bottom 3px solid $blue
@@ -68,7 +83,6 @@ input[type=number]
 button
     &:hover
         cursor pointer
-        background-color $hover-color
         transition-duration 0.5s
 
 select 
@@ -76,7 +90,7 @@ select
     height 25px
     text-align center
     border-bottom 2px solid $blue
-    background-color $grey
+    background-color $grey 
 
 
 p   
@@ -90,18 +104,90 @@ p
     height 20px
     width 20px
     margin-left 15px
-        
+
+.del_btn
+    width 20px
+    height 20px
+    margin 3px 0 0 5px
+    border none
+    background-color $grey
+
+    background-image url(img/icon_del.png)
+    background-size cover
+    background-repeat no-repeat
+    background-position center
+
+    &:hover
+        cursor pointer
+        background-image url(img/icon_del_v2.png)
+        background-size cover
+        background-repeat no-repeat
+        background-position center
+
+.edit_block
+    display flex
+    flex-direction row
+    justify-content flex-end
+    width 275px
+    height 25px
 
 
+
+/*--------------------------------
+
+
+    контейнер заголовка   
+
+
+----------------------------------*/
+.header_conteiner
+    display flex
+    flex-direction row
+    justify-content: space-around
+    position fixed 
+    top 0
+
+    width 100%
+    height 50px
+    background-color $main-color
+    border-bottom 1px solid $blue
+    z-index 999
+
+    .nav_btn_block
+        display flex
+        flex-direction row
+        justify-content space-around
+
+    .nav_btn
+        width 150px
+        height 35px
+        padding 15px 15px 0 15px
+        text-align center
+        color $main-text-color
+        font-family ProductSans
+
+        &:hover
+            border-bottom 3px solid $main-text-color
+            height 32px
+            color $hover-color
+            transition-duration 0.5s
+            cursor pointer
+/*--------------------------------
+
+
+    контейнер с основной информацией    
+
+
+----------------------------------*/
 
 
 .main_conteiner
     display flex
     flex-direction row
     justify-content flex-start
-
     width 100%
-    height 600px
+    box-sizing content-box
+    margin-top 75px
 
 /*--------------------------------
 
@@ -116,14 +202,34 @@ p
     width 50%
     height 600px
     margin 25px 0 25px 25px
+    padding 10px
     box-sizing border-box
+    background-color $main-text-color
 
 
 .list_inq__grid
     box-sizing content-box
     height 400px
-
     text-align center
+
+
+.list_route__grid
+    box-sizing content-box
+    height 100px
+    text-align center
+
+.ag-header-cell-label
+    text-align center
+#list_route_deliv
+    .ag-header-cell-text
+        width 100%
+        font-size 12px
+        color $main-text-color
+
+
+.ag-row-hover
+    color $black
+    background-color $grey
 
 
 /*----------------------------------
@@ -134,22 +240,48 @@ p
 
 ----------------------------------*/
 
+.inq_string_big
+    display flex
+    justify-content space-between
+    width 600px
+    margin-bottom 10px
+
 .inq_string
     display flex
-    flex-direction row
     justify-content space-between
-    width 100%
+    width 295px
     margin-bottom 10px
 
 .info_inq_conteiner
-    width 50%
-    height 600px
-    margin 25px
-    box-sizing inherit
+    width 630px
+    margin 25px 25px 25px 0
+    box-sizing content-box
 
 .info-inq__block
-    background-color $main-color
-    padding 15px
+    width 600px
+    padding 0 15px 15px 15px
+    background-color $sec-color
+    
+.name_block 
+    position sticky
+    top 51px
+    background-color $sec-color
+    border-bottom 3px solid $blue
+    z-index 999
+    padding 15px 0 12px 0
+
+#name-block__inpt
+    width 400px
+    height 40px 
+    border-bottom 0px solid $blue
+    background-color $sec-color
+    font-family TheCapt 
+    font-size 32px
+    color $main-text-color
+
+.route-block__table
+    width 600px
+    box-sizing content-box
 
 .points__place-block
     display flex
@@ -178,19 +310,27 @@ p
         margin-left 10px
 
 .cargo-info
-    box-sizing padding-box
-    padding 10px 20px 5px 20px
+    padding 5px 20px 5px 20px
     margin-bottom 15px
     background-color $grey
-    
-    .inq_string
-        margin-bottom 5px
-    
+    border-radius 10px
+    .inq_string_big
+        width 560px
+        margin-bottom 5px        
     p
+        width 220px
         color $black
         font-size 16px
         font-weight bold
         padding 5px 0 0 0 
+.edit_info_inpt
+    width 220px
+
+.cargo_text
+    display none
+    width 200px
+    text-align right
+    
     
 .otdel-perevoz-block
     box-sizing content-box

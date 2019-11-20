@@ -16,15 +16,17 @@
 <body>
     <div class="header_conteiner">
         <div class="nav_btn_block">
-            <div class="nav_btn" id="journal_btn">Журнал</div>
+            <div class="nav_btn" id="journal_lid_btn">Журнал лидов</div>
             <div class="nav_btn" id="create_lid">Создать лида</div>
-            <div class="nav_btn" id="create_inq">Сформировать запрос</div>
+            <div class="nav_btn" id="journal_inq_btn">Журнал запросов</div>
+            <a href="../page_inquiry/page_inquiry.html"><div class="nav_btn" id="create_inq">Сформировать запрос</div></a>
             <div class="nav_btn">Отправить в архив</div>
         </div>
     </div>
     <div class="main_conteiner">
         <div class="list_lid_conteiner">
             <div class="inq_list_conteiner">
+                <div class="horizontal_line"></div>
                 <div class="inquire_info_block">
                     <div class="lid_string">
                         <h4>Импорт / Пометка по запросу</h4>
@@ -59,7 +61,7 @@
             <div class="horizontal_line"></div>
             <div class="status_lid_block lid_string">
                 <p>Статус</p>
-                <select disabled name="satus_lid" id="status_lid" class="status_list dd_list">
+                <select disabled name="status_lid" id="status_lid" class="status_list dd_list">
                     <option value="">Неразобран</option>
                     <option value="">В работе</option>
                     <option value="">Активный</option>
@@ -155,18 +157,18 @@
             <div class="lid_info__contact_conteiner">
                 <div class="header_contacts">
                     <h1>Контакты</h1>
-                    <div class="add_new_contact_block add_block">
+                    <div class="add_new_contact_block add_block" value="0">
                         <input type="button" class="add_btn add_btn_info">
                         <p>добавить контакт</p>
                     </div>
                 </div>
                 <div class="contact_item_block">
                     <div class="info_string contact_item__name">
-                        <h4 id="contact_name_text" name="name_contact" class="contact_info_text edit_info_text">Имя Фамилия отчество</h4>
-                        <input type="text" name="name_contact" placeholder="Введите имя контакта" class="contact_info_inpt edit_info_inpt" id="contact_name_inpt">
-                        <input type="button" id="del_name_contact" class=" del_btn del_btn_info">
-                        <button class="btn show_info_contact">развернуть</button>
-                        <button class="btn hide_info_contact" style="display: none">свернуть</button>
+                        <h4 id="contact_name_text0" name="name_contact" class="contact_info_text edit_info_text">Имя Фамилия отчество</h4>
+                        <input type="text" name="name_contact" placeholder="Введите имя контакта" class="contact_info_inpt edit_info_inpt" id="contact_name_inpt0" style="width: 350px">
+                        <input type="button" id="del_name_contact0" class=" del_btn del_btn_info">
+                        <button class="btn show_info_contact" id='show_info_contact0'>развернуть</button>
+                        <button class="btn hide_info_contact" id='hide_info_contact0' style="display: none">свернуть</button>
                     </div>
                     <div class="info_string">
                         <p>Тел.</p>
@@ -231,10 +233,16 @@
                         <input type="button" class="del_btn del_btn_info">
                     </div>
                 </div>
-                <div class="lid_new_tags_block">
-                    <div class="add_new_tag_block">
+                <div class="lid_new_tags_conteiner">                                
+                    <div class="journal_tags_block">
+                        <div class="journal_item_block" id="journal_tags_0">
+                            <input type="checkbox" name="Название текста" id="journal_tags_check_0">
+                            <p>Название текста</p>
+                        </div>
+                    </div>
+                    <div class="add_new_tag_block"> 
                         <input type="text">
-                        <button class="btn ">Добавить новый тег</button>
+                        <button class="btn" id="add_in_journal_tag">Добавить новый тег</button>
                     </div>
                 </div>
             </div>

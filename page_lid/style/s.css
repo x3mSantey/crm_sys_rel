@@ -137,10 +137,11 @@ p {
 
 ----------------------------------*/
 .list_lid_conteiner {
-  width: 100%;
+  display: none;
+  width: 750px;
   box-sizing: content-box;
   padding: 10px;
-  margin: 0 25px 25px 25px;
+  margin: 0 0 25px 15px;
   background-color: #fff;
 }
 .list_lid__grid {
@@ -169,6 +170,7 @@ p {
 
 ----------------------------------*/
 .inq_list_conteiner {
+  display: none;
   width: 100%;
   max-width: 750px;
   box-sizing: content-box;
@@ -177,11 +179,13 @@ p {
   width: 720px;
   box-sizing: content-box;
   background-color: #292929;
-  padding: 5px 15px 5px 15px;
+  padding: 10px 15px 5px 15px;
   margin-top: 15px;
+  border-radius: 5px;
 }
 .inquire_info_block .lid_string {
   width: 720px;
+  margin-bottom: 5px;
 }
 .inquire_info_block h4 {
   width: 400px;
@@ -357,8 +361,11 @@ p {
   flex-direction: row;
   justify-content: space-between;
   width: 400px;
-  height: 35px;
+  height: 25px;
   margin-bottom: 17px;
+}
+.header_contacts p {
+  padding-top: 8px;
 }
 .add_block {
   display: none;
@@ -405,10 +412,7 @@ p {
   padding-top: 5px;
   border: none;
 }
-#contact_name_inpt {
-  width: 350px;
-}
-#contact_name_text {
+.contact_info_text {
   width: 370px;
 }
 .more_info_contact:hover {
@@ -440,13 +444,74 @@ p {
   margin: 0 10px 10px 0;
   padding-top: 2px;
 }
+.list__tag_block input {
+  width: 15px;
+  height: 15px;
+}
 .list__tag_block p {
   color: #000;
   padding: 0 5px 0px 5px;
-  font-size: 16px;
+  font-size: 12px;
 }
 .list__tag_block .del_btn {
   margin: 0 5px 0 0;
+}
+.lid_new_tags_conteiner {
+  display: none;
+  right: 455px;
+}
+.add_new_tag_block {
+  width: 120px;
+  height: 200px;
+}
+.add_new_tag_block input {
+  height: 20px;
+  width: 140px;
+}
+.add_new_tag_block button {
+  height: 25px;
+  width: 150px;
+  font-size: 12px;
+}
+.journal_tags_block {
+  width: 250px;
+  height: 165px;
+  background-color: #e2e2e2;
+  overflow-y: scroll;
+}
+.journal_item_block {
+  display: flex;
+  border-bottom: 2px solid #0070b2;
+  background-color: #e2e2e2;
+}
+.journal_item_block:hover {
+  cursor: pointer;
+}
+.journal_item_block input {
+  width: 16px;
+  height: 16px;
+  margin: 5px 0 0 5px;
+}
+.journal_item_block input:hover {
+  cursor: pointer;
+}
+.journal_item_block p {
+  padding: 3px 0 0 10px;
+  width: 230px;
+  height: 25px;
+  color: #000;
+}
+.journal_item_block p:hover {
+  color: #bf2119;
+  transition-duration: 0.5s;
+}
+#add_in_journal_tag {
+  border-bottom: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
+  transition-duration: 0.5s;
+}
+#add_in_journal_tag:hover {
+  border: none;
 }
 /*--------------------------------
 
@@ -536,7 +601,6 @@ p {
   width: 325px;
   height: 60px;
   margin: 5px 0 0 0;
-  border: 1px solid #0070b2;
 }
 .selector_indicator {
   width: 20px;
@@ -561,10 +625,12 @@ p {
   flex-direction: column;
   justify-content: center;
   width: 240px;
-  height: 60px;
+  height: 58px;
   padding: 0px 0 0px 15px;
   background-color: #3b3b3b;
   color: #fff;
+  border: 1px solid #e2e2e2;
+  border-left: none;
 }
 .user_info_name {
   font-weight: bold;
