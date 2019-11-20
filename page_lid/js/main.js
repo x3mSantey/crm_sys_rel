@@ -31,6 +31,7 @@ class JournalLid {
                 width: this.juornalColW.status_lid, 
                 sortable: true
             },
+<<<<<<< HEAD
         ]
         this.rowDataListLid = [
             {
@@ -82,6 +83,59 @@ class JournalLid {
                 status_lid: 'Активный'
             },
         ]
+=======
+        ]
+        this.rowDataListLid = [
+            {
+                name_lid: 'Название лида', 
+                responsible_user_lid: 'Иванов Иван', 
+                date_creating_lid: '21.10.2019', 
+                status_lid: 'В работе',
+            },
+            {
+                name_lid: 'sdffdsfdsfdsf', 
+                responsible_user_lid: 'Сидоров Петр', 
+                date_creating_lid: '21.10.2019', 
+                status_lid: 'В работе'
+            },
+            {
+                name_lid: 'fdsfdsfsdf', 
+                responsible_user_lid: 'Главный командир', 
+                date_creating_lid: '21.10.2019', 
+                status_lid: 'В работе'
+            },
+            {
+                name_lid: 'Название красивое', 
+                responsible_user_lid: 'Имя Фамилия', 
+                date_creating_lid: '21.10.2019', 
+                status_lid: 'В работе'
+            },
+            {
+                name_lid: 'Межоса', 
+                responsible_user_lid: 'Создатель', 
+                date_creating_lid: '21.10.2019', 
+                status_lid: 'Не разобран'
+            },
+            {
+                name_lid: 'Международный/помеоса', 
+                responsible_user_lid: 'Пользователь', 
+                date_creating_lid: '21.10.2019', 
+                status_lid: 'Не разобран'
+            },
+            {
+                name_lid: 'Экспетка запроса', 
+                responsible_user_lid: 'Ковальчук Максим', 
+                date_creating_lid: '21.10.2019', 
+                status_lid: 'Активный'
+            },
+            {
+                name_lid: 'РФа', 
+                responsible_user_lid: 'Имя Фамилия 2',
+                date_creating_lid: '21.10.2019', 
+                status_lid: 'Активный'
+            },
+        ]
+>>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
         this.gridOptions = {
             columnDefs: this.columnListLid,
             rowData: this.rowDataListLid,
@@ -143,7 +197,10 @@ class InfoLid {
         $('select').removeAttr('disabled')
         $('textarea').removeAttr('readonly')
         $('.add_block').css({'display': 'flex'})
+<<<<<<< HEAD
         $('.lid_new_tags_conteiner').css({'display': 'flex'})
+=======
+>>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
     }
     lidEditModeOff() {
         this.showOrHideBtns('none')
@@ -153,7 +210,10 @@ class InfoLid {
         $('select').attr('disabled', 'disabled')
         $('textarea').attr('readonly', 'readonly')
         $('.add_block').css({'display': 'none'})
+<<<<<<< HEAD
         $('.lid_new_tags_conteiner').css({'display': 'none'})
+=======
+>>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
     }
     saveChangesInLid (journalLid) {
         if (this.btnSaveLid.val() === 'new_lid') {
@@ -235,6 +295,7 @@ class InfoLid {
         //}
 }
 
+<<<<<<< HEAD
 class ContactBlock {
     constructor () {
     }
@@ -271,11 +332,16 @@ class ContactBlock {
 
 }
 
+=======
+>>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
 $(document).ready(function () {
 
     let journalLid = new JournalLid()
     let infoLid = new InfoLid()
+<<<<<<< HEAD
     let contactBlock = new ContactBlock()
+=======
+>>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
     
     //Вызов журнала лидов
     $('#journal_lid_btn').on('click', () => {
@@ -318,7 +384,19 @@ $(document).ready(function () {
 
 
     $('.add_new_contact_block').on('click', () => {
+<<<<<<< HEAD
         contactBlock.addFormBlock()
+=======
+        console.log($('.add_new_contact_block').val())
+        $('.add_new_contact_block').val($('.add_new_contact_block').val()+1)
+        $('.lid_info__contact_conteiner').append('<div class="contact_item_block"></div>')
+        $('.contact_item_block').append(`<div class="info_string contact_item__name"></div>`)
+        $('.contact_item__name').append(`<h4 id="contact_name_text" name="name_contact" class="contact_info_text edit_info_text"></h4>`)
+        $('.contact_item__name').append(`<input type="text" name="name_contact" placeholder="Введите имя контакта" class="contact_info_inpt edit_info_inpt" id="contact_name_inpt">`)
+        $('.contact_item__name').append(`<input type="button" id="del_name_contact" class=" del_btn del_btn_info">`)
+        $('.contact_item__name').append(`<button class="btn show_info_contact">развернуть</button>`)
+        $('.contact_item__name').append(`<button class="btn hide_info_contact" style="display: none">свернуть</button>`)
+>>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
     })
 
     //добавить поле Телефона у контакта
