@@ -31,7 +31,6 @@ class JournalLid {
                 width: this.juornalColW.status_lid, 
                 sortable: true
             },
-<<<<<<< HEAD
         ]
         this.rowDataListLid = [
             {
@@ -83,8 +82,6 @@ class JournalLid {
                 status_lid: 'Активный'
             },
         ]
-=======
-        ]
         this.rowDataListLid = [
             {
                 name_lid: 'Название лида', 
@@ -135,7 +132,6 @@ class JournalLid {
                 status_lid: 'Активный'
             },
         ]
->>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
         this.gridOptions = {
             columnDefs: this.columnListLid,
             rowData: this.rowDataListLid,
@@ -168,16 +164,13 @@ class JournalLid {
         }
     }
     showJournalLid() {
+        $('#list_lid').remove() 
         this.renderJournalLid()
     }
     renderJournalLid() {
         $('.list_lid_conteiner').prepend('<div id="list_lid" class="list_lid__grid"></div>')
         let gridDiv = $('#list_lid')[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
-    }
-    rerenderJournalLid() {
-        $('#list_lid').remove()    
-        this.renderJournalLid()
     }
 }
 
@@ -197,10 +190,7 @@ class InfoLid {
         $('select').removeAttr('disabled')
         $('textarea').removeAttr('readonly')
         $('.add_block').css({'display': 'flex'})
-<<<<<<< HEAD
         $('.lid_new_tags_conteiner').css({'display': 'flex'})
-=======
->>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
     }
     lidEditModeOff() {
         this.showOrHideBtns('none')
@@ -210,10 +200,7 @@ class InfoLid {
         $('select').attr('disabled', 'disabled')
         $('textarea').attr('readonly', 'readonly')
         $('.add_block').css({'display': 'none'})
-<<<<<<< HEAD
         $('.lid_new_tags_conteiner').css({'display': 'none'})
-=======
->>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
     }
     saveChangesInLid (journalLid) {
         if (this.btnSaveLid.val() === 'new_lid') {
@@ -295,7 +282,6 @@ class InfoLid {
         //}
 }
 
-<<<<<<< HEAD
 class ContactBlock {
     constructor () {
     }
@@ -332,16 +318,11 @@ class ContactBlock {
 
 }
 
-=======
->>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
 $(document).ready(function () {
 
     let journalLid = new JournalLid()
     let infoLid = new InfoLid()
-<<<<<<< HEAD
     let contactBlock = new ContactBlock()
-=======
->>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
     
     //Вызов журнала лидов
     $('#journal_lid_btn').on('click', () => {
@@ -384,9 +365,7 @@ $(document).ready(function () {
 
 
     $('.add_new_contact_block').on('click', () => {
-<<<<<<< HEAD
         contactBlock.addFormBlock()
-=======
         console.log($('.add_new_contact_block').val())
         $('.add_new_contact_block').val($('.add_new_contact_block').val()+1)
         $('.lid_info__contact_conteiner').append('<div class="contact_item_block"></div>')
@@ -396,7 +375,6 @@ $(document).ready(function () {
         $('.contact_item__name').append(`<input type="button" id="del_name_contact" class=" del_btn del_btn_info">`)
         $('.contact_item__name').append(`<button class="btn show_info_contact">развернуть</button>`)
         $('.contact_item__name').append(`<button class="btn hide_info_contact" style="display: none">свернуть</button>`)
->>>>>>> 0a5b456b3b17220fdfc5746561a9e95b59504fac
     })
 
     //добавить поле Телефона у контакта
@@ -499,35 +477,7 @@ $(document).ready(function () {
     })
 
     
-
-    //console.log($('#status_lid')[0].options[$('#status_lid')[0].selectedIndex].innerHTML)
-
-    
-    
-   /* let indicator = setInterval(() => {
-        let dt_now = Date.now()
-        let left_time = finish_dt - dt_now
-
-        if (left_time < 3000) {
-            console.log("время еще есть")
-        } else if (1500 <= left_time <= 3000) {
-            console.log("внимание, времени осталось немного")
-        } else if (0 <= left_time < 1500) {
-            console.log('лид просрочен')
-        } else if (left_time < 0) {
-            console.log('лид просрочен 2')
-            clearInterval(indicator)
-        }
-    }, 500) */
-
-
-
-    //console.log(`${dt.getHours()}:${dt.getMinutes()} / ${dt.getDay()}.${dt.getMonth()}.${dt.getFullYear()}`)
-    //console.log(last_dt)
-
-
-    
-})
+}) 
 
 
 

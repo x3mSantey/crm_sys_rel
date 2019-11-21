@@ -35,13 +35,15 @@ h4 {
 }
 .btn {
   border: none;
-  background-color: #292929;
-  color: #fff;
-  height: 30px;
+  background-color: #faa916;
+  color: #000;
+  height: 25px;
 }
 .btn:hover {
   cursor: pointer;
-  color: #bf2119;
+  color: #fff;
+  background-color: #292929;
+  border: 1px solid #faa916;
   transition-duration: 0.5s;
 }
 input,
@@ -92,7 +94,7 @@ p {
   width: 100%;
   height: 50px;
   background-color: #1d1f25;
-  border-bottom: 1px solid #0070b2;
+  border-bottom: 3px solid #30bced;
   z-index: 999;
 }
 .header_conteiner .nav_btn_block {
@@ -103,20 +105,20 @@ p {
 .header_conteiner .nav_btn {
   width: 150px;
   height: 35px;
-  padding: 15px 15px 0 15px;
+  padding-top: 15px;
   text-align: center;
   color: #fff;
   font-family: ProductSans;
 }
 .header_conteiner .nav_btn:hover {
-  border-bottom: 3px solid #fff;
-  height: 32px;
-  color: #bf2119;
+  background-color: #faa916;
+  color: #000;
   transition-duration: 0.5s;
   cursor: pointer;
 }
 #create_inq {
-  padding: 5px 15px 10px 15px;
+  padding-top: 8px;
+  height: 42px;
 }
 #create_contr {
   padding: 5px 15px 10px 15px;
@@ -125,9 +127,11 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 100%;
-  height: 100%;
-  margin-top: 100px;
+  position: relative;
+  left: 50%;
+  width: 1210px;
+  box-sizing: content-box;
+  margin: 100px 0 50px -605px;
 }
 /*--------------------------------
 
@@ -140,8 +144,7 @@ p {
   display: none;
   width: 750px;
   box-sizing: content-box;
-  padding: 10px;
-  margin: 0 0 25px 15px;
+  padding: 0 10px 0 10px;
   background-color: #fff;
 }
 .list_lid__grid {
@@ -204,9 +207,8 @@ p {
   display: none;
   width: 400px;
   height: 100%;
-  margin-left: 25px;
   margin-bottom: 25px;
-  padding: 20px 20px 0 20px;
+  padding: 0 20px 0 20px;
   background-color: #292929;
 }
 .horizontal_line {
@@ -234,23 +236,23 @@ p {
   font-family: TheCapt;
   font-size: 24px;
   width: 300px;
+  height: 32px;
   background-color: #292929;
   color: #fff;
+  border: none;
 }
 .name_lid_block {
-  height: 43px;
+  position: sticky;
+  top: 53px;
+  height: 32px;
+  padding: 15px 0 12px 0;
+  margin-bottom: 10px;
   text-align: center;
   background-color: #292929;
-}
-.name_lid_block h1 {
-  height: 32px;
+  border-bottom: 3px solid #30bced;
 }
 .name_lid_block button {
   width: 150px;
-  height: 30px;
-  margin-top: 6px;
-  background-color: #292929;
-  color: #fff;
 }
 .respon_list {
   width: 200px;

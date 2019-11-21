@@ -26,7 +26,6 @@
     <div class="main_conteiner">
         <div class="list_lid_conteiner">
             <div class="inq_list_conteiner">
-                <div class="horizontal_line"></div>
                 <div class="inquire_info_block">
                     <div class="lid_string">
                         <h4>Импорт / Пометка по запросу</h4>
@@ -53,12 +52,10 @@
         </div>
         <div class="lid_info_conteiner">
             <div class="name_lid_block lid_string">
-                <h1 name="name_lid" class="edit_info_text">Название лида</h1>
                 <input type="text" name="name_lid" placeholder="Введите название лида" class="lid_name_inpt edit_info_inpt" id="lid_name_inpt">
                 <button id="btn_edit_lid_nav" class="btn">Редактировать лид</button>
                 <button id="btn_save_lid_nav" class="btn" style="display: none">Сохранить лид</button>
             </div>
-            <div class="horizontal_line"></div>
             <div class="status_lid_block lid_string">
                 <p>Статус</p>
                 <select disabled name="status_lid" id="status_lid" class="status_list dd_list">
@@ -91,76 +88,55 @@
             <form class="lid_info_company_block">
                     <div class="info_string">
                         <p>Название</p>
-                        <div class="info_string__block">
-                            <p id="company_name_text" name="name_company" class="company_info_text edit_info_text">Текст какой-то</p>
-                            <div class="edit_block">
-                                <input type="text" name="name_company" placeholder="Введите имя кампании" class="company_info_inpt edit_info_inpt" id="company_name_inpt">
-                                <input type="button" id="del_name_company" class="del_btn del_btn_info">
-                            </div>
+                        <div class="edit_block">
+                            <input type="text" name="name_company" placeholder="Введите имя кампании" class="company_info_inpt edit_info_inpt" id="company_name_inpt">
+                            <input type="button" id="del_name_company" class="del_btn del_btn_info">
                         </div>
                     </div>
                     <div class="info_string">
                         <p>ИНН</p>
-                        <div class="info_string__block">
-                            <p id="company_inn_text" name="inn_company" class="company_info_text edit_info_text">Текст какой-то</p>
-                            <div class="edit_block">
-                                <input type="number" name="inn_company" placeholder="Введите ИНН" class="company_info_inpt edit_info_inpt" id="company_inn_inpt">
-                                <input type="button" id="del_inn_company" class="del_btn del_btn_info">
-                            </div>
+                        <div class="edit_block">
+                            <input type="number" name="inn_company" placeholder="Введите ИНН" class="company_info_inpt edit_info_inpt" id="company_inn_inpt">
+                            <input type="button" id="del_inn_company" class="del_btn del_btn_info">
                         </div>
                     </div>
                     <div class="tel_company_conteiner">
                         <div class="info_string" id="company_tel_block_1">
                             <p>Тел.</p>
-                            <div class="info_string__block">
-                                <p id="company_numb_text" name="numb_company" class="company_info_text edit_info_text">Текст какой-то</p>
-                                <div class="edit_block">
-                                    <input type="button" class="add_btn add_btn_info" id="add_company_tel">
-                                    <input type="number" name="numb_company" placeholder="Введите номер" class="company_info_inpt edit_info_inpt" id="company_numb_inpt_1">
-                                    <input type="button" id="del_numb_company_1" class="del_btn del_btn_info">
-                                </div>
+                            <div class="edit_block">
+                                <input type="button" class="add_btn add_btn_info" id="add_company_tel">
+                                <input type="number" name="numb_company" placeholder="Введите номер" class="company_info_inpt edit_info_inpt" id="company_numb_inpt_1">
+                                <input type="button" id="del_numb_company_1" class="del_btn del_btn_info">
                             </div>
                         </div>
                     </div>
                     <div class="info_string">
                         <p>Почта</p>
-                        <div class="info_string__block">
-                            <p id="company_mail_text" name="mail_company" class="company_info_text edit_info_text">Текст какой-то</p>
-                            <div class="edit_block">
-                                <input type="text" name="mail_company" placeholder="Введите почту" class="company_info_inpt edit_info_inpt" id="company_mail_inpt">
-                                <input type="button" id="del_mail_company" class="del_btn del_btn_info">
-                            </div>
+                        <div class="edit_block">
+                            <input type="text" name="mail_company" placeholder="Введите почту" class="company_info_inpt edit_info_inpt" id="company_mail_inpt">
+                            <input type="button" id="del_mail_company" class="del_btn del_btn_info">
                         </div>
                     </div>
                     <div class="info_string">
                         <p>Сайт</p>
-                        <div class="info_string__block">
-                            <p id="company_site_text" name="site_company" class="company_info_text edit_info_text">Текст какой-то</p>
-                            <div class="edit_block">
-                                <input type="text" name="site_company" placeholder="Укажите сайт" class="company_info_inpt edit_info_inpt" id="company_site_inpt">
-                                <input type="button" id="del_site_company" class="del_btn del_btn_info">
-                            </div>
+                        <div class="edit_block">
+                            <input type="text" name="site_company" placeholder="Укажите сайт" class="company_info_inpt edit_info_inpt" id="company_site_inpt">
+                            <input type="button" id="del_site_company" class="del_btn del_btn_info">
                         </div>
                     </div>
                     <div class="info_string">
                         <p>Соц. сети</p>
-                        <div class="info_string__block">
-                            <p id="company_social_text" name="social_company" class="company_info_text edit_info_text">Текст какой-то</p>
-                            <div class="edit_block">
-                                <input type="button" class="add_btn add_btn_info">
-                                <input type="text" name="social_company" placeholder="Укажите соц. сеть" class="company_info_inpt edit_info_inpt" id="company_social_inpt">
-                                <input type="button" id="del_social_company" class="del_btn del_btn_info">
-                            </div>
+                        <div class="edit_block">
+                            <input type="button" class="add_btn add_btn_info">
+                            <input type="text" name="social_company" placeholder="Укажите соц. сеть" class="company_info_inpt edit_info_inpt" id="company_social_inpt">
+                            <input type="button" id="del_social_company" class="del_btn del_btn_info">
                         </div>
                     </div>
             </form>
             <div class="lid_info__contact_conteiner">
                 <div class="header_contacts">
                     <h1>Контакты</h1>
-                    <div class="add_new_contact_block add_block" value="0">
-                        <input type="button" class="add_btn add_btn_info">
-                        <p>добавить контакт</p>
-                    </div>
+                    <button class="add_new_contact_block add_block btn" value="0">добавить контакт</button>
                 </div>
                 <div class="contact_item_block">
                     <div class="info_string contact_item__name">
@@ -172,33 +148,24 @@
                     </div>
                     <div class="info_string">
                         <p>Тел.</p>
-                        <div class="info_string__block">
-                            <p id="contact_info_numb_text" name="numb_contact" class="contact_info_text edit_info_text">Текст какой-то</p>
-                            <div class="edit_block">
-                                <input type="button" class="add_btn add_btn_info">
-                                <input type="number" name="numb_contact" placeholder="Введите номер" class="contact_info_inpt edit_info_inpt" id="contact_numb_inpt">
-                                <input type="button" id="del_numb_contact" class="del_btn del_btn_info">
-                            </div>
+                        <div class="edit_block">
+                            <input type="button" class="add_btn add_btn_info">
+                            <input type="number" name="numb_contact" placeholder="Введите номер" class="contact_info_inpt edit_info_inpt" id="contact_numb_inpt">
+                            <input type="button" id="del_numb_contact" class="del_btn del_btn_info">
                         </div>
                     </div>
                     <div class="info_string">
                         <p>Почта</p>
-                        <div class="info_string__block">
-                            <p id="contact_mail_text" name="mail_contact" class="contact_info_text edit_info_text">Текст какой-то</p>
-                            <div class="edit_block">
-                                <input type="text" name="mail_contact" placeholder="Введите почту" class="contact_info_inpt edit_info_inpt" id="contact_mail_inpt">
-                                <input type="button" id="del_mail_contact" class="del_btn del_btn_info">
-                            </div>
+                        <div class="edit_block">
+                            <input type="text" name="mail_contact" placeholder="Введите почту" class="contact_info_inpt edit_info_inpt" id="contact_mail_inpt">
+                            <input type="button" id="del_mail_contact" class="del_btn del_btn_info">
                         </div>
                     </div>
                     <div class="info_string">
                         <p>Соц. сеть</p>
-                        <div class="info_string__block">
-                            <p id="contact_social_text" name="social_contact" class="contact_info_text edit_info_text">Текст какой-то</p>
-                            <div class="edit_block">
-                                <input type="text" name="social_contact" placeholder="Укажите соц. сеть" class="contact_info_inpt edit_info_inpt" id="contact_social_inpt">
-                                <input type="button" id="del_social_contact" class="del_btn del_btn_info">
-                            </div>
+                        <div class="edit_block">
+                            <input type="text" name="social_contact" placeholder="Укажите соц. сеть" class="contact_info_inpt edit_info_inpt" id="contact_social_inpt">
+                            <input type="button" id="del_social_contact" class="del_btn del_btn_info">
                         </div>
                     </div>
                 </div>
@@ -214,10 +181,7 @@
             <div class="lid_tags_block">
                 <div class="header_contacts">
                     <p>Теги услуг</p>
-                    <div class="add_new_tag add_block">
-                        <input type="button" class="add_btn add_btn_info">
-                        <p>добавить тег</p>
-                    </div>
+                    <button class="add_new_tag add_block btn">добавить тег</button>
                 </div>
                 <div class="lid_tags__list">
                     <div class="list__tag_block">
@@ -249,7 +213,7 @@
             <div class="horizontal_line"></div>
             <div class="access_lid_block lid_string">
                 <p>Доступность</p>
-                <p id="access_btn">посмотреть список &gt;</p>
+                <button id="access_btn" class="btn">посмотреть список &gt;</button>
             </div>
         </div>
         <div class="access_users_conteiner">

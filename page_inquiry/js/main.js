@@ -1,3 +1,5 @@
+
+
 class JournalInq {
     constructor() {
         this.journalColW = {
@@ -157,60 +159,56 @@ class RouteOfTheDelivery{
             adres_route: 148,
         }
         this.cellStyle = {
-            'background-color': '#0070B2',
-            'color': '#fff',
-            'border': '1px solid #000'
+            'color': '#000',
+            'border': '1px solid #0070B2',
+            'outline': 'none',
+            'background-color': '#E2E2E2'
         }
         this.columnListRoute = [
             {
                 headerName: 'пункты',
                 field: 'items_route',
                 width: this.journalColW.items_route,
-                cellStyle: this.cellStyle              
+                cellStyle: {
+                    'border': '1px solid #0070B2',
+                    'color': '#fff',
+                    'outline': 'none',
+                    'background-color': '#0070B2'
+                },            
             },
             {
                 headerName: 'Страна',
                 field: 'country_route',
                 width: this.journalColW.country_route,
-                cellStyle: {
-                    'border': '1px solid #000'
-                },
+                cellStyle: this.cellStyle,
                 editable: true,
             },
             {
                 headerName: 'индекс',
                 field: 'index_route',
                 width: this.journalColW.index_route,
-                cellStyle: {
-                    'border': '1px solid #000'
-                },
+                cellStyle: this.cellStyle,
                 editable: true,
             },
             {
                 headerName: 'квадрат',
                 field: 'quadr_route',
                 width: this.journalColW.quadr_route,
-                cellStyle: {
-                    'border': '1px solid #000'
-                },
+                cellStyle: this.cellStyle,
                 editable: true,
             },
             {
                 headerName: 'Город',
                 field: 'town_route',
                 width: this.journalColW.town_route,
-                cellStyle: {
-                    'border': '1px solid #000'
-                },
+                cellStyle: this.cellStyle,
                 editable: true,
             },
             {
                 headerName: 'Адрес',
                 field: 'adres_route',
                 width: this.journalColW.adres_route,
-                cellStyle: {
-                    'border': '1px solid #000'
-                },
+                cellStyle: this.cellStyle,
                 editable: true,
             },
         ]
@@ -224,18 +222,10 @@ class RouteOfTheDelivery{
                 adres_route: ''
             },
             {
-                items_route: 'пункт A',
-                country_route: '',
-                index_route: '',
-                quadr_route: '',
-                town_route: '',
-                adres_route: ''
-            },
-            {
                 items_route: 'куда',
                 country_route: '',
                 index_route: '',
-                quadr_route: '',
+                quadr_finish: '',
                 town_route: '',
                 adres_route: ''
             }
@@ -250,25 +240,69 @@ class RouteOfTheDelivery{
                 'font-size': '12px',
                 color: '#fff'
             },
-            headerHeight: 15
-            
+            headerHeight: 15  
         }
     }
-    showJournalRoute() {
-        this.rerenderJournalRouteDel()
+    showJournalRoute(i) {
+        $(`#list_route_deliv${i}`).remove()    
+        this.renderJournalRouteDel(i)
     }
-    renderJournalRouteDel() {
-        $('.route-block__table').append('<div id="list_route_deliv" class="list_route__grid"></div>')
-        let gridDiv = $('#list_route_deliv')[0]
+    renderJournalRouteDel(i) {
+        $(`.route-block__table${i}`).prepend(`<div id="list_route_deliv${i}" class="list_route__grid"></div>`)
+        let gridDiv = $(`#list_route_deliv${i}`)[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
     }
-    rerenderJournalRouteDel() {
-        $('#list_route_deliv').remove()    
-        this.renderJournalRouteDel()
+    showRouteInfo(i) {
+        $('.item__block').css({'display':'block'})
+        $('.item__block').prepend(`<div class="route-block__table${i}"></div>`)
+        $(`.route-block__table${i}`).prepend(`<div class="dop__adres-tamoj${i}"><div class="adres-tamoj__points"><div class="points__place-block"><p>отправление</p><input type="text" name="start_tamoj" id="" placeholder="Адрес таможни" readonly></div><div class="points__place-block"><p>назначение</p><input type="text" name="finish_tamoj" id="" placeholder="Адрес таможни" readonly></div></div>`)
+        this.showJournalRoute(i)
+    }
+    addPointTamoj() {
+        let val = $('#adres-tamoj__btn').val()
+        if (val < 4) {
+            ++val 
+            $('#adres-tamoj__btn').val(`${val}`)
+            $('.adres-tamoj__points').append(`<div class="points__place-block"><p>пункт ${val}</p><input type="text" name="incedental_tamoj_${val}" id="" placeholder="Адрес таможни" readonly></div>`)
+        } else {
+            console.log('много пунктов')
+        }
+    }
+    creareRoute() {
+        //научиться получать инфу из полей таблицы
+        this.rowDataListRoute2.push(this.gridOptions.rowData)
+        let i = this.rowDataListRoute2.length
+        this.gridOptions.rowData = this.rowDataListRoute2
+        let town1 = 'город один'
+        let town2 = 'город два'
+        let conteiner = `<div class="list-route__item item_route_${i}"></div>`
+        let mainInfo = `<div class="main_info_route"><h2>Маршрут из ${town1}, куда ${town2}</h2><button id="show_route_info_${i}" class="btn" onclick="routeDeliv.showRouteInfo(${i})">развернуть</button></div>`
+
+        $('.list_route_conteiner').append(`${conteiner}`)
+        $(`.item_route_${i}`).append(`${mainInfo}`)
+    }
+    addPointRoute() {
+        let val = $('#add_point_route').val()
+        if (val < 5) {
+            $('#add_point_route').val(++val)
+            let i = this.rowDataListRoute.length
+            let n = i-1
+            this.rowDataListRoute[i] = this.rowDataListRoute[n] 
+            this.rowDataListRoute[n] = {
+                items_route: 'пункт B',
+                country_route: '',
+                index_route: '',
+                quadr_route: '',
+                town_route: '',
+                adres_route: ''
+            }
+            this.showJournalRoute(0)
+        } else {
+        }
+        
+        
     }
 }
-
-
 
 class InquireInfo {
     constructor() {
@@ -277,25 +311,26 @@ class InquireInfo {
     }
     InqEditModeOn() {
         this.showOrHideBtn('block', 'none')
-        let sel_val = $('.info-inq__block select')
-        let inpt_text = $('.info-inq__block input[type=text]')
-        sel_val.each(function() {$(this).removeAttr('disabled')})
-        inpt_text.each(function() {$(this).removeAttr('readonly')})
+        let sel = $('.info-inq__block select')
+        let inpt = $('.info-inq__block input[type=text]')
+        let textarea = $('.info-inq__block textarea')
+        sel.each(function() {$(this).removeAttr('disabled')})
+        inpt.each(function() {$(this).removeAttr('readonly')})
+        textarea.each(function() {$(this).removeAttr('readonly')})
     }
     InqEditModeOff() {
         this.showOrHideBtn('none', 'block')
         this.getInformation()
 
-        let sel_val = $('.info-inq__block select')
-        let inpt_text = $('.info-inq__block input[type=text]')
-        sel_val.each(function() {
-            $(this).attr('disabled', 'disabled')   
-        })
-        inpt_text.each(function() {
-            $(this).attr('readonly', 'readonly')   
-        })
+        let sel = $('.info-inq__block select')
+        let inpt = $('.info-inq__block input[type=text] textarea')
+        let textarea = $('.info-inq__block textarea')
+        sel.each(function() {$(this).attr('disabled', 'disabled')})
+        inpt.each(function() {$(this).attr('readonly', 'readonly')})
+        textarea.each(function() {$(this).attr('readonly', 'readonly')})
     }
     showOrHideBtn(show, hide) {
+        $('.del_btn').css({'display': show})
         $('#btn_edit_inq_nav').css({'display': hide})
         $('#btn_save_inq_nav').css({'display': show})
     }
@@ -314,6 +349,15 @@ class InquireInfo {
         })
         console.log(this.inqInformation)
     }
+    updateLastConnect() {
+        let date = new Date()
+        let hours = date.getHours()
+        let min = date.getMinutes()
+        let day = date.getDate()
+        let month = date.getMonth()
+        let year = date.getFullYear()
+        $('#text_last_connect').text(`${hours}:${min} / ${day}.${month}.${year}`)
+    }
 }
 
 const routeDeliv = new RouteOfTheDelivery()
@@ -321,5 +365,5 @@ const journalInq = new JournalInq()
 const inqInfo = new InquireInfo()
 
 $(document).ready( () => {
-    routeDeliv.showJournalRoute()
+    routeDeliv.showJournalRoute(0)
 })

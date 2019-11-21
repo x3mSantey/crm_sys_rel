@@ -14,6 +14,7 @@ html {
 }
 a {
   text-decoration: none;
+  color: #fff;
 }
 a:visited {
   color: #fff;
@@ -42,13 +43,15 @@ h4 {
 }
 .btn {
   border: none;
-  background-color: #292929;
-  color: #fff;
-  height: 30px;
+  background-color: #faa916;
+  color: #000;
+  height: 25px;
 }
 .btn:hover {
   cursor: pointer;
-  color: #bf2119;
+  color: #fff;
+  background-color: #292929;
+  border: 1px solid #faa916;
   transition-duration: 0.5s;
 }
 input,
@@ -87,12 +90,8 @@ p {
   margin: 0;
   padding-bottom: 5px;
 }
-.btn_add {
-  height: 20px;
-  width: 20px;
-  margin-left: 15px;
-}
 .del_btn {
+  display: none;
   width: 20px;
   height: 20px;
   margin: 3px 0 0 5px;
@@ -133,7 +132,7 @@ p {
   width: 100%;
   height: 50px;
   background-color: #1d1f25;
-  border-bottom: 1px solid #0070b2;
+  border-bottom: 3px solid #30bced;
   z-index: 999;
 }
 .header_conteiner .nav_btn_block {
@@ -144,17 +143,20 @@ p {
 .header_conteiner .nav_btn {
   width: 150px;
   height: 35px;
-  padding: 15px 15px 0 15px;
+  padding-top: 15px;
   text-align: center;
   color: #fff;
   font-family: ProductSans;
 }
 .header_conteiner .nav_btn:hover {
-  border-bottom: 3px solid #fff;
-  height: 32px;
-  color: #bf2119;
+  background-color: #faa916;
+  color: #000;
   transition-duration: 0.5s;
   cursor: pointer;
+}
+#create_inq {
+  padding-top: 8px;
+  height: 42px;
 }
 /*--------------------------------
 
@@ -180,10 +182,9 @@ p {
 ----------------------------------*/
 .list_inq_conteiner {
   width: 50%;
-  height: 600px;
   margin: 25px 0 25px 25px;
   padding: 10px;
-  box-sizing: border-box;
+  box-sizing: content-box;
   background-color: #fff;
 }
 .list_inq__grid {
@@ -193,20 +194,18 @@ p {
 }
 .list_route__grid {
   box-sizing: content-box;
-  height: 100px;
+  height: 135px;
+  max-height: 200px;
+  margin-bottom: 10px;
   text-align: center;
 }
 .ag-header-cell-label {
   text-align: center;
 }
-#list_route_deliv .ag-header-cell-text {
+.list_route__grid .ag-header-cell-text {
   width: 100%;
   font-size: 12px;
   color: #fff;
-}
-.ag-row-hover {
-  color: #000;
-  background-color: #e2e2e2;
 }
 /*----------------------------------
 
@@ -234,14 +233,14 @@ p {
 }
 .info-inq__block {
   width: 600px;
-  padding: 0 15px 15px 15px;
+  padding: 0 15px 5px 15px;
   background-color: #292929;
 }
 .name_block {
   position: sticky;
-  top: 51px;
+  top: 53px;
   background-color: #292929;
-  border-bottom: 3px solid #0070b2;
+  border-bottom: 3px solid #30bced;
   z-index: 999;
   padding: 15px 0 12px 0;
 }
@@ -254,9 +253,38 @@ p {
   font-size: 32px;
   color: #fff;
 }
+.tender_block {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.route-block__text {
+  display: flex;
+  justify-content: space-between;
+}
+.route-block__text h2 {
+  width: 200px;
+}
 .route-block__table {
   width: 600px;
   box-sizing: content-box;
+}
+.adres-tamoj__block {
+  display: flex;
+  justify-content: flex-end;
+  width: 600px;
+  height: 25px;
+  margin-bottom: 10px;
+}
+.adres-tamoj__points {
+  display: flex;
+  flex-direction: flex-start;
+  flex-wrap: wrap;
+  box-sizing: content-box;
+  margin-bottom: 15px;
+}
+.adres-tamoj__points div {
+  margin-left: 10px;
 }
 .points__place-block {
   display: flex;
@@ -264,24 +292,19 @@ p {
   justify-content: space-between;
   text-align: center;
 }
-.tender_block {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+.points__place-block input {
+  width: 130px;
 }
-.adres-tamoj__block {
-  display: flex;
-  justify-content: flex-start;
-  width: 200px;
-  height: 25px;
+.route-block__nav button:nth-child(1) {
+  width: 130px;
 }
-.adres-tamoj__points {
-  display: flex;
-  flex-direction: flex-start;
-  margin-bottom: 15px;
+.route-block__nav button:nth-child(2) {
+  margin-left: 5px;
+  width: 110px;
 }
-.adres-tamoj__points div {
-  margin-left: 10px;
+.route-block__nav button:nth-child(3) {
+  margin-left: 5px;
+  width: 75px;
 }
 .cargo-info {
   padding: 5px 20px 5px 20px;
@@ -311,31 +334,78 @@ p {
 .otdel-perevoz-block {
   box-sizing: content-box;
 }
-.otdel-perevoz-block textarea {
-  width: 230px;
-  height: 35px;
-  max-width: 230px;
-  max-height: 35px;
-  padding: 5px;
-}
 .rates-block {
+  width: 290px;
   height: 25px;
   margin-bottom: 15px;
 }
 .rates-block button {
   width: 100%;
-  height: 25px;
 }
 #show_list_access {
+  width: 150px;
   height: 20px;
   padding: 0 6px 0 6px;
-  color: #fff;
-  background-color: #1d1f25;
 }
-#show_list_access:hover {
-  color: #bf2119;
-  border-bottom: 1px solid #fff;
+.tranzit-block {
+  width: 290px;
+  height: 50px;
+}
+.delivery-block {
+  width: 290px;
+  height: 50px;
+}
+textarea {
+  max-width: 280px;
+  max-height: 40px;
+  min-width: 280px;
+  min-height: 40px;
+  padding: 5px;
+  border: none;
+  background-color: #e2e2e2;
+}
+.last_connect {
+  width: 150px;
+  height: 50px;
+}
+#text_last_connect {
+  width: 150px;
+  text-align: right;
 }
 #update_last_connect {
-  width: 100px;
+  width: 75px;
+  height: 20px;
+  margin-left: 75px;
+}
+#create_order {
+  width: 150px;
+  height: 25px;
+  margin-left: 145px;
+}
+.list_route_conteiner {
+  width: 560px;
+  max-height: 400px;
+}
+.list-route__item {
+  width: 540px;
+  box-sizing: content-box;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #292929;
+}
+.list-route__item:first-child {
+  margin-top: 25px;
+}
+.list-route__item h2 {
+  height: 30px;
+  padding: 0 0 0 15px;
+}
+.main_info_route {
+  display: flex;
+  justify-content: space-between;
+  width: 540px;
+  box-sizing: content-box;
+}
+#show_route_info {
+  margin-top: 4px;
 }

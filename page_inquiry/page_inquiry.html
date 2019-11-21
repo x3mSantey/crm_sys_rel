@@ -26,6 +26,17 @@
     </div>
     <div class="main_conteiner">
         <div class="list_inq_conteiner">
+            <div class="list_route_conteiner">
+                <div class="list-route__item item_route_0">
+                    <div class="main_info_route">
+                        <h2>Маршрут из "город", куда "город"</h2>
+                        <button id="show_route_info" class="btn" onclick="routeDeliv.showRouteInfo()">развернуть</button>
+                    </div>
+                    <div class="item__block" style="display: none">
+                        <button id="" class="btn" onclick="routeDeliv.hideRouteInfo()">свернуть</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="info_inq_conteiner">
                 <div class="info-inq__block">
@@ -111,23 +122,29 @@
                         </div>
                     </div>
                     <div class="route-block">
-                        <h2 class="route-block__text">Маршрут</h2>
-                        <div class="route-block__table"></div>
+                        <div class="route-block__text">
+                            <h2>Маршрут</h2>
+                        </div>
+                        <div class="route-block__table0"></div>
                         <div class="route-block__adres-tamoj">
-                            <div class="adres-tamoj__block">
-                                <p class="adres-tamoj__text">Адреса таможни</p>
-                                <button class="btn_add" id="adres-tamoj__btn">"+"</button>
-                            </div>
                             <div class="adres-tamoj__points">
                                 <div class="points__place-block">
                                     <p>отправление</p>
-                                    <input type="text" name="start_tamoj" id="" readonly>
+                                    <input type="text" name="start_tamoj" id="" placeholder="Адрес таможни" readonly>
                                 </div>
                                 <div class="points__place-block">
                                     <p>назначение</p>
-                                    <input type="text" name="finish_tamoj" id="" readonly>
+                                    <input type="text" name="finish_tamoj" id="" placeholder="Адрес таможни" readonly>
+                                </div>
+                            </div>  
+                            <div class="adres-tamoj__block">
+                                <div class="route-block__nav">
+                                    <button class="btn" id="adres-tamoj__btn" onclick="routeDeliv.addPointTamoj()" value="2">Добавить таможню</button>
+                                    <button class="btn" id="add_point_route" onclick="routeDeliv.addPointRoute()" value="2">Добавить пункт</button>
+                                    <button class="btn" id="create_route" onclick="routeDeliv.creareRoute()" value="0">Cоздать</button>
                                 </div>
                             </div>
+                           
                         </div>
                     </div>
                         <div class="cargo-info">
@@ -215,34 +232,30 @@
                     <div class="inq_string_big">
                         <div class="otdel-perevoz-block">
                             <div class="rates-block">
-                                <button>Ставки</button>
+                                <button class="btn">Ставки</button>
                             </div>
                             <div class="tranzit-block inq_string">
-                                <textarea name="" id="" rows="2" placeholder="Информация по транзиту" readonly></textarea>
+                                <textarea name="" id="" placeholder="Информация по транзиту" readonly></textarea>
                             </div>
                             <div class="delivery-block inq_string">
-                                <textarea name="" id="" rows="2" placeholder="Укажите срок поставки" readonly></textarea>
+                                <textarea name="" id="" placeholder="Укажите срок поставки" readonly></textarea>
                             </div>
                         </div>
                         <div class="otdel-prodaj-block">
                             <div class="inq_string">
                                 <p>Доступность</p>
-                                <button id="show_list_access">посмотреть список &gt;</button>
+                                <button id="show_list_access" class="btn">посмотреть список &gt;</button>
                             </div>
                             <div class="inq_string">
                                 <p>Последний контакт</p>
-                                <div>
-                                    <p>12.33 12.12.2020</p>
-                                    <button id="update_last_connect">Обновить</button>
+                                <div class="last_connect">
+                                    <p id="text_last_connect">hh:mm / dd.mm.yyyy</p>
+                                    <button id="update_last_connect" class="btn" onclick="inqInfo.updateLastConnect()">Обновить</button>
                                 </div>
                             </div>
-                            <button>Редактировать запрос</button>
-                            <button>Сформировать заказ</button>
+                            <button id="create_order" class="btn">Сформировать заказ</button>
                         </div>
                     </div>
-                    
-                    
-
                 </div>
         </div>
     </div>

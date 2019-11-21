@@ -7,11 +7,13 @@ $hover-color = #BF2119
 $grey = #e2e2e2
 $black = #000
 $blue = #0070B2
+$light_blue = #30BCED
 
 $main-text-color = #fff
 $sec-text-color = #9D9C9C
 
 $green-indicator = #669900
+$yellow = #faa916 
 
 @font-face
     font-family TheCapt 
@@ -28,6 +30,7 @@ body, html
 
 a   
     text-decoration none 
+    color $main-text-color
     &:visited
         color $main-text-color
 
@@ -55,13 +58,15 @@ h4
 
 .btn
     border none
-    background-color $sec-color 
-    color $main-text-color
-    height 30px
+    background-color $yellow 
+    color $black
+    height 25px
 
     &:hover
         cursor pointer
-        color $hover-color
+        color $main-text-color
+        background-color $sec-color
+        border 1px solid $yellow
         transition-duration 0.5s
         
 input, button, select 
@@ -100,12 +105,8 @@ p
     margin 0
     padding-bottom 5px
 
-.btn_add
-    height 20px
-    width 20px
-    margin-left 15px
-
 .del_btn
+    display none
     width 20px
     height 20px
     margin 3px 0 0 5px
@@ -150,7 +151,7 @@ p
     width 100%
     height 50px
     background-color $main-color
-    border-bottom 1px solid $blue
+    border-bottom 3px solid $light_blue
     z-index 999
 
     .nav_btn_block
@@ -161,17 +162,21 @@ p
     .nav_btn
         width 150px
         height 35px
-        padding 15px 15px 0 15px
+        padding-top 15px
         text-align center
         color $main-text-color
         font-family ProductSans
-
         &:hover
-            border-bottom 3px solid $main-text-color
-            height 32px
-            color $hover-color
+            background-color $yellow
+            color $black
             transition-duration 0.5s
             cursor pointer
+
+#create_inq
+    padding-top 8px
+    height 42px
+
+        
 /*--------------------------------
 
 
@@ -200,10 +205,9 @@ p
 
 .list_inq_conteiner
     width 50%
-    height 600px
     margin 25px 0 25px 25px
-    padding 10px
-    box-sizing border-box
+    padding 10px 
+    box-sizing content-box
     background-color $main-text-color
 
 
@@ -215,21 +219,21 @@ p
 
 .list_route__grid
     box-sizing content-box
-    height 100px
+    height 135px
+    max-height 200px
+    margin-bottom 10px
     text-align center
 
 .ag-header-cell-label
     text-align center
-#list_route_deliv
+
+.list_route__grid
     .ag-header-cell-text
         width 100%
         font-size 12px
         color $main-text-color
 
 
-.ag-row-hover
-    color $black
-    background-color $grey
 
 
 /*----------------------------------
@@ -259,14 +263,14 @@ p
 
 .info-inq__block
     width 600px
-    padding 0 15px 15px 15px
+    padding 0 15px 5px 15px
     background-color $sec-color
     
 .name_block 
     position sticky
-    top 51px
+    top 53px
     background-color $sec-color
-    border-bottom 3px solid $blue
+    border-bottom 3px solid $light_blue
     z-index 999
     padding 15px 0 12px 0
 
@@ -279,35 +283,55 @@ p
     font-size 32px
     color $main-text-color
 
+.tender_block
+    display flex
+    justify-content space-around
+    width 100%
+
+.route-block__text
+    display flex
+    justify-content space-between
+    h2
+        width 200px
+
 .route-block__table
     width 600px
     box-sizing content-box
+
+.adres-tamoj__block
+    display flex
+    justify-content flex-end
+    width 600px
+    height 25px
+    margin-bottom 10px
+
+.adres-tamoj__points
+    display flex
+    flex-direction flex-start
+    flex-wrap wrap
+    box-sizing content-box
+    margin-bottom 15px
+
+    div
+        margin-left 10px
 
 .points__place-block
     display flex
     flex-direction column
     justify-content space-between
     text-align center
+    input
+        width 130px
 
-.tender_block
-    display flex
-    justify-content space-around
-    width 100%
-
-.adres-tamoj__block
-    display flex
-    justify-content flex-start
-    width 200px
-    height 25px
-
-.adres-tamoj__points
-    display flex
-    flex-direction flex-start
-
-    margin-bottom 15px
-
-    div
-        margin-left 10px
+.route-block__nav
+    button:nth-child(1)
+        width 130px
+    button:nth-child(2)
+        margin-left 5px
+        width 110px
+    button:nth-child(3)
+        margin-left 5px
+        width 75px
 
 .cargo-info
     padding 5px 20px 5px 20px
@@ -335,31 +359,83 @@ p
 .otdel-perevoz-block
     box-sizing content-box
 
-    textarea
-        width 230px
-        height 35px
-        max-width 230px
-        max-height 35px
-        padding 5px
+    
 
 .rates-block
+    width 290px
     height 25px
     margin-bottom 15px
     
     button
         width 100%
-        height 25px
+
 
 
 #show_list_access
+    width 150px
     height 20px
     padding 0 6px 0 6px
-    color $main-text-color
-    background-color $main-color
-    &:hover
-        color $hover-color
-        border-bottom 1px solid $main-text-color
+    
+.tranzit-block
+    width 290px
+    height 50px
+
+.delivery-block
+    width 290px
+    height 50px
+    
+
+textarea
+    max-width 280px
+    max-height 40px
+    min-width 280px
+    min-height 40px
+    padding 5px
+    border none
+    background-color $grey
+    
+
+.last_connect
+    width 150px
+    height 50px 
+    
+#text_last_connect
+    width 150px
+    text-align right
 
 #update_last_connect
-    width 100px
+    width 75px
+    height 20px
+    margin-left 75px
+        
+#create_order
+    width 150px
+    height 25px
+    margin-left 145px
+
+
+.list_route_conteiner
+    width 560px
+    max-height 400px
     
+
+.list-route__item
+    width 540px
+    box-sizing content-box
+    margin-top 10px
+    padding 10px
+    background-color $sec-color
+    &:first-child
+        margin-top 25px
+    h2
+        height 30px
+        padding 0 0 0 15px
+    
+.main_info_route
+    display flex
+    justify-content space-between
+    width 540px
+    box-sizing content-box
+
+#show_route_info
+    margin-top 4px
