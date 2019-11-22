@@ -131,8 +131,20 @@ class JournalInq {
             rowData: this.rowDataListInq,
             rowStyle: this.rowStyle,
             rowHeight: 40,
-            rowTop: 555
+            getRowStyle: (params) => {
+                switch (params.data.status_inq) {
+                    case 'В работе':
+                        return {'background-color': '#FFF2CC', color: '#000', 'border': '2px solid #D6B656'}
+                    case 'Активный':
+                        return {'background-color': '#F8CECC', color: '#000', 'border': '2px solid #BF2119'}
+                    case 'Не разобран':
+                        return {'background-color': '#D5E8D4', color: '#000', 'border': '2px solid #669900'}
+                    case 'test':
+                        return {'background-color': '#fff', color: '#000', 'border': '2px solid #000'}
+                }
+            },
         }
+        
     }
     showJournalInq() {
         this.rerenderJournalInq()
@@ -214,20 +226,25 @@ class RouteOfTheDelivery{
         ]
         this.rowDataListRoute = [
             {
-                items_route: 'откуда',
-                country_route: '',
-                index_route: '',
-                quadr_route: '',
-                town_route: '',
-                adres_route: ''
+                {
+                    items_route: 'откуда',
+                    country_route: '',
+                    index_route: '',
+                    quadr_route: '',
+                    town_route: '',
+                    adres_route: ''
+                },
+                {
+                    items_route: 'куда',
+                    country_route: '',
+                    index_route: '',
+                    quadr_finish: '',
+                    town_route: '',
+                    adres_route: ''
+                }
             },
             {
-                items_route: 'куда',
-                country_route: '',
-                index_route: '',
-                quadr_finish: '',
-                town_route: '',
-                adres_route: ''
+                
             }
         ]
         this.gridOptions = {
@@ -269,17 +286,16 @@ class RouteOfTheDelivery{
         }
     }
     creareRoute() {
-        //научиться получать инфу из полей таблицы
-        this.rowDataListRoute2.push(this.gridOptions.rowData)
-        let i = this.rowDataListRoute2.length
-        this.gridOptions.rowData = this.rowDataListRoute2
+        let val = $(`.list_route_conteiner`).attr('value')
+        ++val
+        $(`.list_route_conteiner`).attr('value', val)
         let town1 = 'город один'
         let town2 = 'город два'
-        let conteiner = `<div class="list-route__item item_route_${i}"></div>`
-        let mainInfo = `<div class="main_info_route"><h2>Маршрут из ${town1}, куда ${town2}</h2><button id="show_route_info_${i}" class="btn" onclick="routeDeliv.showRouteInfo(${i})">развернуть</button></div>`
+        let conteiner = `<div class="list-route__item item_route_${val}"></div>`
+        let mainInfo = `<div class="main_info_route"><h2>Маршрут из ${town1}, куда ${town2}</h2><button id="show_route_info_${val}" class="btn" onclick="routeDeliv.showRouteInfo(${val})">развернуть</button></div>`
 
         $('.list_route_conteiner').append(`${conteiner}`)
-        $(`.item_route_${i}`).append(`${mainInfo}`)
+        $(`.item_route_${val}`).append(`${mainInfo}`)
     }
     addPointRoute() {
         let val = $('#add_point_route').val()
@@ -307,7 +323,6 @@ class RouteOfTheDelivery{
 class InquireInfo {
     constructor() {
         this.inqInformation = {}
-        this.name = ['dsd']
     }
     InqEditModeOn() {
         this.showOrHideBtn('block', 'none')
@@ -321,13 +336,9 @@ class InquireInfo {
     InqEditModeOff() {
         this.showOrHideBtn('none', 'block')
         this.getInformation()
-
-        let sel = $('.info-inq__block select')
-        let inpt = $('.info-inq__block input[type=text] textarea')
-        let textarea = $('.info-inq__block textarea')
-        sel.each(function() {$(this).attr('disabled', 'disabled')})
-        inpt.each(function() {$(this).attr('readonly', 'readonly')})
-        textarea.each(function() {$(this).attr('readonly', 'readonly')})
+        $('.info-inq__block select').each(function() {$(this).attr('disabled', 'disabled')})
+        $('.info-inq__block input[type=text]').each(function() {$(this).attr('readonly', 'readonly')})
+        $('.info-inq__block textarea').each(function() {$(this).attr('readonly', 'readonly')})
     }
     showOrHideBtn(show, hide) {
         $('.del_btn').css({'display': show})
@@ -357,6 +368,14 @@ class InquireInfo {
         let month = date.getMonth()
         let year = date.getFullYear()
         $('#text_last_connect').text(`${hours}:${min} / ${day}.${month}.${year}`)
+    }
+    showAccessWindow() {
+        $('.access_users_conteiner').css({'display': 'block'})
+        
+        
+    }
+    closeAccessWindow() {
+        $('.access_users_conteiner').css({'display': 'none'})
     }
 }
 

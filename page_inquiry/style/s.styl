@@ -285,8 +285,14 @@ p
 
 .tender_block
     display flex
-    justify-content space-around
-    width 100%
+    width 295px
+    p
+        width 100px
+.add_tender
+    display flex
+    flex-direction column
+    justify-content flex-end
+    width 150px
 
 .route-block__text
     display flex
@@ -354,12 +360,9 @@ p
     display none
     width 200px
     text-align right
-    
-    
+
 .otdel-perevoz-block
     box-sizing content-box
-
-    
 
 .rates-block
     width 290px
@@ -368,8 +371,6 @@ p
     
     button
         width 100%
-
-
 
 #show_list_access
     width 150px
@@ -384,7 +385,6 @@ p
     width 290px
     height 50px
     
-
 textarea
     max-width 280px
     max-height 40px
@@ -393,7 +393,6 @@ textarea
     padding 5px
     border none
     background-color $grey
-    
 
 .last_connect
     width 150px
@@ -408,17 +407,23 @@ textarea
     height 20px
     margin-left 75px
         
-#create_order
-    width 150px
-    height 25px
-    margin-left 145px
+.create_btn_block
+    display flex
+    justify-content space-between
+    width 300px
 
+#create_kp
+    width 145px
+    height 25px
+
+#create_order
+    width 145px
+    height 25px
 
 .list_route_conteiner
     width 560px
     max-height 400px
     
-
 .list-route__item
     width 540px
     box-sizing content-box
@@ -439,3 +444,124 @@ textarea
 
 #show_route_info
     margin-top 4px
+
+/*--------------------------------
+
+
+        окно со списком доступа    
+
+
+----------------------------------*/
+.access_users_conteiner 
+    display none
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+
+.access_user__background
+    position absolute
+    width 100%
+    height 100%
+    background-color black
+    opacity 0.6
+    &:hover
+        cursor pointer
+
+.users_window_conteiner
+    display flex
+    justify-content space-between
+    position fixed
+    left 50%
+    top 50%
+    height 600px
+    box-sizing content-box
+    margin-left -350px
+    margin-top -300px
+    background-color $sec-color
+    box-shadow 0 0 20px 5px $sec-color
+
+.list_users_all_conteiner
+    box-sizing content-box
+    margin 20px
+    overflow hidden
+
+.access_users__block
+    width 350px
+    box-sizing content-box
+    height 540px
+    padding 20px 25px 20px 20px
+    background-color $sec-color
+    overflow-y scroll 
+
+.access_executor_block
+    width 350px
+    box-sizing content-box
+
+.access_observer_block
+    width 350px
+    box-sizing content-box
+    margin-top 20px
+
+.access__title
+    display flex 
+    flex-direction row
+    justify-content space-between
+    width 348px
+    height 35px
+    background-color $light_grey
+    h4
+        margin 8px 0 0 15px
+    input 
+        display block
+        margin-top 8px
+
+.access__list
+    width 350px
+    margin-top 10px
+    overflow-y scroll 
+
+.all_users_list
+    overflow-y scroll 
+
+.user_item_block
+    display flex
+    flex-direction row
+    width 325px
+    height 60px
+    margin 5px 0 0 0
+
+.selector_indicator
+    width 20px
+    height 60px 
+    background-color $hover-color
+    &:hover
+        cursor pointer
+
+.user_selector:checked + .selector_indicator 
+    background-color $green-indicator
+
+.user_selector
+    display none
+
+.user_item_photo
+    width 60px
+    height 60px
+
+.user_info_block
+    display flex
+    flex-direction column
+    justify-content center
+    width 240px
+    height 58px
+    padding 0px 0 0px 15px
+    background-color $light_grey
+    color $main-text-color
+    border 1px solid $grey
+    border-left none
+
+.user_info_name
+    font-weight bold
+    &:hover
+        color $hover-color

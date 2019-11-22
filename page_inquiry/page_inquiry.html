@@ -18,15 +18,14 @@
     <div class="header_conteiner">
         <div class="nav_btn_block">
             <a href="../page_lid/page_lid.html"><div class="nav_btn" id="journal_lid_btn">Журнал лидов</div></a>
-            <div class="nav_btn" id="create_lid">Создать лида</div>
+            <div class="nav_btn" id="create_lid">Создать запрос</div>
             <div class="nav_btn" id="journal_inq_btn" onclick="journalInq.showJournalInq()">Журнал запросов</div>
-            <a href="../page_inquiry/page_inquiry.html"><div class="nav_btn" id="create_inq">Сформировать запрос</div></a>
             <div class="nav_btn">Отправить в архив</div>
         </div>
     </div>
     <div class="main_conteiner">
         <div class="list_inq_conteiner">
-            <div class="list_route_conteiner">
+            <div class="list_route_conteiner" value="1">
                 <div class="list-route__item item_route_0">
                     <div class="main_info_route">
                         <h2>Маршрут из "город", куда "город"</h2>
@@ -42,8 +41,8 @@
                 <div class="info-inq__block">
                     <div class="name_block inq_string_big">
                         <input type="text" id="name-block__inpt" placeholder="Введите название лида" name='name_inq' readonly>
-                        <button id="btn_edit_inq_nav" class="btn" onclick="inqInfo.InqEditModeOn()" >Редактировать лид</button>
-                        <button id="btn_save_inq_nav" class="btn" style="display: none" onclick="inqInfo.InqEditModeOff()" >Сохранить лид</button>
+                        <button id="btn_edit_inq_nav" class="btn" onclick="inqInfo.InqEditModeOn()" >Редактировать запрос</button>
+                        <button id="btn_save_inq_nav" class="btn" style="display: none" onclick="inqInfo.InqEditModeOff()" >Сохранить запрос</button>
                     </div>
                     <div class="inq_string_big">
                         <div class="refNumb_block inq_string">
@@ -108,10 +107,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class="tender_block inq_string_big">
-                        <div class="inq_string">
+                    <div class="inq_string_big">
+                        <div class="tender_block inq_string">
                             <p>Тендер</p>
-                            <div>
+                            <div class="add_tender">
                                 <input type="text" name="url_tender" placeholder="Вставте ссылку" readonly>
                                 <input type="file">
                             </div>
@@ -244,7 +243,7 @@
                         <div class="otdel-prodaj-block">
                             <div class="inq_string">
                                 <p>Доступность</p>
-                                <button id="show_list_access" class="btn">посмотреть список &gt;</button>
+                                <button id="show_list_access" class="btn" onclick="inqInfo.showAccessWindow()">посмотреть список &gt;</button>
                             </div>
                             <div class="inq_string">
                                 <p>Последний контакт</p>
@@ -253,10 +252,141 @@
                                     <button id="update_last_connect" class="btn" onclick="inqInfo.updateLastConnect()">Обновить</button>
                                 </div>
                             </div>
-                            <button id="create_order" class="btn">Сформировать заказ</button>
+                            <div class="create_btn_block">
+                                <button id="create_kp" class="btn">Сделать КП</button>
+                                <button id="create_order" class="btn">Сформировать заказ</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+        </div>
+        <div class="access_users_conteiner">
+            <div class="access_user__background" onclick="inqInfo.closeAccessWindow()"></div>
+            <div class="users_window_conteiner">
+                <div class="access_users__block">
+                    <div class="access_executor_block">
+                        <div class="access__title">
+                            <h4>Соисполнители</h4>
+                            <input type="button" class="add_btn" id="add_user_executor">
+                        </div>
+                        <div class="executor_list access__list"></div>
+                    </div>
+                    <div class="access_observer_block">
+                        <div class="access__title">
+                            <h4>Наблюдатели</h4>
+                            <input type="button" class="add_btn" id="add_user_observer">
+                        </div>
+                        <div class="observer_list access__list">
+                            <div class="user_item_block">
+                                    <input id="user_selector" class="user_selector" type="checkbox">
+                                    <label for="user_selector" class="selector_indicator"></label>
+                                <div class="user_item_photo">
+                                    <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                </div>
+                                <div class="user_info_block">
+                                    <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                    <div class="user_info_position">должность</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list_users_all_conteiner">
+                    <div class="access__title">
+                        <h4>Все пользователи</h4>
+                    </div>
+                    <div class="access__list all_users_list">
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                        <div class="user_item_block">
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
+                            <div class="user_item_photo">
+                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                            </div>
+                            <div class="user_info_block">
+                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <div class="user_info_position">должность</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     

@@ -186,21 +186,24 @@ class InfoLid {
     lidEditModeOn() {
         this.showOrHideBtns('block')
         this.switchBtnInNav('none', 'block')
-        this.switchInptBetweenText('block', 'none')
         $('select').removeAttr('disabled')
         $('textarea').removeAttr('readonly')
         $('.add_block').css({'display': 'flex'})
         $('.lid_new_tags_conteiner').css({'display': 'flex'})
+        $('input[type=number]').removeAttr('readonly')
+        $('input[type=text]').removeAttr('readonly')
+        
     }
     lidEditModeOff() {
         this.showOrHideBtns('none')
         this.switchBtnInNav('block', 'none')
-        this.switchInptBetweenText('none', 'block')
         this.checkAllInpts()
         $('select').attr('disabled', 'disabled')
         $('textarea').attr('readonly', 'readonly')
         $('.add_block').css({'display': 'none'})
         $('.lid_new_tags_conteiner').css({'display': 'none'})
+        $('input[type=number]').attr('readonly', 'readonly')
+        $('input[type=text]').attr('readonly', 'readonly')
     }
     saveChangesInLid (journalLid) {
         if (this.btnSaveLid.val() === 'new_lid') {
@@ -210,7 +213,7 @@ class InfoLid {
                                             responsible_user_lid: `${this.lidInformation.response}`,
                                             date_creating_lid: `${this.lidInformation.date_creating}`,
                                             status_lid: `${this.lidInformation.status_lid}`})
-            journalLid.rerenderJournalLid()
+            journalLid.showJournalLid()
             this.btnSaveLid.val('old_lid')
             this.lidEditModeOff()
             //Заглушка для создания первого лида
@@ -231,11 +234,9 @@ class InfoLid {
         $('#btn_edit_lid_nav').css({'display': edit})
         $('#btn_save_lid_nav').css({'display': save})
     }
-    switchInptBetweenText (inpt, text) {
-        $('.edit_info_text').css({'display': text})
-
-        $('input[type=text]').css({'display': inpt})
-        $('input[type=number]').css({'display': inpt})
+    switchInptBetweenText () {
+        $('input[type=text]').attr('readonly', 'readonly')
+        $('input[type=number]').attr('readonly', 'readonly')
     }
     checkAllInpts () {
         let arrInputLid = $('.edit_info_inpt')
@@ -271,15 +272,9 @@ class InfoLid {
                 break
          }
     }
-    //checkInn() {
-        //    if (this.inptInn.length > 12 || this.inptInn.length < 12) {
-        //        this.warningInn.css({'display': 'block'})
-        //        this.lidEditModeOn()
-        //    } else {
-        //        $('#company_inn_text').text($('#company_inn_inpt').val())
-        //        this.warningInn.css({'display': 'none'})
-        //    }
-        //}
+    createInq() {
+        
+    }
 }
 
 class ContactBlock {
@@ -310,34 +305,52 @@ class ContactBlock {
             return console.log('max contacts')
         }
     }
-    showDopInfo() {
-        $(`${id}`).css({'height': '115px'})
-        $(`.show_info_contact`).css({'display': 'none'})
-        $(`.hide_info_contact`).css({'display': 'block'})
+    showDopInfo(id) {
+        $(`.cont_block${id}`).css({'height': '115px'})
+        $(`#show_contact${id}`).css({'display': 'none'})
+        $(`#hide_contact${id}`).css({'display': 'block'})
+    }
+    hideDopInfo(id) {
+        $(`.cont_block${id}`).css({'height': '25px'})
+        $(`#show_contact${id}`).css({'display': 'block'})
+        $(`#hide_contact${id}`).css({'display': 'none'})
     }
 
 }
+let contactBlock = new ContactBlock()
 
 $(document).ready(function () {
 
     let journalLid = new JournalLid()
     let infoLid = new InfoLid()
-    let contactBlock = new ContactBlock()
+
+    $('#create_inq').on('click', () => {
+        console.log('was')
+        let val = $('.inq_list_conteiner').val()
+        ++val
+        $('.inq_list_conteiner').val(val)
+        $('.inq_list_conteiner').append(`<a href="../page_inquiry/page_inquiry.html" class="lid_inq_${val}"></a>`)
+        $(`.lid_inq_${val}`).append(`<div class="inquire_info_block inq_block_${val}" title="Перейти на страницу запроса"></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><h4>Импорт / Пометка по запросу</h4><select name="" id=""><option value="">Черновик</option><option value="">Не обработан</option><option value="">В обработке</option><option value="">Возврат/уточнение</option><option value="">Обработан</option><option value="">Ожидание обратной связи</option><option value="">Завершен</option><option value="">Перспективы</option></select></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Номер запроса - 321312442132</p></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Вид транспорта - Не габарит</p><p>12:15  12.06.2129</p></div>`)
+    })
+
     
     //Вызов журнала лидов
     $('#journal_lid_btn').on('click', () => {
         $('.list_lid_conteiner').css({'display': 'block'})
-        journalLid.rerenderJournalLid()
+        journalLid.showJournalLid()
     })
     //Вызов журнала запросов
     $('#journal_inq_btn').on('click', () => {
-        journalLid.rerenderJournalLid()
+        journalLid.showJournalLid()
     })
 
     //Создание лида
     $('#create_lid').on('click', () => {
         $('.list_lid_conteiner').css({'display': 'block'})
-        journalLid.rerenderJournalLid()
+        journalLid.showJournalLid()
         $('#btn_save_lid_nav').val('new_lid')
         $('.lid_info_conteiner').css({'display': 'block'})
         infoLid.lidEditModeOn()
@@ -351,30 +364,37 @@ $(document).ready(function () {
         infoLid.saveChangesInLid(journalLid)
     })
 
-    //Показать доп инфо у контакта
-    $('.show_info_contact').on('click', () => {
-        
-    })
-
-    //Скрыть доп инфу у контакта
-    $('.hide_info_contact').on('click', () => {
-        $('.contact_item_block').css({'height': '25px'})
-        $('.show_info_contact').css({'display': 'block'})
-        $('.hide_info_contact').css({'display': 'none'})
-    })
 
 
+    //Добавление нового контакта
     $('.add_new_contact_block').on('click', () => {
-        contactBlock.addFormBlock()
-        console.log($('.add_new_contact_block').val())
+        let val = $('.add_new_contact_block').val()
+        $('.add_new_contact_block').attr('value', ++val)
         $('.add_new_contact_block').val($('.add_new_contact_block').val()+1)
-        $('.lid_info__contact_conteiner').append('<div class="contact_item_block"></div>')
-        $('.contact_item_block').append(`<div class="info_string contact_item__name"></div>`)
-        $('.contact_item__name').append(`<h4 id="contact_name_text" name="name_contact" class="contact_info_text edit_info_text"></h4>`)
-        $('.contact_item__name').append(`<input type="text" name="name_contact" placeholder="Введите имя контакта" class="contact_info_inpt edit_info_inpt" id="contact_name_inpt">`)
-        $('.contact_item__name').append(`<input type="button" id="del_name_contact" class=" del_btn del_btn_info">`)
-        $('.contact_item__name').append(`<button class="btn show_info_contact">развернуть</button>`)
-        $('.contact_item__name').append(`<button class="btn hide_info_contact" style="display: none">свернуть</button>`)
+        $('.lid_info__contact_conteiner').append(`<div class="contact_item_block cont_block${val}"></div>`)
+        $(`.cont_block${val}`).append(`<div class="info_string contact_item__name cont_name${val}"></div>`)
+        $(`.cont_name${val}`).append(`<input type="text" name="name_contact" placeholder="Введите имя контакта" class="contact_info_inpt edit_info_inpt" id="contact_name_inpt${val}" style="width: 350px">`)
+        $(`.cont_name${val}`).append(`<input type="button" id="del_name_contact" class=" del_btn del_btn_info" style="display: block">`)
+        $(`.cont_name${val}`).append(`<button class="btn show_info_contact" id="show_contact${val}" onclick="contactBlock.showDopInfo(${val})">развернуть</button>`)
+        $(`.cont_name${val}`).append(`<button class="btn hide_info_contact" id="hide_contact${val}" style="display: none" onclick="contactBlock.hideDopInfo(${val})">свернуть</button>`)
+        
+        $(`.cont_block${val}`).append(`<div class="info_string cont_numb${val}"></div>`)
+        $(`.cont_numb${val}`).append(`<p>Тел.</p><div class="edit_block cont_numb_edit${val}"></div>`)
+        $(`.cont_numb_edit${val}`).append(`<input type="button" class="add_btn add_btn_info">`)
+        $(`.cont_numb_edit${val}`).append(`<input type="number" name="numb_contact" placeholder="Введите номер" class="contact_info_inpt edit_info_inpt" id="contact_numb_inpt">`)  
+        $(`.cont_numb_edit${val}`).append(`<input type="button" style="display: block" id="del_numb_contact" class="del_btn del_btn_info">`)    
+                        
+        $(`.cont_block${val}`).append(`<div class="info_string cont_mail${val}"></div>`)
+        $(`.cont_mail${val}`).append(`<p>Почта</p><div class="edit_block cont_mail_edit${val}"></div>`)
+        $(`.cont_mail_edit${val}`).append(`<input type="text" name="mail_contact" placeholder="Введите почту" class="contact_info_inpt edit_info_inpt" id="contact_mail_inpt">`)  
+        $(`.cont_mail_edit${val}`).append(`<input type="button" style="display: block" id="del_mail_contact" class="del_btn del_btn_info">`)                    
+                            
+        $(`.cont_block${val}`).append(`<div class="info_string cont_social${val}"></div>`)
+        $(`.cont_social${val}`).append(`<p>Соц. сеть</p><div class="edit_block cont_social_edit${val}"></div>`)
+        $(`.cont_social_edit${val}`).append(`<input type="text" name="social_contact" placeholder="Укажите соц. сеть" class="contact_info_inpt edit_info_inpt" id="contact_social_inpt">`)  
+        $(`.cont_social_edit${val}`).append(`<input type="button" style="display: block" id="del_social_contact" class="del_btn del_btn_info">`)                    
+                        
+        
     })
 
     //добавить поле Телефона у контакта

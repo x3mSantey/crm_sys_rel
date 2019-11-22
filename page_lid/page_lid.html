@@ -19,42 +19,22 @@
             <div class="nav_btn" id="journal_lid_btn">Журнал лидов</div>
             <div class="nav_btn" id="create_lid">Создать лида</div>
             <div class="nav_btn" id="journal_inq_btn">Журнал запросов</div>
-            <a href="../page_inquiry/page_inquiry.html"><div class="nav_btn" id="create_inq">Сформировать запрос</div></a>
+            <div class="nav_btn" id="create_inq" >Сформировать запрос</div>
             <div class="nav_btn">Отправить в архив</div>
         </div>
     </div>
     <div class="main_conteiner">
         <div class="list_lid_conteiner">
-            <div class="inq_list_conteiner">
-                <div class="inquire_info_block">
-                    <div class="lid_string">
-                        <h4>Импорт / Пометка по запросу</h4>
-                        <select name="" id="">
-                            <option value="">Черновик</option>
-                            <option value="">Не обработан</option>
-                            <option value="">В обработке</option>
-                            <option value="">Возврат/уточнение</option>
-                            <option value="">Обработан</option>
-                            <option value="">Ожидание обратной связи</option>
-                            <option value="">Завершен</option>
-                            <option value="">Перспективы</option>
-                        </select>
-                    </div>
-                    <div class="lid_string">
-                        <p>Номер запроса - 321312442132</p>
-                    </div>
-                    <div class="lid_string">
-                        <p>Вид транспорта - Не габарит</p>
-                        <p>12:15  12.06.2129</p>
-                    </div>
-                </div>
+            <div class="hor_line"></div>
+            <div class="inq_list_conteiner" value="0">
+               
             </div>
         </div>
         <div class="lid_info_conteiner">
             <div class="name_lid_block lid_string">
                 <input type="text" name="name_lid" placeholder="Введите название лида" class="lid_name_inpt edit_info_inpt" id="lid_name_inpt">
                 <button id="btn_edit_lid_nav" class="btn">Редактировать лид</button>
-                <button id="btn_save_lid_nav" class="btn" style="display: none">Сохранить лид</button>
+                <button id="btn_save_lid_nav" class="btn" value="old_lid" style="display: none">Сохранить лид</button>
             </div>
             <div class="status_lid_block lid_string">
                 <p>Статус</p>
@@ -67,7 +47,7 @@
             </div>
             <div class="lid_string">
                 <p>Ответственный</p>
-                <div class="respon_list">Имя пользователя</div>
+                <p class="respon_list">Имя пользователя</p>
             </div>
             <div class="lid_string">
                 <p>Источник</p>
@@ -84,7 +64,7 @@
             </div>
             <div class="horizontal_line"></div>
             <textarea name="" id="" readonly class="dop_info" placeholder="Введите описание лида"></textarea>
-            <h1 class="company_header">Кампания</h1>
+            <h1 class="company_header">Компания</h1>
             <form class="lid_info_company_block">
                     <div class="info_string">
                         <p>Название</p>
@@ -138,13 +118,12 @@
                     <h1>Контакты</h1>
                     <button class="add_new_contact_block add_block btn" value="0">добавить контакт</button>
                 </div>
-                <div class="contact_item_block">
+                <div class="contact_item_block cont_block0">
                     <div class="info_string contact_item__name">
-                        <h4 id="contact_name_text0" name="name_contact" class="contact_info_text edit_info_text">Имя Фамилия отчество</h4>
                         <input type="text" name="name_contact" placeholder="Введите имя контакта" class="contact_info_inpt edit_info_inpt" id="contact_name_inpt0" style="width: 350px">
                         <input type="button" id="del_name_contact0" class=" del_btn del_btn_info">
-                        <button class="btn show_info_contact" id='show_info_contact0'>развернуть</button>
-                        <button class="btn hide_info_contact" id='hide_info_contact0' style="display: none">свернуть</button>
+                        <button class="btn show_info_contact" id="show_contact0" onclick="contactBlock.showDopInfo(0)">развернуть</button>
+                        <button class="btn hide_info_contact" id="hide_contact0" style="display: none" onclick="contactBlock.hideDopInfo(0)">свернуть</button>
                     </div>
                     <div class="info_string">
                         <p>Тел.</p>
