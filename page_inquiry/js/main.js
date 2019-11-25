@@ -225,7 +225,6 @@ class RouteOfTheDelivery{
             },
         ]
         this.rowDataListRoute = [
-            {
                 {
                     items_route: 'откуда',
                     country_route: '',
@@ -242,10 +241,6 @@ class RouteOfTheDelivery{
                     town_route: '',
                     adres_route: ''
                 }
-            },
-            {
-                
-            }
         ]
         this.gridOptions = {
             columnDefs: this.columnListRoute,
@@ -273,6 +268,7 @@ class RouteOfTheDelivery{
         $('.item__block').css({'display':'block'})
         $('.item__block').prepend(`<div class="route-block__table${i}"></div>`)
         $(`.route-block__table${i}`).prepend(`<div class="dop__adres-tamoj${i}"><div class="adres-tamoj__points"><div class="points__place-block"><p>отправление</p><input type="text" name="start_tamoj" id="" placeholder="Адрес таможни" readonly></div><div class="points__place-block"><p>назначение</p><input type="text" name="finish_tamoj" id="" placeholder="Адрес таможни" readonly></div></div>`)
+        
         this.showJournalRoute(i)
     }
     addPointTamoj() {
@@ -378,6 +374,105 @@ class InquireInfo {
         $('.access_users_conteiner').css({'display': 'none'})
     }
 }
+
+class RatesTable {
+    constructor() {
+        this.journalColW = {
+            items_route: 50,
+            country_route: 150,
+            index_route: 50,
+            quadr_route: 50,
+            town_route: 150,
+            adres_route: 148,
+        }
+        this.cellStyle = {
+            'color': '#000',
+            'border': '1px solid #0070B2',
+            'outline': 'none',
+            'background-color': '#E2E2E2'
+        }
+        this.columnListRoute = [
+            {
+                headerName: 'Менеджер ОП',
+                field: 'user_op',
+                width: this.journalColW.items_route,
+                cellStyle: {
+                    'border': '1px solid #0070B2',
+                    'color': '#fff',
+                    'outline': 'none',
+                    'background-color': '#0070B2'
+                },            
+            },
+            {
+                headerName: 'Сумма',
+                field: 'summ_rates',
+                width: this.journalColW.country_route,
+                cellStyle: this.cellStyle,
+                editable: true,
+            },
+            {
+                headerName: 'Валюта',
+                field: 'currency_rates',
+                width: this.journalColW.index_route,
+                cellStyle: this.cellStyle,
+                editable: true,
+            },
+            {
+                headerName: 'Примечание',
+                field: 'comment_rates',
+                width: this.journalColW.quadr_route,
+                cellStyle: this.cellStyle,
+                editable: true,
+            },
+            {
+                headerName: '',
+                field: 'checkbox_rates',
+                width: this.journalColW.town_route,
+                cellStyle: this.cellStyle,
+                editable: true,
+            },
+            {
+                headerName: 'Дата',
+                field: 'date_rates',
+                width: this.journalColW.adres_route,
+                cellStyle: this.cellStyle,
+                editable: true,
+            },
+        ]
+        this.rowDataListRoute = [
+                {
+                    user_op: 'откуда',
+                    summ_rates: '',
+                    currency_rates: '',
+                    quadr_route: '',
+                    town_route: '',
+                    adres_route: ''
+                }
+        ]
+        this.gridOptions = {
+            columnDefs: this.columnListRoute,
+            rowData: this.rowDataListRoute,
+            rowHeight: 20,
+            rowStyle: {
+                top: '10px',
+                'text-align': 'center',
+                'font-size': '12px',
+                color: '#fff'
+            },
+            headerHeight: 15  
+        }
+    }
+    showJournalRoute(i) {
+        $(`#list_route_deliv${i}`).remove()    
+        this.renderJournalRouteDel(i)
+    }
+    renderJournalRouteDel(i) {
+        $(`.route-block__table${i}`).prepend(`<div id="list_route_deliv${i}" class="list_route__grid"></div>`)
+        let gridDiv = $(`#list_route_deliv${i}`)[0]
+        new agGrid.Grid(gridDiv, this.gridOptions)
+    }
+}
+
 
 const routeDeliv = new RouteOfTheDelivery()
 const journalInq = new JournalInq()
