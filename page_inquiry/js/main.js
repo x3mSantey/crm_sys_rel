@@ -1,5 +1,3 @@
-
-
 class JournalInq {
     constructor() {
         this.journalColW = {
@@ -8,11 +6,6 @@ class JournalInq {
             ref_number_inq: 90,
             date_creating_inq: 90,
             status_inq: 90,
-        }
-        this.cellStyle = {
-            'background-color': '#0070B2',
-            'color': '#fff',
-            'border': '1px solid #000'
         }
         this.columnListInq = [
             {
@@ -118,19 +111,9 @@ class JournalInq {
                 status_inq: 'В работе',
             },
         ]
-        this.rowStyle = {
-            top: '10px',
-            'text-align': 'center',
-            'border-radius': '10px',
-            'border': "2px solid #1D1F25",
-            'font-size': '12px',
-            'overflow-y': 'scrolling'
-        }
         this.gridOptions = {
             columnDefs: this.columnListInq,
             rowData: this.rowDataListInq,
-            rowStyle: this.rowStyle,
-            rowHeight: 40,
             getRowStyle: (params) => {
                 switch (params.data.status_inq) {
                     case 'В работе':
@@ -147,21 +130,19 @@ class JournalInq {
         
     }
     showJournalInq() {
-        this.rerenderJournalInq()
+        $('#list_inq').remove() 
+        this.renderJournalInq()
     }
     renderJournalInq() {
-        $('.list_inq_conteiner').prepend('<div id="list_inq" class="list_inq__grid"></div>')
+        $('.list_inq_conteiner').prepend('<div id="list_inq" class="list_inq__grid ag-theme-balham"></div>')
         let gridDiv = $('#list_inq')[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
-    }
-    rerenderJournalInq() {
-        $('#list_inq').remove()    
-        this.renderJournalInq()
     }
 }
 
 class RouteOfTheDelivery{
     constructor() {
+        this.name
         this.journalColW = {
             items_route: 50,
             country_route: 150,
@@ -169,12 +150,6 @@ class RouteOfTheDelivery{
             quadr_route: 50,
             town_route: 150,
             adres_route: 148,
-        }
-        this.cellStyle = {
-            'color': '#000',
-            'border': '1px solid #0070B2',
-            'outline': 'none',
-            'background-color': '#E2E2E2'
         }
         this.columnListRoute = [
             {
@@ -192,35 +167,31 @@ class RouteOfTheDelivery{
                 headerName: 'Страна',
                 field: 'country_route',
                 width: this.journalColW.country_route,
-                cellStyle: this.cellStyle,
                 editable: true,
             },
             {
                 headerName: 'индекс',
                 field: 'index_route',
                 width: this.journalColW.index_route,
-                cellStyle: this.cellStyle,
                 editable: true,
             },
             {
                 headerName: 'квадрат',
                 field: 'quadr_route',
                 width: this.journalColW.quadr_route,
-                cellStyle: this.cellStyle,
                 editable: true,
+                type: 'numericColumn'
             },
             {
                 headerName: 'Город',
                 field: 'town_route',
                 width: this.journalColW.town_route,
-                cellStyle: this.cellStyle,
                 editable: true,
             },
             {
                 headerName: 'Адрес',
                 field: 'adres_route',
                 width: this.journalColW.adres_route,
-                cellStyle: this.cellStyle,
                 editable: true,
             },
         ]
@@ -237,7 +208,7 @@ class RouteOfTheDelivery{
                     items_route: 'куда',
                     country_route: '',
                     index_route: '',
-                    quadr_finish: '',
+                    quadr_route: '',
                     town_route: '',
                     adres_route: ''
                 }
@@ -245,14 +216,6 @@ class RouteOfTheDelivery{
         this.gridOptions = {
             columnDefs: this.columnListRoute,
             rowData: this.rowDataListRoute,
-            rowHeight: 20,
-            rowStyle: {
-                top: '10px',
-                'text-align': 'center',
-                'font-size': '12px',
-                color: '#fff'
-            },
-            headerHeight: 15  
         }
     }
     showJournalRoute(i) {
@@ -260,7 +223,7 @@ class RouteOfTheDelivery{
         this.renderJournalRouteDel(i)
     }
     renderJournalRouteDel(i) {
-        $(`.route-block__table${i}`).prepend(`<div id="list_route_deliv${i}" class="list_route__grid"></div>`)
+        $(`.route-block__table`).prepend(`<div id="list_route_deliv${i}" class="list_route__grid ag-theme-balham"></div>`)
         let gridDiv = $(`#list_route_deliv${i}`)[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
     }
@@ -285,8 +248,13 @@ class RouteOfTheDelivery{
         let val = $(`.list_route_conteiner`).attr('value')
         ++val
         $(`.list_route_conteiner`).attr('value', val)
-        let town1 = 'город один'
-        let town2 = 'город два'
+
+        let town1 = this.gridOptions.rowData[0].town_route
+        let town2 = this.gridOptions.rowData[this.gridOptions.rowData.length-1].town_route
+
+        //const routeDeliv1 = new RouteOfTheDelivery(this.name = 1)
+        //console.log(routeDeliv1.name)
+        
         let conteiner = `<div class="list-route__item item_route_${val}"></div>`
         let mainInfo = `<div class="main_info_route"><h2>Маршрут из ${town1}, куда ${town2}</h2><button id="show_route_info_${val}" class="btn" onclick="routeDeliv.showRouteInfo(${val})">развернуть</button></div>`
 
@@ -373,111 +341,134 @@ class InquireInfo {
     closeAccessWindow() {
         $('.access_users_conteiner').css({'display': 'none'})
     }
+    showRatesBlock() {
+        $('.name_block').css({'display': 'none'})
+        $('.rates_conteiner').css({'display': 'block'})
+    }
+    hideRatesBlock() {
+        $('.name_block').css({'display': 'block'})
+        $('.rates_conteiner').css({'display': 'none'})
+    }
+    createKp() {
+        $('.comm_offer_conteiner').css({'display': 'block'})
+    }
 }
 
 class RatesTable {
-    constructor() {
+    constructor(conteiner, table) {
+        this.id_conteiner = conteiner
+        this.id_table = table
+
         this.journalColW = {
-            items_route: 50,
-            country_route: 150,
-            index_route: 50,
-            quadr_route: 50,
-            town_route: 150,
-            adres_route: 148,
+            user_op: 120,
+            summ_rates: 100,
+            currency_rates: 100,
+            comment_rates: 185,
+            checkbox_rates: 65,
+            date_rates: 120,
         }
-        this.cellStyle = {
-            'color': '#000',
-            'border': '1px solid #0070B2',
-            'outline': 'none',
-            'background-color': '#E2E2E2'
+        this.columnTypes = {
+            dateColumn: {}
         }
         this.columnListRoute = [
             {
                 headerName: 'Менеджер ОП',
                 field: 'user_op',
-                width: this.journalColW.items_route,
-                cellStyle: {
-                    'border': '1px solid #0070B2',
-                    'color': '#fff',
-                    'outline': 'none',
-                    'background-color': '#0070B2'
-                },            
+                width: this.journalColW.user_op,           
             },
             {
                 headerName: 'Сумма',
                 field: 'summ_rates',
-                width: this.journalColW.country_route,
-                cellStyle: this.cellStyle,
-                editable: true,
+                width: this.journalColW.summ_rates,
             },
             {
                 headerName: 'Валюта',
                 field: 'currency_rates',
-                width: this.journalColW.index_route,
-                cellStyle: this.cellStyle,
-                editable: true,
+                width: this.journalColW.currency_rates,
             },
             {
                 headerName: 'Примечание',
                 field: 'comment_rates',
-                width: this.journalColW.quadr_route,
-                cellStyle: this.cellStyle,
+                width: this.journalColW.comment_rates,
                 editable: true,
             },
             {
-                headerName: '',
+                headerName: 'ok',
                 field: 'checkbox_rates',
-                width: this.journalColW.town_route,
-                cellStyle: this.cellStyle,
-                editable: true,
+                width: this.journalColW.checkbox_rates,
+                type: 'checkbox',
+                checkboxSelection: true,
             },
             {
                 headerName: 'Дата',
                 field: 'date_rates',
-                width: this.journalColW.adres_route,
-                cellStyle: this.cellStyle,
-                editable: true,
+                width: this.journalColW.date_rates,
             },
         ]
         this.rowDataListRoute = [
                 {
-                    user_op: 'откуда',
-                    summ_rates: '',
-                    currency_rates: '',
-                    quadr_route: '',
-                    town_route: '',
-                    adres_route: ''
+                    user_op: 'Иванов Иван',
+                    summ_rates: '124 453',
+                    currency_rates: 'usd',
+                    comment_rates: '',
+                    checkbox_rates: '',
+                    date_rates: ''
                 }
         ]
         this.gridOptions = {
             columnDefs: this.columnListRoute,
             rowData: this.rowDataListRoute,
-            rowHeight: 20,
-            rowStyle: {
-                top: '10px',
-                'text-align': 'center',
-                'font-size': '12px',
-                color: '#fff'
-            },
-            headerHeight: 15  
+            rowSelection: 'single'
         }
     }
-    showJournalRoute(i) {
-        $(`#list_route_deliv${i}`).remove()    
-        this.renderJournalRouteDel(i)
+    showJournal() {
+        $(`#${this.id_table}`).remove()    
+        this.renderJournalRouteDel()
     }
-    renderJournalRouteDel(i) {
-        $(`.route-block__table${i}`).prepend(`<div id="list_route_deliv${i}" class="list_route__grid"></div>`)
-        let gridDiv = $(`#list_route_deliv${i}`)[0]
+    renderJournalRouteDel() {
+        $(`.${this.id_conteiner}`).prepend(`<div id="${this.id_table}" class="list_rates__grid ag-theme-balham"></div>`)
+        let gridDiv = $(`#${this.id_table}`)[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
     }
-}
+    addNewRate(sum_id, cur_id) {
+        let summ = $(`#${sum_id}`).val()
+        let cur = $(`#${cur_id} :selected`).val()
+        // let user - узнать кто авториз пользователь
+
+
+        let dt = new Date()
+        let hours = dt.getHours()
+        let min = dt.getMinutes()
+        let day = dt.getDate()
+        let month = dt.getMonth()
+        let year = dt.getFullYear()
+
+        this.rowDataListRoute.push({
+                user_op: 'Иванов Иван',
+                summ_rates: summ,
+                currency_rates: cur,
+                comment_rates: '',
+                checkbox_rates: '',
+                date_rates: `${hours}:${min} / ${day}.${month}.${year}`
+            })
+
+        this.showJournal()
+        
+        console.log(summ)
+        console.log(cur)
+    }
+ }
 
 
 const routeDeliv = new RouteOfTheDelivery()
 const journalInq = new JournalInq()
 const inqInfo = new InquireInfo()
+const recomRatesTable = new RatesTable('recomm_rates__table', 'recom_rates_table')
+const carrierRatesTable = new RatesTable('carrier_rates__table', 'carrier_rates_table')
+
 
 $(document).ready( () => {
     routeDeliv.showJournalRoute(0)
+    recomRatesTable.showJournal()
+    carrierRatesTable.showJournal()
 })

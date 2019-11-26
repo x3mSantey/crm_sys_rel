@@ -222,22 +222,6 @@ p
     text-align center
 
 
-.list_route__grid
-    box-sizing content-box
-    height 135px
-    max-height 200px
-    margin-bottom 10px
-    text-align center
-
-.ag-header-cell-label
-    text-align center
-
-.list_route__grid
-    .ag-header-cell-text
-        width 100%
-        font-size 12px
-        color $main-text-color
-
 
 
 
@@ -309,6 +293,11 @@ p
     width 600px
     box-sizing content-box
 
+.list_route__grid
+    box-sizing content-box
+    height 180px
+    margin-bottom 10px
+
 .adres-tamoj__block
     display flex
     justify-content flex-end
@@ -348,7 +337,6 @@ p
     padding 5px 20px 5px 20px
     margin-bottom 15px
     background-color $grey
-    border-radius 10px
     .inq_string_big
         width 560px
         margin-bottom 5px        
@@ -579,43 +567,52 @@ textarea
 
 ----------------------------------*/
 .rates_conteiner
+    display none
     position fixed
     top 0
     left 0
     width 100%
     height 100%
 
-.rates-background
+.rates_background
     width 100%
     height 100%
-    opacity 0.9
+    opacity 0.6
     background-color $black
+    &:hover
+        cursor pointer
 
-.rates-block
+.rates_block
     position absolute
-    box-sizing content-box
+    top 50%
+    left 50%
+    width 700px
+    height 600px
     padding 20px
+    margin-top -350px
+    margin-left -320px
     background-color $sec-color
 
-.rates-item
+.rates_item
     width 700px
 
-.rates-header
+.rates_header
     display flex
     justify-content space-between
+    margin-bottom 15px
     p
         margin-left 15px
     .btn
         margin-left 15px
         width 150px
 
-.rates-table
+.rates_table
     width 100%
     max-height 200px
     margin-bottom 15px
     overflow-y scroll
 
-.rates-edit-block
+.rates_edit_block
     display flex
     margin-bottom 15px
     input 
@@ -623,4 +620,11 @@ textarea
     select 
         width 200px
         margin-left 15px
+    button
+        margin-left 15px
+
+
+.list_rates__grid
+    width 683px
+    height 200px
     

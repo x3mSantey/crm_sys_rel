@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="style/s.css">
-
     
-    <script src="https://unpkg.com/browse/ag-grid-enterprise@21.2.2/dist/ag-grid-enterprise.min.js"></script>
+    <script src="https://unpkg.com/ag-grid-enterprise@21.2.2/dist/ag-grid-enterprise.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="js/main.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/@ag-grid-community/all-modules/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css">
+    <link rel="stylesheet" href="style/s.css">
 
     <title>Запросы</title>
 </head>
@@ -120,11 +122,17 @@
                             <p class="date_inq">21.12.2019</p>
                         </div>
                     </div>
+                    <div class="hor_line"></div>
                     <div class="route-block">
                         <div class="route-block__text">
                             <h2>Маршрут</h2>
+                            <div class="route-block__nav">
+                                <button class="btn" id="adres-tamoj__btn" onclick="routeDeliv.addPointTamoj()" value="2">Добавить таможню</button>
+                                <button class="btn" id="add_point_route" onclick="routeDeliv.addPointRoute()" value="2">Добавить пункт</button>
+                                <button class="btn" id="create_route" onclick="routeDeliv.creareRoute()" value="0">Cоздать</button>
+                            </div>
                         </div>
-                        <div class="route-block__table0"></div>
+                        <div class="route-block__table"></div>
                         <div class="route-block__adres-tamoj">
                             <div class="adres-tamoj__points">
                                 <div class="points__place-block">
@@ -135,17 +143,10 @@
                                     <p>назначение</p>
                                     <input type="text" name="finish_tamoj" id="" placeholder="Адрес таможни" readonly>
                                 </div>
-                            </div>  
-                            <div class="adres-tamoj__block">
-                                <div class="route-block__nav">
-                                    <button class="btn" id="adres-tamoj__btn" onclick="routeDeliv.addPointTamoj()" value="2">Добавить таможню</button>
-                                    <button class="btn" id="add_point_route" onclick="routeDeliv.addPointRoute()" value="2">Добавить пункт</button>
-                                    <button class="btn" id="create_route" onclick="routeDeliv.creareRoute()" value="0">Cоздать</button>
-                                </div>
-                            </div>
-                           
+                            </div>                           
                         </div>
                     </div>
+                    <div class="hor_line"></div>
                         <div class="cargo-info">
                             <div class="cargo-info__character-block inq_string_big">
                                 <p>Характер груза</p>
@@ -228,10 +229,12 @@
                                 </div>
                             </div>
                         </div>
+                    
+                        <div class="hor_line"></div>
                     <div class="inq_string_big">
                         <div class="otdel-perevoz-block">
                             <div class="rates-block">
-                                <button class="btn">Ставки</button>
+                                <button class="btn" onclick="inqInfo.showRatesBlock()">Ставки</button>
                             </div>
                             <div class="tranzit-block inq_string">
                                 <textarea name="" id="" placeholder="Информация по транзиту" readonly></textarea>
@@ -389,38 +392,41 @@
             </div>
         </div>
         <div class="rates_conteiner">
-            <div class="rates-background"></div>
-            <div class="rates-block">
-                <div class="rates-item">
-                    <div class="recomented-rates__header rates-header">
+            <div class="rates_background" onclick="inqInfo.hideRatesBlock()"></div>
+            <div class="rates_block">
+                <div class="rates_item">
+                    <div class="recomm_rates__header rates_header">
                         <p>Рекомендованная ставка</p>
-                        <button class="btn">Добавить ставку</button>
                     </div>
-                    <div class="recomented-rates__table rates-table"></div>
-                    <div class="recomented-rates__edit rates-edit-block">
-                        <input type="text" placeholder="сумма">
-                        <select name="" id="currency_list">
+                    <div class="recomm_rates__table rates_table"></div>
+                    <div class="recomm_rates__edit rates_edit_block">
+                        <input type="text" placeholder="сумма" id="summ_rec_rate">
+                        <select name="" id="rec_currency_list">
                             <option value="USD">USD</option>
                             <option value="EUR">EUR</option>
                         </select>
+                        <button class="btn" onclick="recomRatesTable.addNewRate('summ_rec_rate', 'rec_currency_list')">Добавить ставку</button>
                     </div>
                 </div>
                 <div class="hor_line"></div>
-                <div class="rates-item">
-                    <div class="recomented-rates__header rates-header">
+                <div class="rates_item">
+                    <div class="carrier_rates__header rates_header">
                         <p>Ставки перевозчиков</p>
-                        <button class="btn">Добавить ставку</button>
                     </div>
-                    <div class="carrier-rates__table rates-table"></div>
-                    <div class="carrier-rates__edit rates-edit-block">
-                        <input type="text" placeholder="сумма">
-                        <select name="" id="currency_list">
+                    <div class="carrier_rates__table rates_table"></div>
+                    <div class="carrier_rates__edit rates_edit_block">
+                        <input type="text" placeholder="сумма" id="summ_carr_rate">
+                        <select name="" id="carr_currency_list">
                             <option value="USD">USD</option>
                             <option value="EUR">EUR</option>
                         </select>
+                        <button class="btn" onclick="carrierRatesTable.addNewRate('summ_carr_rate', 'carr_currency_list')">Добавить ставку</button>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="comm_offer_conteiner">
+            
         </div>
     </div>
     

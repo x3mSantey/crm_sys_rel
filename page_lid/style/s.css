@@ -10,6 +10,7 @@ body,
 html {
   margin: 0;
   padding: 0;
+  background-color: #e2e2e2;
 }
 a {
   text-decoration: none;
@@ -126,7 +127,7 @@ p {
   justify-content: flex-start;
   position: relative;
   left: 50%;
-  width: 1210px;
+  width: 60%;
   box-sizing: content-box;
   margin: 100px 0 20px -605px;
 }
@@ -138,30 +139,17 @@ p {
 
 ----------------------------------*/
 .list_lid_conteiner {
-  display: none;
   width: 750px;
   max-height: 835px;
   box-sizing: content-box;
   padding: 0 10px 0 10px;
-  background-color: #e2e2e2;
+  background-color: #fff;
 }
 .list_lid__grid {
   width: 750px;
   height: 450px;
   max-height: 450px;
-}
-.ag-header {
-  height: 40px;
-  min-height: 40px;
-  background-color: #1d1f25;
-}
-.ag-header-row {
-  border-bottom: 1px solid #0070b2;
-}
-.ag-header-cell-text {
-  width: 100%;
-  color: #fff;
-  text-align: center;
+  margin-bottom: 15px;
 }
 /*--------------------------------
 
@@ -171,7 +159,6 @@ p {
 
 ----------------------------------*/
 .inq_list_conteiner {
-  display: none;
   width: 100%;
   max-width: 750px;
   box-sizing: content-box;
@@ -203,7 +190,6 @@ p {
 
 ----------------------------------*/
 .lid_info_conteiner {
-  display: none;
   width: 400px;
   height: 100%;
   padding: 0 20px 0 20px;
@@ -412,12 +398,7 @@ p {
   transition-duration: 1s;
 }
 #access_btn {
-  height: 18px;
-}
-#access_btn:hover {
-  color: #bf2119;
-  cursor: pointer;
-  border-bottom: 1px solid #fff;
+  height: 20px;
 }
 .lid_tags__list {
   display: flex;

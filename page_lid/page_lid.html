@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="style/s.css">
 
-    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="https://unpkg.com/ag-grid-enterprise@21.2.2/dist/ag-grid-enterprise.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="js/main.js"></script>
     
@@ -17,24 +17,21 @@
     <div class="header_conteiner">
         <div class="nav_btn_block">
             <div class="nav_btn" id="journal_lid_btn">Журнал лидов</div>
-            <div class="nav_btn" id="create_lid">Создать лида</div>
-            <div class="nav_btn" id="journal_inq_btn">Журнал запросов</div>
-            <div class="nav_btn" id="create_inq" >Сформировать запрос</div>
+            <div class="nav_btn" id="create_lid" onclick="infoLid.createNewLid()">Создать лида</div>
+            <div class="nav_btn" id="create_inq" onclick="infoLid.createInq()">Сформировать запрос</div>
             <div class="nav_btn">Отправить в архив</div>
         </div>
     </div>
     <div class="main_conteiner">
         <div class="list_lid_conteiner">
             <div class="hor_line"></div>
-            <div class="inq_list_conteiner" value="0">
-               
-            </div>
+            <div class="inq_list_conteiner" value="0"></div>
         </div>
         <div class="lid_info_conteiner">
             <div class="name_lid_block lid_string">
                 <input type="text" name="name_lid" placeholder="Введите название лида" class="lid_name_inpt edit_info_inpt" id="lid_name_inpt">
                 <button id="btn_edit_lid_nav" class="btn">Редактировать лид</button>
-                <button id="btn_save_lid_nav" class="btn" value="old_lid" style="display: none">Сохранить лид</button>
+                <button id="btn_save_lid_nav" class="btn" value="old_lid" onclick="infoLid.saveChangesInLid(journalLid)" style="display: none">Сохранить лид</button>
             </div>
             <div class="status_lid_block lid_string">
                 <p>Статус</p>

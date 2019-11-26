@@ -1,5 +1,6 @@
 class JournalLid {
     constructor () {
+        this.selectedLid 
         this.juornalColW = {    
             name_lid: 235, 
             responsible_user_lid: 165, 
@@ -31,6 +32,18 @@ class JournalLid {
                 width: this.juornalColW.status_lid, 
                 sortable: true
             },
+            {
+                headerName: 'Статус', 
+                field: 'status_lid',
+                width: this.juornalColW.status_lid, 
+                sortable: true
+            },
+            {
+                headerName: 'Статус', 
+                field: 'status_lid',
+                width: this.juornalColW.status_lid, 
+                sortable: true
+            },
         ]
         this.rowDataListLid = [
             {
@@ -38,6 +51,23 @@ class JournalLid {
                 responsible_user_lid: 'Иванов Иван', 
                 date_creating_lid: '21.10.2019', 
                 status_lid: 'В работе',
+                responsible_user_lid: "",
+                source_lid: "",
+                date_creating_lid: '',
+                dop_info: '',
+                name_company: "",
+                inn_company: "",
+                numb_company: "",
+                mail_company: "",
+                site_company: "",
+                social_company: "",
+                name_contact: "",
+                numb_contact: "",
+                mail_contact: "",
+                social_contact: "",
+                industry_lid: "",
+                tags_lid: {},
+                access_list: {}
             },
             {
                 name_lid: 'sdffdsfdsfdsf', 
@@ -81,6 +111,7 @@ class JournalLid {
                 date_creating_lid: '21.10.2019', 
                 status_lid: 'Активный'
             },
+            
         ]
         this.rowDataListLid = [
             {
@@ -135,16 +166,6 @@ class JournalLid {
         this.gridOptions = {
             columnDefs: this.columnListLid,
             rowData: this.rowDataListLid,
-            rowHeight: 40,
-            rowStyle: {
-                top: '10px',
-                'text-align': 'center',
-                'background-color': '#fff',
-                'border-radius': '10px',
-                'border': "2px solid #1D1F25",
-                'font-size': '12px',
-                'overflow-y': 'scrolling'
-            },
             getRowStyle: (params) => {
                 switch (params.data.status_lid) {
                     case 'В работе':
@@ -157,9 +178,9 @@ class JournalLid {
                         return {'background-color': '#fff', color: '#000', 'border': '2px solid #000'}
                 }
             },
-            onRowClicked: function() {
-                $('.lid_info_conteiner').css({'display': 'block'})
-                $('.inq_list_conteiner').css({'display': 'block'})
+            onRowClicked: function(params) {
+                this.selectedLid = params.data
+                journalLid.showThisLid(params.data)
             }
         }
     }
@@ -168,9 +189,13 @@ class JournalLid {
         this.renderJournalLid()
     }
     renderJournalLid() {
-        $('.list_lid_conteiner').prepend('<div id="list_lid" class="list_lid__grid"></div>')
+        $('.list_lid_conteiner').prepend('<div id="list_lid" class="list_lid__grid ag-theme-balham"></div>')
         let gridDiv = $('#list_lid')[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
+    }
+    showThisLid(info) {
+        infoLid.lidInformation = info
+        console.log(infoLid.lidInformation)
     }
 }
 
@@ -180,8 +205,65 @@ class InfoLid {
         this.warningInn = $('#warning_inn')
 
         this.btnSaveLid = $('#btn_save_lid_nav')
-
-        this.lidInformation = {}
+        this.currentLidInfo = {
+            name_lid: "",
+            status_lid: "",
+            industry_lid: "",
+            responsible_user_lid: "",
+            source_lid: "",
+            date_creating_lid: '',
+            dop_info: '',
+            industry_lid: "",
+            tags_lid: {},
+            access_list: {}
+        }
+        this.lidInformation = {
+            name_lid: "",
+            status_lid: "",
+            industry_lid: "",
+            responsible_user_lid: "",
+            source_lid: "",
+            date_creating_lid: '',
+            dop_info: '',
+            name_company: "",
+            inn_company: "",
+            numb_company: "",
+            mail_company: "",
+            site_company: "",
+            social_company: "",
+            name_contact: "",
+            numb_contact: "",
+            mail_contact: "",
+            social_contact: "",
+            industry_lid: "",
+            tags_lid: {},
+            access_list: {}
+        }
+        this.comapnyBlock = { 
+            name_company: "",
+            inn_company: "",
+            numb_company: "",
+            mail_company: "",
+            site_company: "",
+            social_company: ""
+        }
+        this.contactBlocks = [
+            {
+                name_contact: "",
+                numb_contact: "",
+                mail_contact: "",
+                social_contact: "",
+            }
+        ]
+    }
+    createNewLid() {
+        journalLid.showJournalLid()
+        $('#btn_save_lid_nav').val('new_lid')
+        $('.lid_info_conteiner').css({'display': 'block'})
+        $('select').val('')
+        $('textarea').val('')
+        $('input').val('')
+        infoLid.lidEditModeOn()
     }
     lidEditModeOn() {
         this.showOrHideBtns('block')
@@ -206,7 +288,7 @@ class InfoLid {
         $('input[type=text]').attr('readonly', 'readonly')
     }
     saveChangesInLid (journalLid) {
-        if (this.btnSaveLid.val() === 'new_lid') {
+        if ($('#btn_save_lid_nav').val() === 'new_lid') {
             this.checkStatus()
             this.checkAllInpts()
             journalLid.rowDataListLid.push({name_lid: `${this.lidInformation.name_lid}`,
@@ -214,14 +296,12 @@ class InfoLid {
                                             date_creating_lid: `${this.lidInformation.date_creating}`,
                                             status_lid: `${this.lidInformation.status_lid}`})
             journalLid.showJournalLid()
-            this.btnSaveLid.val('old_lid')
+            $('#btn_save_lid_nav').val('old_lid')
             this.lidEditModeOff()
             //Заглушка для создания первого лида
-        } else if (this.btnSaveLid.val() === 'old_lid') {
-            console.log('старый отредактирован лид')
+        } else if ($('#btn_save_lid_nav').val() === 'old_lid') {
             this.checkStatus()
             this.checkAllInpts()
-            console.log(this.lidInformation)
             this.lidEditModeOff()
             //Заглушка для редактирования существующего лида
         }
@@ -255,6 +335,7 @@ class InfoLid {
                 $(arrTextLid[i]).text(arrInputLid[i].value)
             }
         }
+        console.log(this.lidInformation)
     }
     checkStatus() {
          switch ($('#status_lid')[0].options[$('#status_lid')[0].selectedIndex].innerHTML) {
@@ -273,7 +354,14 @@ class InfoLid {
          }
     }
     createInq() {
-        
+        let val = $('.inq_list_conteiner').val()
+        ++val
+        $('.inq_list_conteiner').val(val)
+        $('.inq_list_conteiner').append(`<a href="../page_inquiry/page_inquiry.html" class="lid_inq_${val}"></a>`)
+        $(`.lid_inq_${val}`).append(`<div class="inquire_info_block inq_block_${val}" title="Перейти на страницу запроса"></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><h4>Импорт / Пометка по запросу</h4><select name="" id=""><option value="">Черновик</option><option value="">Не обработан</option><option value="">В обработке</option><option value="">Возврат/уточнение</option><option value="">Обработан</option><option value="">Ожидание обратной связи</option><option value="">Завершен</option><option value="">Перспективы</option></select></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Номер запроса - 321312442132</p></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Вид транспорта - Не габарит</p><p>12:15  12.06.2129</p></div>`)
     }
 }
 
@@ -317,35 +405,18 @@ class ContactBlock {
     }
 
 }
-let contactBlock = new ContactBlock()
+
+
+const contactBlock = new ContactBlock()
+const infoLid = new InfoLid()
+let journalLid = new JournalLid()
 
 $(document).ready(function () {
 
-    let journalLid = new JournalLid()
-    let infoLid = new InfoLid()
+    journalLid.showJournalLid()
 
-    $('#create_inq').on('click', () => {
-        console.log('was')
-        let val = $('.inq_list_conteiner').val()
-        ++val
-        $('.inq_list_conteiner').val(val)
-        $('.inq_list_conteiner').append(`<a href="../page_inquiry/page_inquiry.html" class="lid_inq_${val}"></a>`)
-        $(`.lid_inq_${val}`).append(`<div class="inquire_info_block inq_block_${val}" title="Перейти на страницу запроса"></div>`)
-        $(`.inq_block_${val}`).append(`<div class="lid_string"><h4>Импорт / Пометка по запросу</h4><select name="" id=""><option value="">Черновик</option><option value="">Не обработан</option><option value="">В обработке</option><option value="">Возврат/уточнение</option><option value="">Обработан</option><option value="">Ожидание обратной связи</option><option value="">Завершен</option><option value="">Перспективы</option></select></div>`)
-        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Номер запроса - 321312442132</p></div>`)
-        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Вид транспорта - Не габарит</p><p>12:15  12.06.2129</p></div>`)
-    })
 
     
-    //Вызов журнала лидов
-    $('#journal_lid_btn').on('click', () => {
-        $('.list_lid_conteiner').css({'display': 'block'})
-        journalLid.showJournalLid()
-    })
-    //Вызов журнала запросов
-    $('#journal_inq_btn').on('click', () => {
-        journalLid.showJournalLid()
-    })
 
     //Создание лида
     $('#create_lid').on('click', () => {
@@ -360,9 +431,7 @@ $(document).ready(function () {
         infoLid.lidEditModeOn()
     })
     //Нажатие на кнопку сохранения в панели навигации сверху
-    $('#btn_save_lid_nav').on('click', () => {
-        infoLid.saveChangesInLid(journalLid)
-    })
+    
 
 
 
@@ -393,8 +462,6 @@ $(document).ready(function () {
         $(`.cont_social${val}`).append(`<p>Соц. сеть</p><div class="edit_block cont_social_edit${val}"></div>`)
         $(`.cont_social_edit${val}`).append(`<input type="text" name="social_contact" placeholder="Укажите соц. сеть" class="contact_info_inpt edit_info_inpt" id="contact_social_inpt">`)  
         $(`.cont_social_edit${val}`).append(`<input type="button" style="display: block" id="del_social_contact" class="del_btn del_btn_info">`)                    
-                        
-        
     })
 
     //добавить поле Телефона у контакта
