@@ -1,5 +1,51 @@
+.comm_offer_block {
+  width: 630px;
+  height: 891px;
+  padding: 0 75px 0 90px;
+}
+.comm_offer_block border 1px solid black h4 {
+  font-weight: bold;
+  margin: 5px 0 5px 0;
+}
 .comm_offer__logo {
+  margin-top: 50px;
   width: 100%;
-  height: 150px;
-  background-color: #000;
+  height: 130px;
+  background-image: url("/img/logo_kp_img.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.adresant_block {
+  position: relative;
+  left: 60%;
+  width: 40%;
+  margin-bottom: 20px;
+  text-align: right;
+}
+.adresant_block input {
+  width: 100%;
+  text-align: right;
+}
+.header_comm_offer {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.points_block {
+  width: 100%;
+}
+.points_block .item {
+  margin-left: 30px;
+}
+textarea {
+  width: 100%;
+  max-width: 100%;
+  min-height: 25px;
+  max-height: 50px;
+}
+.footer_kp_block {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 50px;
 }

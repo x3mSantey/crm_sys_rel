@@ -227,39 +227,15 @@ class RouteOfTheDelivery{
         let gridDiv = $(`#list_route_deliv${i}`)[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
     }
-    showRouteInfo(i) {
-        $('.item__block').css({'display':'block'})
-        $('.item__block').prepend(`<div class="route-block__table${i}"></div>`)
-        $(`.route-block__table${i}`).prepend(`<div class="dop__adres-tamoj${i}"><div class="adres-tamoj__points"><div class="points__place-block"><p>отправление</p><input type="text" name="start_tamoj" id="" placeholder="Адрес таможни" readonly></div><div class="points__place-block"><p>назначение</p><input type="text" name="finish_tamoj" id="" placeholder="Адрес таможни" readonly></div></div>`)
-        
-        this.showJournalRoute(i)
-    }
     addPointTamoj() {
         let val = $('#adres-tamoj__btn').val()
         if (val < 4) {
             ++val 
             $('#adres-tamoj__btn').val(`${val}`)
-            $('.adres-tamoj__points').append(`<div class="points__place-block"><p>пункт ${val}</p><input type="text" name="incedental_tamoj_${val}" id="" placeholder="Адрес таможни" readonly></div>`)
+            $('.adres-tamoj__points').append(`<div class="points__place-block"><p>пункт ${val}</p><input type="text" name="point_tamoj_${val}" id="" placeholder="Адрес таможни" readonly></div>`)
         } else {
             console.log('много пунктов')
         }
-    }
-    creareRoute() {
-        let val = $(`.list_route_conteiner`).attr('value')
-        ++val
-        $(`.list_route_conteiner`).attr('value', val)
-
-        let town1 = this.gridOptions.rowData[0].town_route
-        let town2 = this.gridOptions.rowData[this.gridOptions.rowData.length-1].town_route
-
-        //const routeDeliv1 = new RouteOfTheDelivery(this.name = 1)
-        //console.log(routeDeliv1.name)
-        
-        let conteiner = `<div class="list-route__item item_route_${val}"></div>`
-        let mainInfo = `<div class="main_info_route"><h2>Маршрут из ${town1}, куда ${town2}</h2><button id="show_route_info_${val}" class="btn" onclick="routeDeliv.showRouteInfo(${val})">развернуть</button></div>`
-
-        $('.list_route_conteiner').append(`${conteiner}`)
-        $(`.item_route_${val}`).append(`${mainInfo}`)
     }
     addPointRoute() {
         let val = $('#add_point_route').val()
@@ -269,7 +245,7 @@ class RouteOfTheDelivery{
             let n = i-1
             this.rowDataListRoute[i] = this.rowDataListRoute[n] 
             this.rowDataListRoute[n] = {
-                items_route: 'пункт B',
+                items_route: 'пункт',
                 country_route: '',
                 index_route: '',
                 quadr_route: '',
@@ -277,11 +253,63 @@ class RouteOfTheDelivery{
                 adres_route: ''
             }
             this.showJournalRoute(0)
-        } else {
         }
+    }
+    createRoute() {
+        let val = $(`.list_route_conteiner`).attr('value')
+
+        let rowData = this.gridOptions.rowData
+        console.log(rowData)
+
+        let town1 = this.gridOptions.rowData[0].town_route
+        let town2 = this.gridOptions.rowData[this.gridOptions.rowData.length-1].town_route       
         
+        $('.list_route_conteiner').append(`<div class="list-route__item item_route_${val}"></div>`)
+        $(`.item_route_${val}`).append(`<div class="main_info_route main_info_route_${val}"></div>`)
+        $(`.main_info_route_${val}`).append(`<h2>Маршрут из ${town1}, куда ${town2}</h2>`)
+        $(`.main_info_route_${val}`).append(`<button id="show_route_info_${val}" class="btn" onclick="routeDeliv.showRouteInfo(${val})">развернуть</button>`)
+        $(`.main_info_route_${val}`).append(`<button id="hide_route_info_${val}" class="btn" onclick="routeDeliv.hideRouteInfo(${val})" style="display: none">свернуть</button>`)
+
+        
+        $(`.item_route_${val}`).append(`<div class="route_block_${val}" style="display: none"></div>`)
+        $(`.route_block_${val}`).prepend(`<div class="route-block__table${val}"></div>`)
+        $(`.route-block__table${val}`).prepend(`<div class="dop__adres-tamoj${val}"></div>`)
+        $(`.dop__adres-tamoj${val}`).append(`<div class="adres-tamoj__points adres-tamoj${val}"></div>`)
+
+        
+        let points = $('#tamoj_points').children().length
+        console.log(points)
+
+        $(`.adres-tamoj${val}`).append(`<div class="points__place-block"><p>пункт ${val}</p><input type="text" name="point_tamoj_${val}" id="" placeholder="Адрес таможни" readonly></div>`)
+        
+
+                /*<div class="points__place-block start_tamoj">
+                    <p>отправление</p>
+                    <input type="text" name="start_tamoj" id="" placeholder="Адрес таможни" readonly>
+                </div>
+                <div class="points__place-block finish_tamoj">
+                    <p>назначение</p>
+                    <input type="text" name="finish_tamoj" id="" placeholder="Адрес таможни" readonly>
+                </div>*/
+        
+        let tableRoute = new DeliveryPath(rowData)
+        tableRoute.showRoutePath(val)
+        
+        ++val
+        $(`.list_route_conteiner`).attr('value', val)
+    }
+    showRouteInfo(i) {
+        $(`.route_block_${i}`).css({'display':'block'})
+        $(`#hide_route_info_${i}`).css({'display':'block'})
+        $(`#show_route_info_${i}`).css({'display':'none'})
         
     }
+    hideRouteInfo(i) {
+        $(`.route_block_${i}`).css({'display':'none'})
+        $(`#show_route_info_${i}`).css({'display':'block'})
+        $(`#hide_route_info_${i}`).css({'display':'none'})
+    }
+    
 }
 
 class InquireInfo {
@@ -457,14 +485,175 @@ class RatesTable {
         console.log(summ)
         console.log(cur)
     }
- }
+}
 
+class KpForm {
+    constructor() {
+        this.columnListRoute = [
+            {
+                headerName: 'Маршрут',
+                field: 'route',
+                editable: true        
+            },
+            {
+                headerName: 'Тип',
+                field: 'type_carrier',
+                editable: true
+            },
+            {
+                headerName: 'Ставка фрахта',
+                field: 'stavka_fraxta',
+                editable: true
+            },
+        ]
+        this.rowDataListRoute = [
+                {
+                    route: 'маршрут ....',
+                    type_carrier: '....',
+                    stavka_fraxta: 'u.....',
+                }
+        ]
+        this.gridOptions = {
+            columnDefs: this.columnListRoute,
+            rowData: this.rowDataListRoute,
+            rowHeight: 40
+        }
+    }
+    showPriceKP() {
+        $(`#price_kp_table`).remove()    
+        this.renderPriceKP()
+    }
+    renderPriceKP() {
+        $(`.price_table_block`).prepend(`<div id="price_kp_table" class="list_price_kp__grid ag-theme-balham"></div>`)
+        let gridDiv = $(`#price_kp_table`)[0]
+        new agGrid.Grid(gridDiv, this.gridOptions)
+    }
+    createKP() {
+        $('.comm_offer_conteiner').css({'display': 'block'})
+        $('.name_block').css({'display': 'none'})
+        $('.redct_span').css({'display': 'none'})
+        kpForm.showPriceKP()
+    }
+    closeKP() {
+        $('.comm_offer_conteiner').css({'display': 'none'})
+        $('.name_block').css({'display': 'block'})
+    }
+    saveChanges() {
+        let textarea = $('.comm_offer_block textarea')
+        let inpt = $('.comm_offer_block input')
+
+        textarea.each(function(el) {
+            let text = $(textarea[el]).text()
+            let name = $(textarea[el]).attr('name')
+            
+            $(`.${name}`).text(`•	${text}`)
+            $(textarea[el]).css({'display': 'none'})
+        })
+        inpt.each(function(el) {
+            let text = $(inpt[el]).val()
+            let name = $(inpt[el]).attr('name')
+            
+            $(`.${name}`).text(`${text}`)
+            $(inpt[el]).css({'display': 'none'})
+        })
+        
+        $('.redct_span').css({'display': 'block'})
+    }
+    changeInfo() {
+        let textarea = $('.comm_offer_block textarea')
+        let inpt = $('.comm_offer_block input')
+
+        textarea.each(function(el) {            
+            $(textarea[el]).css({'display': 'block'})
+        })
+        inpt.each(function(el) {            
+            $(inpt[el]).css({'display': 'block'})
+        })
+
+        $('.redct_span').css({'display': 'none'})
+    }
+    sendOnMail() {
+
+    }
+}
+
+class DeliveryPath{
+    constructor(rowData) {
+        this.journalColW = {
+            items_route: 50,
+            country_route: 150,
+            index_route: 50,
+            quadr_route: 50,
+            town_route: 150,
+            adres_route: 148,
+        }
+        this.columnListRoute = [
+            {
+                headerName: 'пункты',
+                field: 'items_route',
+                width: this.journalColW.items_route,
+                cellStyle: {
+                    'border': '1px solid #0070B2',
+                    'color': '#fff',
+                    'outline': 'none',
+                    'background-color': '#0070B2'
+                },            
+            },
+            {
+                headerName: 'Страна',
+                field: 'country_route',
+                width: this.journalColW.country_route,
+                editable: true,
+            },
+            {
+                headerName: 'индекс',
+                field: 'index_route',
+                width: this.journalColW.index_route,
+                editable: true,
+            },
+            {
+                headerName: 'квадрат',
+                field: 'quadr_route',
+                width: this.journalColW.quadr_route,
+                editable: true,
+                type: 'numericColumn'
+            },
+            {
+                headerName: 'Город',
+                field: 'town_route',
+                width: this.journalColW.town_route,
+                editable: true,
+            },
+            {
+                headerName: 'Адрес',
+                field: 'adres_route',
+                width: this.journalColW.adres_route,
+                editable: true,
+            },
+        ]
+        this.rowDataListRoute = rowData
+        this.gridOptions = {
+            columnDefs: this.columnListRoute,
+            rowData: this.rowDataListRoute,
+        }
+    }
+    showRoutePath(i) {
+        $(`list_route_deliv${i}`).remove()    
+        this.renderRoutePath(i)
+    }
+    renderRoutePath(i) {
+        $(`.route-block__table${i}`).prepend(`<div id="list_route_deliv${i}" class="list_route__grid ag-theme-balham"></div>`)
+        let gridDiv = $(`#list_route_deliv${i}`)[0]
+        new agGrid.Grid(gridDiv, this.gridOptions)
+    }
+}
 
 const routeDeliv = new RouteOfTheDelivery()
 const journalInq = new JournalInq()
 const inqInfo = new InquireInfo()
 const recomRatesTable = new RatesTable('recomm_rates__table', 'recom_rates_table')
 const carrierRatesTable = new RatesTable('carrier_rates__table', 'carrier_rates_table')
+const kpForm = new KpForm()
 
 
 $(document).ready( () => {

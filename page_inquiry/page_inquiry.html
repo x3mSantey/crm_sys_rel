@@ -27,16 +27,7 @@
     </div>
     <div class="main_conteiner">
         <div class="list_inq_conteiner">
-            <div class="list_route_conteiner" value="1">
-                <div class="list-route__item item_route_0">
-                    <div class="main_info_route">
-                        <h2>Маршрут из "город", куда "город"</h2>
-                        <button id="show_route_info" class="btn" onclick="routeDeliv.showRouteInfo()">развернуть</button>
-                    </div>
-                    <div class="item__block" style="display: none">
-                        <button id="" class="btn" onclick="routeDeliv.hideRouteInfo()">свернуть</button>
-                    </div>
-                </div>
+            <div class="list_route_conteiner" value="0">
             </div>
         </div>
         <div class="info_inq_conteiner">
@@ -129,25 +120,25 @@
                             <div class="route-block__nav">
                                 <button class="btn" id="adres-tamoj__btn" onclick="routeDeliv.addPointTamoj()" value="2">Добавить таможню</button>
                                 <button class="btn" id="add_point_route" onclick="routeDeliv.addPointRoute()" value="2">Добавить пункт</button>
-                                <button class="btn" id="create_route" onclick="routeDeliv.creareRoute()" value="0">Cоздать</button>
+                                <button class="btn" id="create_route" onclick="routeDeliv.createRoute()" value="0">Cоздать</button>
                             </div>
                         </div>
                         <div class="route-block__table"></div>
                         <div class="route-block__adres-tamoj">
-                            <div class="adres-tamoj__points">
+                            <div id="tamoj_points" class="adres-tamoj__points">
                                 <div class="points__place-block">
                                     <p>отправление</p>
-                                    <input type="text" name="start_tamoj" id="" placeholder="Адрес таможни" readonly>
+                                    <input type="text" name="start_tamoj" id="start_tamoj" placeholder="Адрес таможни" readonly>
                                 </div>
                                 <div class="points__place-block">
                                     <p>назначение</p>
-                                    <input type="text" name="finish_tamoj" id="" placeholder="Адрес таможни" readonly>
+                                    <input type="text" name="finish_tamoj" id="finish_tamoj" placeholder="Адрес таможни" readonly>
                                 </div>
                             </div>                           
                         </div>
                     </div>
                     <div class="hor_line"></div>
-                        <div class="cargo-info">
+                    <div class="cargo-info">
                             <div class="cargo-info__character-block inq_string_big">
                                 <p>Характер груза</p>
                                 <p class="character-block__text cargo_text"></p>
@@ -228,8 +219,7 @@
                                     <input type="button" id="del_size_cargo" class="del_btn ">
                                 </div>
                             </div>
-                        </div>
-                    
+                    </div>
                         <div class="hor_line"></div>
                     <div class="inq_string_big">
                         <div class="otdel-perevoz-block">
@@ -256,7 +246,7 @@
                                 </div>
                             </div>
                             <div class="create_btn_block">
-                                <button id="create_kp" class="btn">Сделать КП</button>
+                                <button id="create_kp" class="btn" onclick="kpForm.createKP()">Сделать КП</button>
                                 <button id="create_order" class="btn">Сформировать заказ</button>
                             </div>
                         </div>
@@ -426,7 +416,92 @@
             </div>
         </div>
         <div class="comm_offer_conteiner">
-            
+            <div class="comm_offer__background" onclick="kpForm.closeKP()"></div>
+            <div class="main_offer_conteiner">
+                <div class="mail_from_for_conteiner">
+                    <div class="mail_from_for_block">
+                        <p>От кого</p>
+                        <input type="text">
+                    </div>
+                    <div class="mail_from_for_block">
+                        <p>Кому</p>
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="comm_offer_block">
+                    <div src="" alt="" class="comm_offer__logo"></div>
+                    <div class="adresant_block">
+                        <h4 class="redct_span adresant_text">В адрес компании %имя компании%</h4>
+                        <input type="text" name="adresant_text" class="adresant_inpt" value="В адрес компании %имя компании%">
+                    </div>
+                    <div class="header_comm_offer_block">
+                        <span class="redct_span header_comm_offer">Уважаемый, %Имя%</span>
+                        <input type="text" name="header_comm_offer" class="header_inpt" value="Уважаемый %Имя%">
+                    </div>
+                    <span class="redct_span" class="header_info">На основе предоставленной вами информации, мы подготовили коммерческое предложение. Если у вас возникнут вопросы, будем рады на них ответить.</span>
+                    <textarea type="text" name="header_info" class="header_info_inpt">На основе предоставленной вами информации, мы подготовили коммерческое предложение. Если у вас возникнут вопросы, будем рады на них ответить.</textarea>
+                    <div class="price_table_block"></div>
+                    <div class="stavka_fraxta_block points_block">
+                        <h4>Ставка фрахта включает:</h4>
+                        <div class="item">
+                            <span class="redct_span stavka_fraxta_span_1">•	подача транспортных средств, соответствующих всем техническим требованием в адрес погрузки;</span>
+                            <textarea type="text" name="stavka_fraxta_1" class="stavka_fraxta_inpt_1">подача транспортных средств, соответствующих всем техническим требованием в адрес погрузки;</textarea>
+                        </div>
+                        <div class="item">
+                            <span class="redct_span stavka_fraxta_2">•	контроль погрузки и размещения груза на транспортном средстве;</span>
+                            <textarea type="text" name="stavka_fraxta_2" class="stavka_fraxta_inpt_2">контроль погрузки и размещения груза на транспортном средстве;</textarea>
+                        </div>
+                        <div class="item">
+                            <span class="redct_span stavka_fraxta_3">•	оформление ЭПИ – до 10 кодов ТНВЭД;</span>
+                            <textarea type="text" name="stavka_fraxta_3" class="stavka_fraxta_inpt_3">оформление ЭПИ – до 10 кодов ТНВЭД;</textarea>
+                        </div>
+                        <div class="item">
+                            <span class="redct_span stavka_fraxta_4">•	оформление транзитной декларации по территории ЕАЭС;</span>
+                            <textarea type="text" name="stavka_fraxta_4" class="stavka_fraxta_inpt_4">оформление транзитной декларации по территории ЕАЭС;</textarea>
+                        </div>
+                    </div>
+                    <div class="uslovia_oplati_block points_block">
+                    <h4>Условия оплаты:</h4>
+                        <div class="item">
+                            <span class="redct_span">•	Оплата в рублях по курсу ЦБ РФ на дату оплаты, возможна фиксация курса на дату загрузки или выгрузки;</span>
+                            <textarea type="text">Оплата в рублях по курсу ЦБ РФ на дату оплаты, возможна фиксация курса на дату загрузки или выгрузки;</textarea>
+                        </div>
+                        <div class="item">
+                            <span class="redct_span">•	Предоставление закрывающих бухгалтерских документов (акт выполненных работ и счет-фактура по форме универсального передаточного документа) в сканированном виде на следующий день после доставки вашего груза, оригиналов в течение 7 дней после доставки груза.</span>
+                            <textarea type="text">Предоставление закрывающих бухгалтерских документов (акт выполненных работ и счет-фактура по форме универсального передаточного документа) в сканированном виде на следующий день после доставки вашего груза, оригиналов в течение 7 дней после доставки груза.</textarea>
+                        </div>
+                    </div>
+                    <div class="dop_uslugi_block points_block">
+                        <h4>Дополнительные услуги:</h4>
+                        <div class="item">
+                            <span class="redct_span">•	Оформление в Евросоюзе экспортной таможенной декларации EX-1 (от 50 евро)</span>
+                            <textarea type="text">Оформление в Евросоюзе экспортной таможенной декларации EX-1 (от 50 евро)</textarea>
+                        </div>
+                        <div class="item">
+                            <span class="redct_span">•	Страхование грузов от всех видов рисков с полным возмещением - 0,18 % от стоимости груза.</span>
+                            <textarea type="text">Страхование грузов от всех видов рисков с полным возмещением - 0,18 % от стоимости груза.</textarea>
+                        </div>
+                    </div>
+                    <div class="footer_kp_block">
+                        <div class="item">
+                            <span>С уважением,</span>
+                            <div class="post_worker_block">
+                                <span class="redct_span">Руководитель отдела</span>
+                                <input type="text" placeholder="Должность в компании">
+                            </div>
+                        </div>
+                        <div class="item name_sender">
+                            <span class="redct_span">Фамилия И. О.</span>
+                            <input type="text" placeholder="Фамилия и инициалы">
+                        </div>
+                    </div>
+                </div>
+                <div class="comm_offer_nav">
+                    <button class="btn" onclick="kpForm.saveChanges()">Сохранить</button>
+                    <button class="btn" onclick="kpForm.changeInfo()">Изменить</button>
+                    <button class="btn" onclick="kpForm.sendOnMail()">Отправить</button>
+                </div>
+            </div>
         </div>
     </div>
     

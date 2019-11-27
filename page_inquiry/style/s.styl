@@ -434,6 +434,13 @@ textarea
     justify-content space-between
     width 540px
     box-sizing content-box
+    button 
+        width 100px
+
+.list_route__grid
+    width 100%
+    height 180px
+    margin-top 15px
 
 #show_route_info
     margin-top 4px
@@ -628,3 +635,132 @@ textarea
     width 683px
     height 200px
     
+/*--------------------------------
+
+
+        окно со списком доступа    
+
+
+----------------------------------*/
+.comm_offer_conteiner
+    display none
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+
+.comm_offer__background
+    width 100%
+    height 100%
+    opacity 0.6
+    background-color $black
+    &:hover
+        cursor pointer
+
+.main_offer_conteiner
+    position absolute
+    top 0
+    left 50%
+    width 850px
+    height 850px
+    margin-top 53px
+    margin-left -475px
+    background-color $sec-color
+
+.mail_from_for_conteiner
+    margin-top 15px
+    width 797px
+    margin-left 26px
+
+.mail_from_for_block
+    display flex
+    justify-content flex-start
+    width 100%
+    p 
+        text-align right
+        padding 2px 20px 0 0
+        width 100px
+    input 
+        width 697px
+
+
+
+.comm_offer_block
+    width 630px
+    height 610px
+    padding 0 75px 90px 90px
+    margin 15px 0 0 26px
+    border 1px solid $light_blue
+    background-color $main-text-color
+    overflow-y scroll
+    h4
+        font-weight bold
+        margin 5px 0 5px 0
+        color $black
+    p
+        color $black
+
+.comm_offer__logo
+    margin-top 50px
+    width 100%
+    height 130px
+    background-image url(../../page_inquiry/style/img/logo_kp_img.png)
+    background-size 100%
+    background-repeat no-repeat
+
+.adresant_block
+    position relative
+    left 60%
+    width 40%
+    margin-bottom 20px
+    text-align right
+    input 
+        width 100%
+        text-align right
+
+.list_price_kp__grid
+    width 100%
+    height 100px
+
+.header_comm_offer_block
+    position relative
+    left 50%
+    width 200px
+    margin-left -100px
+    text-align center
+    margin-bottom 15px
+
+.points_block
+    width 100%
+    .item
+        margin-left 30px
+
+textarea
+    width 100%
+    max-width 100%
+    min-height 50px
+    max-height 50px
+    margin-bottom 5px
+
+.footer_kp_block
+    display flex
+    justify-content space-around
+    width 100%
+    margin-top 50px
+    .item
+        width 160px
+
+.name_sender
+    margin-top 25px
+    text-align right
+
+.comm_offer_nav
+    display flex
+    justify-content flex-end
+    margin 25px 25px 0 0
+    .btn 
+        width 100px
+        margin-left 15px
+
+
