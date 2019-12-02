@@ -8,7 +8,7 @@
     
     <script src="https://unpkg.com/ag-grid-enterprise@21.2.2/dist/ag-grid-enterprise.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../dist/bundle.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/@ag-grid-community/all-modules/dist/styles/ag-grid.css">
     <link rel="stylesheet" href="https://unpkg.com/@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css">
@@ -19,23 +19,23 @@
 <body>
     <div class="header_conteiner">
         <div class="nav_btn_block">
-            <a href="../page_lid/page_lid.html"><div class="nav_btn" id="journal_lid_btn">Журнал лидов</div></a>
+            <div class="nav_btn" id="journal_inq_btn">Журнал запросов</div>
             <div class="nav_btn" id="create_lid">Создать запрос</div>
-            <div class="nav_btn" id="journal_inq_btn" onclick="journalInq.showJournalInq()">Журнал запросов</div>
             <div class="nav_btn">Отправить в архив</div>
         </div>
     </div>
     <div class="main_conteiner">
         <div class="list_inq_conteiner">
+            <div class="hor_line"></div>
             <div class="list_route_conteiner" value="0">
             </div>
         </div>
         <div class="info_inq_conteiner">
                 <div class="info-inq__block">
                     <div class="name_block inq_string_big">
-                        <input type="text" id="name-block__inpt" placeholder="Введите название лида" name='name_inq' readonly>
-                        <button id="btn_edit_inq_nav" class="btn" onclick="inqInfo.InqEditModeOn()" >Редактировать запрос</button>
-                        <button id="btn_save_inq_nav" class="btn" style="display: none" onclick="inqInfo.InqEditModeOff()" >Сохранить запрос</button>
+                        <input type="text" id="name-block__inpt" placeholder="Введите название запроса" name='name_inq' readonly>
+                        <button id="btn_edit_inq_nav" class="btn" >Редактировать запрос</button>
+                        <button id="btn_save_inq_nav" class="btn" style="display: none" >Сохранить запрос</button>
                     </div>
                     <div class="inq_string_big">
                         <div class="refNumb_block inq_string">
@@ -118,24 +118,11 @@
                         <div class="route-block__text">
                             <h2>Маршрут</h2>
                             <div class="route-block__nav">
-                                <button class="btn" id="adres-tamoj__btn" onclick="routeDeliv.addPointTamoj()" value="2">Добавить таможню</button>
-                                <button class="btn" id="add_point_route" onclick="routeDeliv.addPointRoute()" value="2">Добавить пункт</button>
-                                <button class="btn" id="create_route" onclick="routeDeliv.createRoute()" value="0">Cоздать</button>
+                                <button class="btn" id="add_point_route" value="2">Добавить пункт</button>
+                                <button class="btn" id="create_route" value="0">Cоздать</button>
                             </div>
                         </div>
                         <div class="route-block__table"></div>
-                        <div class="route-block__adres-tamoj">
-                            <div id="tamoj_points" class="adres-tamoj__points">
-                                <div class="points__place-block">
-                                    <p>отправление</p>
-                                    <input type="text" name="start_tamoj" id="start_tamoj" placeholder="Адрес таможни" readonly>
-                                </div>
-                                <div class="points__place-block">
-                                    <p>назначение</p>
-                                    <input type="text" name="finish_tamoj" id="finish_tamoj" placeholder="Адрес таможни" readonly>
-                                </div>
-                            </div>                           
-                        </div>
                     </div>
                     <div class="hor_line"></div>
                     <div class="cargo-info">
@@ -224,7 +211,7 @@
                     <div class="inq_string_big">
                         <div class="otdel-perevoz-block">
                             <div class="rates-block">
-                                <button class="btn" onclick="inqInfo.showRatesBlock()">Ставки</button>
+                                <button class="btn" id="showRates">Ставки</button>
                             </div>
                             <div class="tranzit-block inq_string">
                                 <textarea name="" id="" placeholder="Информация по транзиту" readonly></textarea>
@@ -236,17 +223,17 @@
                         <div class="otdel-prodaj-block">
                             <div class="inq_string">
                                 <p>Доступность</p>
-                                <button id="show_list_access" class="btn" onclick="inqInfo.showAccessWindow()">посмотреть список &gt;</button>
+                                <button id="show_list_access" class="btn">посмотреть список &gt;</button>
                             </div>
                             <div class="inq_string">
                                 <p>Последний контакт</p>
                                 <div class="last_connect">
                                     <p id="text_last_connect">hh:mm / dd.mm.yyyy</p>
-                                    <button id="update_last_connect" class="btn" onclick="inqInfo.updateLastConnect()">Обновить</button>
+                                    <button id="update_last_connect" class="btn">Обновить</button>
                                 </div>
                             </div>
                             <div class="create_btn_block">
-                                <button id="create_kp" class="btn" onclick="kpForm.createKP()">Сделать КП</button>
+                                <button id="create_kp" class="btn">Сделать КП</button>
                                 <button id="create_order" class="btn">Сформировать заказ</button>
                             </div>
                         </div>
@@ -416,7 +403,7 @@
             </div>
         </div>
         <div class="comm_offer_conteiner">
-            <div class="comm_offer__background" onclick="kpForm.closeKP()"></div>
+            <div class="comm_offer__background"></div>
             <div class="main_offer_conteiner">
                 <div class="mail_from_for_conteiner">
                     <div class="mail_from_for_block">
@@ -497,9 +484,9 @@
                     </div>
                 </div>
                 <div class="comm_offer_nav">
-                    <button class="btn" onclick="kpForm.saveChanges()">Сохранить</button>
-                    <button class="btn" onclick="kpForm.changeInfo()">Изменить</button>
-                    <button class="btn" onclick="kpForm.sendOnMail()">Отправить</button>
+                    <button class="btn" id="kp_save_changes">Сохранить</button>
+                    <button class="btn" id="kp_switch_info">Изменить</button>
+                    <button class="btn" id="kp_send">Отправить</button>
                 </div>
             </div>
         </div>

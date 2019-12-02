@@ -9,7 +9,7 @@
 
     <script src="https://unpkg.com/ag-grid-enterprise@21.2.2/dist/ag-grid-enterprise.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../dist/bundle.js"></script>
     
     <title>лид</title>
 </head>
@@ -17,13 +17,14 @@
     <div class="header_conteiner">
         <div class="nav_btn_block">
             <div class="nav_btn" id="journal_lid_btn">Журнал лидов</div>
-            <div class="nav_btn" id="create_lid" onclick="infoLid.createNewLid()">Создать лида</div>
-            <div class="nav_btn" id="create_inq" onclick="infoLid.createInq()">Сформировать запрос</div>
+            <div class="nav_btn" id="create_lid">Создать лида</div>
+            <div class="nav_btn" id="create_inq">Сформировать запрос</div>
             <div class="nav_btn">Отправить в архив</div>
         </div>
     </div>
     <div class="main_conteiner">
         <div class="list_lid_conteiner">
+            <div class="journal_lid_conteiner"></div>
             <div class="hor_line"></div>
             <div class="inq_list_conteiner" value="0"></div>
         </div>
@@ -31,7 +32,7 @@
             <div class="name_lid_block lid_string">
                 <input type="text" name="name_lid" placeholder="Введите название лида" class="lid_name_inpt edit_info_inpt" id="lid_name_inpt">
                 <button id="btn_edit_lid_nav" class="btn">Редактировать лид</button>
-                <button id="btn_save_lid_nav" class="btn" value="old_lid" onclick="infoLid.saveChangesInLid(journalLid)" style="display: none">Сохранить лид</button>
+                <button id="btn_save_lid_nav" class="btn" value="old_lid" style="display: none">Сохранить лид</button>
             </div>
             <div class="status_lid_block lid_string">
                 <p>Статус</p>
@@ -61,6 +62,7 @@
             </div>
             <div class="horizontal_line"></div>
             <textarea name="" id="" readonly class="dop_info" placeholder="Введите описание лида"></textarea>
+            <div class="hor_line"></div>
             <h1 class="company_header">Компания</h1>
             <form class="lid_info_company_block">
                     <div class="info_string">
@@ -110,6 +112,7 @@
                         </div>
                     </div>
             </form>
+            <div class="hor_line"></div>
             <div class="lid_info__contact_conteiner">
                 <div class="header_contacts">
                     <h1>Контакты</h1>
@@ -118,9 +121,11 @@
                 <div class="contact_item_block cont_block0">
                     <div class="info_string contact_item__name">
                         <input type="text" name="name_contact" placeholder="Введите имя контакта" class="contact_info_inpt edit_info_inpt" id="contact_name_inpt0" style="width: 350px">
-                        <input type="button" id="del_name_contact0" class=" del_btn del_btn_info">
-                        <button class="btn show_info_contact" id="show_contact0" onclick="contactBlock.showDopInfo(0)">развернуть</button>
-                        <button class="btn hide_info_contact" id="hide_contact0" style="display: none" onclick="contactBlock.hideDopInfo(0)">свернуть</button>
+                        <div class="nav_contact_name" id="nav_contact_name">
+                            <button class="btn show_info_contact" id="show_contact0">развернуть</button>
+                            <button class="btn hide_info_contact" id="hide_contact0" style="display: none">свернуть</button>
+                            <input type="button" id="del_name_contact0" class=" del_btn del_btn_info">
+                        </div>
                     </div>
                     <div class="info_string">
                         <p>Тел.</p>
@@ -146,7 +151,7 @@
                     </div>
                 </div>
             </div>
-
+            <div class="hor_line"></div>
             <div class="lid_string">
                 <p>Отрасль</p>
                 <select disabled name="industry_lid" id="" class="dd_list">
@@ -157,21 +162,9 @@
             <div class="lid_tags_block">
                 <div class="header_contacts">
                     <p>Теги услуг</p>
-                    <button class="add_new_tag add_block btn">добавить тег</button>
+                    <button class="add_new_tag add_block btn" value="0">добавить тег</button>
                 </div>
                 <div class="lid_tags__list">
-                    <div class="list__tag_block">
-                        <p>название тега</p>
-                        <input type="button" class="del_btn del_btn_info">
-                    </div>
-                    <div class="list__tag_block">
-                        <p>название тега</p>
-                        <input type="button" class="del_btn del_btn_info">
-                    </div>
-                    <div class="list__tag_block">
-                        <p>название тега</p>
-                        <input type="button" class="del_btn del_btn_info">
-                    </div>
                 </div>
                 <div class="lid_new_tags_conteiner">                                
                     <div class="journal_tags_block">
@@ -199,14 +192,21 @@
                     <div class="access_executor_block">
                         <div class="access__title">
                             <h4>Соисполнители</h4>
-                            <input type="button" class="add_btn" id="add_user_executor">
+                            <div class="access_title__nav">
+                                <button class="btn" id="add_user_executor">Добавить</button>
+                                <button class="btn" id="del_user_executor">Удалить</button>
+                            </div>
                         </div>
                         <div class="executor_list access__list"></div>
                     </div>
+                    <div class="hor_line"></div>
                     <div class="access_observer_block">
                         <div class="access__title">
                             <h4>Наблюдатели</h4>
-                            <input type="button" class="add_btn" id="add_user_observer">
+                            <div class="access_title__nav">
+                                <button class="btn" id="add_user_observer">Добавить</button>
+                                <button class="btn" id="del_user_observer">Удалить</button>
+                            </div>
                         </div>
                         <div class="observer_list access__list">
                             <div class="user_item_block">

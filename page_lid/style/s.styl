@@ -255,7 +255,8 @@ p
     margin-bottom 10px
     text-align center
     background-color $sec-color
-    border-bottom 3px solid $light_blue      
+    border-bottom 3px solid $light_blue   
+    z-index 999   
     
     button
         width 150px
@@ -279,14 +280,12 @@ p
     margin-bottom 15px
     outline none 
     border none
-    border-radius 5px
     background-color $grey
     color $black
 
 
 .lid_info_company_block
     padding 15px 15px 8px 15px 
-    border-radius 10px
     background-color $grey
     margin-bottom 20px
 
@@ -407,13 +406,21 @@ p
         color $black
 
 .contact_item__name
+    display flex
+    justify-content space-between
     height 25px
-    h4
-        padding-top 5px
-        border none
-    
-.contact_info_text
     width 370px
+    
+.contact_info_inpt 
+    width 250px
+
+.nav_contact_name
+    display flex
+    justify-content space-between
+    width 120px
+    button
+        width 80px
+        margin-left 10px
 
 
 .more_info_contact
@@ -553,12 +560,11 @@ p
 
 .access_executor_block
     width 350px
-    box-sizing content-box
+    margin-bottom 10px
 
 .access_observer_block
     width 350px
     box-sizing content-box
-    margin-top 20px
 
 .access__title
     display flex 
@@ -566,12 +572,32 @@ p
     justify-content space-between
     width 348px
     height 35px
-    background-color $light_grey
     h4
         margin 8px 0 0 15px
     input 
         display block
         margin-top 8px
+
+.access_title__nav
+    display flex
+    justify-content space-between
+    width 170px
+
+#add_user_executor
+    width 80px
+    margin-top 5px
+
+#del_user_executor
+    width 80px
+    margin-top 5px
+    
+#add_user_observer
+    width 80px
+    margin-top 5px
+
+#del_user_observer
+    width 80px
+    margin-top 5px
 
 .access__list
     width 350px

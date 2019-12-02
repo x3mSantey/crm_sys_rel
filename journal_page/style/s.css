@@ -1,0 +1,97 @@
+@font-face {
+  font-family: TheCapt;
+  src: url("fonts/TheCapt.otf");
+}
+@font-face {
+  font-family: ProductSans;
+  src: url("fonts/ProductSans.otf");
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #e2e2e2;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+a:visited {
+  color: #fff;
+}
+h1 {
+  font-family: TheCapt;
+  font-weight: inherit;
+  color: #fff;
+  margin: 0;
+  padding: 5px 10px 15px 10px;
+  height: 33px;
+}
+h2 {
+  font-family: TheCapt;
+  font-weight: inherit;
+  color: #fff;
+  margin: 0;
+  padding: 5px 10px 15px 10px;
+}
+h4 {
+  font-family: ProductSans;
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+  padding: 0 10px 0 0px;
+}
+.btn {
+  border: none;
+  background-color: #faa916;
+  color: #000;
+  height: 25px;
+}
+.btn:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #292929;
+  border: 1px solid #faa916;
+  transition-duration: 0.5s;
+}
+/*--------------------------------
+
+
+    контейнер заголовка   
+
+
+----------------------------------*/
+.main_conteiner {
+  width: 100%;
+  height: 100%;
+}
+.journal_block {
+  position: relative;
+  top: 5vh;
+  left: 10%;
+  width: 80%;
+  height: 90vh;
+  padding: 15px;
+  background-color: #292929;
+}
+.journal_type_btn_conteiner {
+  display: flex;
+  width: 100%;
+  height: 25px;
+  text-align: center;
+}
+.journal_type_btn_conteiner .btn {
+  width: 150px;
+  margin-right: 10px;
+}
+.journal_type_btn_conteiner .btn:hover {
+  width: 148px;
+  height: 23px;
+}
+.table_conteiner {
+  width: 100%;
+  margin-top: 25px;
+}
+.ag-theme-balham {
+  height: 80vh;
+}

@@ -234,6 +234,7 @@ p {
   text-align: center;
   background-color: #292929;
   border-bottom: 3px solid #30bced;
+  z-index: 999;
 }
 .name_lid_block button {
   width: 150px;
@@ -254,13 +255,11 @@ p {
   margin-bottom: 15px;
   outline: none;
   border: none;
-  border-radius: 5px;
   background-color: #e2e2e2;
   color: #000;
 }
 .lid_info_company_block {
   padding: 15px 15px 8px 15px;
-  border-radius: 10px;
   background-color: #e2e2e2;
   margin-bottom: 20px;
 }
@@ -384,14 +383,22 @@ p {
   color: #000;
 }
 .contact_item__name {
+  display: flex;
+  justify-content: space-between;
   height: 25px;
-}
-.contact_item__name h4 {
-  padding-top: 5px;
-  border: none;
-}
-.contact_info_text {
   width: 370px;
+}
+.contact_info_inpt {
+  width: 250px;
+}
+.nav_contact_name {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+}
+.nav_contact_name button {
+  width: 80px;
+  margin-left: 10px;
 }
 .more_info_contact:hover {
   color: #000;
@@ -537,12 +544,11 @@ p {
 }
 .access_executor_block {
   width: 350px;
-  box-sizing: content-box;
+  margin-bottom: 10px;
 }
 .access_observer_block {
   width: 350px;
   box-sizing: content-box;
-  margin-top: 20px;
 }
 .access__title {
   display: flex;
@@ -550,7 +556,6 @@ p {
   justify-content: space-between;
   width: 348px;
   height: 35px;
-  background-color: #3b3b3b;
 }
 .access__title h4 {
   margin: 8px 0 0 15px;
@@ -558,6 +563,27 @@ p {
 .access__title input {
   display: block;
   margin-top: 8px;
+}
+.access_title__nav {
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+}
+#add_user_executor {
+  width: 80px;
+  margin-top: 5px;
+}
+#del_user_executor {
+  width: 80px;
+  margin-top: 5px;
+}
+#add_user_observer {
+  width: 80px;
+  margin-top: 5px;
+}
+#del_user_observer {
+  width: 80px;
+  margin-top: 5px;
 }
 .access__list {
   width: 350px;
