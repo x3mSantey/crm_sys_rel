@@ -88,17 +88,14 @@ export class RatesTable {
         let year = dt.getFullYear()
 
         this.rowDataListRoute.push({
-                user_op: 'Иванов Иван',
-                summ_rates: summ,
-                currency_rates: cur,
-                comment_rates: '',
-                checkbox_rates: '',
-                date_rates: `${hours}:${min} / ${day}.${month}.${year}`
-            })
+            user_op: 'Иванов Иван',
+            summ_rates: summ,
+            currency_rates: cur,
+            comment_rates: '',
+            checkbox_rates: '',
+            date_rates: `${hours}:${min} / ${day}.${month}.${year}`
+        })
 
         this.showJournal()
-        
-        console.log(summ)
-        console.log(cur)
     }
 }

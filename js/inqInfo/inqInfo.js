@@ -49,8 +49,6 @@ export class InquireInfo {
     }
     showAccessWindow() {
         $('.access_users_conteiner').css({'display': 'block'})
-        
-        
     }
     closeAccessWindow() {
         $('.access_users_conteiner').css({'display': 'none'})

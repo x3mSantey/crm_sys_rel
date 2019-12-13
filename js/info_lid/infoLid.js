@@ -86,7 +86,7 @@ export class InfoLid {
         $('input[type=number]').attr('readonly', 'readonly')
         $('input[type=text]').attr('readonly', 'readonly')
     }
-    saveChangesInLid (journalLid) {
+    saveChangesInLid (journalLid, companyBlock) {
         if ($('#btn_save_lid_nav').val() === 'new_lid') {
             this.checkStatus()
             this.checkAllInpts()
@@ -99,6 +99,7 @@ export class InfoLid {
             this.lidEditModeOff()
             //Заглушка для создания первого лида
         } else if ($('#btn_save_lid_nav').val() === 'old_lid') {
+            companyBlock.saveInfoChanges()
             this.checkStatus()
             this.checkAllInpts()
             this.lidEditModeOff()
@@ -107,6 +108,7 @@ export class InfoLid {
     }
     showOrHideBtns (evt) {
         $('.del_btn_info').css({'display': evt})
+        $('.del_btn_comp').css({'display': evt})
         $('.add_btn_info').css({'display': evt})
     }
     switchBtnInNav (edit, save) {
@@ -127,12 +129,6 @@ export class InfoLid {
         }
         for(let i=0; i<arrInputLid.length; i++) {
             this.lidInformation[arrInputLid[i].name] = arrInputLid[i].value
-            if (arrInputLid[i].value === '') {
-                $('.edit_info_text').css({'border-bottom': '1px solid #292929'})
-                $(arrTextLid[i]).text('')
-            } else {
-                $(arrTextLid[i]).text(arrInputLid[i].value)
-            }
         }
         console.log(this.lidInformation)
     }
@@ -163,17 +159,24 @@ export class InfoLid {
         $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Вид транспорта - Не габарит</p><p>12:15  12.06.2129</p></div>`)
     }
     addNewTag() {
-        let val = $('.add_new_tag').val()
         let inpt = $('.journal_tags_block input:checked')
 
-        for (let i = 0; i < inpt.length; i++) {
-            let name = inpt[i].getAttribute('name')
+        inpt.each( (el) => {
+            let val = $('.add_new_tag').val()
+            ++val
+            let name = inpt[el].getAttribute('name')
             $('.lid_tags__list').append(`<div class="list__tag_block" id="tag_block_${val}"></div>`)
             $(`#tag_block_${val}`).append(`<p>${name}</p>`)
-            $(`#tag_block_${val}`).append(`<input style="display: block" type="button" id="del_tag_${val}" onclick="infoLid.delExistTag(${val})" class="del_btn del_btn_info del_tag"></input>`)
-            ++val
-        }
-        $('.add_new_tag').val(val)
+            $(`#tag_block_${val}`).append(`<input style="display: block" type="button" id="del_tag_${val}" class="del_btn del_btn_info del_tag">`)
+            $(`#del_tag_${val}`).on('click', () => {this.delExistTag(val)})
+            $('.add_new_tag').val(val)
+        })
+    }
+    createNewTag() {
+        let id = $('.journal_tags_block')[0].childElementCount
+        let value = $('.add_new_tag_block input').val()
+        $('.journal_tags_block').append(`<div class="journal_item_block" id="journal_tags_${id}"><input type="checkbox" name="${value}" id="journal_tags_check_${id}"><p>${value}</p></div>`)
+        $('.add_new_tag_block input').val('')
     }
     delExistTag(id) {
         $(`#tag_block_${id}`).remove()

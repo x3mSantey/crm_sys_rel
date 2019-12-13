@@ -22,13 +22,13 @@ export class JournalLid {
                 sortable: true
             },
             {
-                headerName: 'Статус', 
-                field: 'status_lid',
+                headerName: 'Название компании', 
+                field: 'name_comp',
                 sortable: true
             },
             {
-                headerName: 'Статус', 
-                field: 'status_lid',
+                headerName: 'Источник', 
+                field: 'source_lid',
                 sortable: true
             },
         ]

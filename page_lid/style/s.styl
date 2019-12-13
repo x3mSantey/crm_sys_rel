@@ -72,13 +72,11 @@ input, button, select
     border none
 
 input[type=text]
-    width 150px
     background-color $grey
     border-bottom 3px solid $blue
     padding-left 10px
 
 input[type=number]
-    width 150px
     background-color $grey
     border-bottom 3px solid $blue
     padding-left 10px
@@ -241,7 +239,7 @@ p
 #lid_name_inpt
     font-family TheCapt
     font-size 24px
-    width 300px 
+    width 230px 
     height 32px
     background-color $sec-color
     color $main-text-color
@@ -269,12 +267,10 @@ p
     font-weight bold
     color $main-text-color
 
-
-    
 .dop_info
-    width: 376px
+    width: 380px
     height 70px
-    max-width 376px
+    max-width 380px
     max-height 140px
     padding 10px
     margin-bottom 15px
@@ -288,7 +284,10 @@ p
     padding 15px 15px 8px 15px 
     background-color $grey
     margin-bottom 20px
-
+    input[type=text], input[type=number]
+        text-align right
+        width 200px
+        padding-left 0
     p
         color $black
 
@@ -308,6 +307,13 @@ p
         padding 0
         margin-left 125px
         text-align right
+
+#dob_numb_company_inpt
+    width 60px
+    margin-right 10px
+
+#numb_company_inpt
+    width 130px
 
 .edit_block
     display flex
@@ -394,7 +400,6 @@ p
     padding 10px 15px 10px 15px
     margin-bottom 10px
     background-color $grey
-    border-radius 5px
     overflow hidden
     transition 1s
 
@@ -412,7 +417,7 @@ p
     width 370px
     
 .contact_info_inpt 
-    width 250px
+    width 200px
 
 .nav_contact_name
     display flex
@@ -464,7 +469,7 @@ p
     right 455px
 
 .add_new_tag_block
-    width 120px
+    width 150px
     height 200px
     input 
         height 20px
@@ -516,7 +521,6 @@ p
 
 ----------------------------------*/
 .access_users_conteiner 
-    display none
     position fixed
     top 0
     left 0
@@ -545,26 +549,15 @@ p
     background-color $sec-color
     box-shadow 0 0 20px 5px $sec-color
 
-.list_users_all_conteiner
+.list_all_users_conteiner
     box-sizing content-box
     margin 20px
     overflow hidden
 
-.access_users__block
-    width 350px
+.access_users__executor_block
     box-sizing content-box
-    height 540px
-    padding 20px 25px 20px 20px
-    background-color $sec-color
-    overflow-y scroll 
-
-.access_executor_block
-    width 350px
-    margin-bottom 10px
-
-.access_observer_block
-    width 350px
-    box-sizing content-box
+    margin 20px 
+    overflow hidden
 
 .access__title
     display flex 
@@ -590,17 +583,10 @@ p
 #del_user_executor
     width 80px
     margin-top 5px
-    
-#add_user_observer
-    width 80px
-    margin-top 5px
-
-#del_user_observer
-    width 80px
-    margin-top 5px
 
 .access__list
     width 350px
+    max-height 515px
     margin-top 10px
     overflow-y scroll 
 
