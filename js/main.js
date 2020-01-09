@@ -11,6 +11,7 @@ import { KpForm } from "./kpForm/kpForm";
 import { CompanyBlock } from "./company_block/companyBlock"
 import { AccessBlock } from "./accessBlock/accessBlock";
 import { dataLids } from './info_lid/dataLids'
+import { cargoInfoTable } from './cargoInfoTable/cargoInfoTable'
 
 
 const journalLid = new JournalLid(data)
@@ -62,10 +63,10 @@ $(document).ready(function() {
 
     //добавить маршрут в запросе
     $('#add_point_route').on('click', function() {routeDeliv.addPointRoute()})
-    $('#create_route').on('click', function() {routeDeliv.createRoute()})
+    $('#create_route').on('click', function() {routeDeliv.createRoute(cargoInfoTable)})
 
     //показать страницу ставок
-    $('#showRates').on('click', function() {inqInfo.showRatesBlock()})
+    $('#showRates').on('click', function() {inqInfo.showRatesBlock()})  
     //показать страницу доступности
     $('#show_list_access').on('click', function() {inqInfo.showAccessWindow()})
 

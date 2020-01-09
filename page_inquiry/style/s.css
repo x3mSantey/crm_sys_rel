@@ -77,11 +77,9 @@ button:hover {
   transition-duration: 0.5s;
 }
 select {
-  width: 150px;
+  width: 200px;
   height: 25px;
   text-align: center;
-  border-bottom: 2px solid #0070b2;
-  background-color: #e2e2e2;
 }
 .hor_line {
   width: 100%;
@@ -94,7 +92,7 @@ p {
   font-weight: bold;
   color: #fff;
   margin: 0;
-  padding-bottom: 5px;
+  line-height: 25px;
 }
 .del_btn {
   display: none;
@@ -192,17 +190,12 @@ p {
 
 
 ----------------------------------*/
-.inq_string_big {
-  display: flex;
-  justify-content: space-between;
-  width: 600px;
-  margin-bottom: 10px;
-}
 .inq_string {
   display: flex;
   justify-content: space-between;
-  width: 295px;
-  margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 12px;
+  line-height: inherit;
 }
 .info_inq_conteiner {
   width: 630px;
@@ -215,20 +208,27 @@ p {
 }
 .name_block {
   position: sticky;
-  top: 53px;
+  top: 0;
+  width: 100%;
+  height: 32px;
+  padding: 15px 0 12px 0;
+  margin-bottom: 10px;
+  text-align: center;
   background-color: #292929;
   border-bottom: 3px solid #30bced;
   z-index: 999;
-  padding: 15px 0 12px 0;
 }
 #name-block__inpt {
-  width: 400px;
-  height: 40px;
-  border-bottom: 0px solid #0070b2;
-  background-color: #292929;
   font-family: TheCapt;
-  font-size: 32px;
+  font-size: 24px;
+  width: 230px;
+  height: 32px;
+  background-color: #292929;
   color: #fff;
+  border: none;
+}
+#btn_edit_inq_nav {
+  width: 150px;
 }
 .tender_block {
   display: flex;
@@ -295,7 +295,9 @@ p {
   text-align: right;
 }
 .otdel-perevoz-block {
-  box-sizing: content-box;
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0 0 0;
 }
 .rates-block {
   width: 290px;
@@ -310,18 +312,10 @@ p {
   height: 20px;
   padding: 0 6px 0 6px;
 }
-.tranzit-block {
-  width: 290px;
-  height: 50px;
-}
-.delivery-block {
-  width: 290px;
-  height: 50px;
-}
 textarea {
-  max-width: 280px;
+  max-width: 320px;
   max-height: 40px;
-  min-width: 280px;
+  min-width: 320px;
   min-height: 40px;
   padding: 5px;
   border: none;
@@ -359,7 +353,7 @@ textarea {
   box-sizing: content-box;
 }
 .list-route__item {
-  width: 540px;
+  width: 680px;
   box-sizing: content-box;
   margin-top: 10px;
   padding: 10px;
@@ -697,13 +691,6 @@ textarea {
 }
 .points_block .item {
   margin-left: 30px;
-}
-textarea {
-  width: 100%;
-  max-width: 100%;
-  min-height: 50px;
-  max-height: 50px;
-  margin-bottom: 5px;
 }
 .footer_kp_block {
   display: flex;

@@ -1,7 +1,7 @@
 export class RouteOfTheDelivery{
     constructor() {
         this.journalColW = {
-            items_route: 70,
+            items_route: 80,
             index_route: 70,
             quadr_route: 70,
         }
@@ -51,7 +51,7 @@ export class RouteOfTheDelivery{
         ]
         this.rowDataListRoute = [
                 {
-                    items_route: 'откуда',
+                    items_route: 'погрузка',
                     country_route: '',
                     index_route: '',
                     quadr_route: '',
@@ -60,7 +60,7 @@ export class RouteOfTheDelivery{
                     adres_tamoj: ''
                 },
                 {
-                    items_route: 'куда',
+                    items_route: 'выгрузка',
                     country_route: '',
                     index_route: '',
                     quadr_route: '',
@@ -103,7 +103,7 @@ export class RouteOfTheDelivery{
             this.showJournalRoute(0)
         }
     }
-    createRoute() {
+    createRoute(cargoInfoTable) {
         let val = $(`.list_route_conteiner`).attr('value')
 
         let rowData = this.gridOptions.rowData
@@ -123,21 +123,35 @@ export class RouteOfTheDelivery{
         $(`.route-block__table${val}`).prepend(`<div class="dop__adres-tamoj${val}"></div>`)
         $(`.dop__adres-tamoj${val}`).append(`<div class="adres-tamoj__points adres-tamoj${val}"></div>`)
         
-        $(`#route_block_${val}`).prepend(`<div class="otdel-perevoz-block_${val}"></div>`)
+        $(`#route_block_${val}`).prepend(`<button class="btn" id="add_point_route_${val}" value="2">Добавить пункт</button>`)
 
-        $(`.otdel-perevoz-block_${val}`).prepend(`<div class="rates-block_${val}"><button class="btn" id="showRates_${val}">Ставки</button></div>`)
-        $(`.otdel-perevoz-block_${val}`).prepend(`<div class="tranzit-block_${val} inq_string"><textarea name="" id="" placeholder="Информация по транзиту" readonly></textarea></div>`)
-        $(`.otdel-perevoz-block_${val}`).prepend(`<div class="delivery-block_${val} inq_string"><textarea name="" id="" placeholder="Укажите срок поставки" readonly></textarea></div>`)                        
-         
-        $(`#show_route_info_${val}`).on('click', () => {this.showRouteInfo(val)})
-        $(`#hide_route_info_${val}`).on('click', () => {this.hideRouteInfo(val)})
-
+        cargoInfoTable.showJournalRoute(val)
         this.renderJournalRouteDel(val)
-        //let tableRoute = new DeliveryPath(rowData)
-        //tableRoute.showRoutePath(val)
-        debugger
+
+        $(`#route_block_${val}`).append(`<div class="rates-block_${val}"><button class="btn" id="showRates_${val}">Ставки</button></div>`)
+
+        $(`.otdel-perevoz-block_${val}`).append(`<div class="transp_block_${val} inq_string"></div>`)
+        $(`.transp_block_${val}`).append(`<select name="type_transp_inq" id=""><option value="1">Тип транспорта 1</option> <option value="2">Тип транспорта 2</option> <option value="2">Тип транспорта 3</option><option value="3">Тип транспорта 4</option></select>`)
+        $(`.transp_block_${val}`).append(`<p>Тип транспорта</p>`)
+
+        //$(`.otdel-perevoz-block_${val}`).prepend(`<div class="loading_block_${val} inq_string"></div>`)
+        //$(`.loading_block_${val}`).prepend(`<select name="loading_inq_${val}" id=""><option value="1">Зад</option><option value="2">Бок</option><option value="3">Верхняя</option><option value="4">Полная растентовка</option></select>`)
+        //$(`.loading_block_${val}`).prepend(`<p>Способ погрузки</p>`)
         
 
+        $(`#route_block_${val}`).append(`<div class="otdel-perevoz-block_${val} otdel-perevoz-block"></div>`)
+        $(`.otdel-perevoz-block_${val}`).append(`<textarea name="" id="info_tranzit_${val}" class="route_text" placeholder="Информация по транзиту"></textarea>`)
+        $(`.otdel-perevoz-block_${val}`).append(`<textarea name="" id="delivery_time_${val}" class="route_text" placeholder="Укажите срок поставки"></textarea>`)                        
+        
+        
+        //$(`#show_route_info_${val}`).on('click', function() {routeDeliv.showRouteInfo()})
+        //$(`#hide_route_info_${val}`).on('click', () => {console.log('was')})
+
+
+        
+        //let tableRoute = new DeliveryPath(rowData)
+        //tableRoute.showRoutePath(val)
+        
         ++val
         $(`.list_route_conteiner`).attr('value', val)
     }
@@ -147,7 +161,7 @@ export class RouteOfTheDelivery{
         $(`#show_route_info_${i}`).css({'display':'none'})
     }
     hideRouteInfo(i) {
-        $(`route_block_${i}`).css({'display':'none'})
+        $(`#route_block_${i}`).css({'display':'none'})
         $(`#show_route_info_${i}`).css({'display':'block'})
         $(`#hide_route_info_${i}`).css({'display':'none'})
     }
