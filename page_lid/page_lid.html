@@ -11,72 +11,78 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="../dist/bundle.js"></script>
     
-    <title>лид</title>
+    <title>лид</title> 
 </head>
 <body>
-    <div class="header_conteiner">
-        <div class="nav_btn_block">
-            <div class="nav_btn" id="journal_lid_btn">Журнал лидов</div>
-            <div class="nav_btn" id="create_lid">Создать лида</div>
-            <div class="nav_btn" id="create_inq">Сформировать запрос</div>
-            <div class="nav_btn">Отправить в архив</div>
-        </div>
-    </div>
     <div class="main_conteiner">
         <div class="list_lid_conteiner">
+            <div class="header_conteiner">
+                <div class="nav_btn_block">
+                    <div class="nav_btn" id="journal_lid_btn">Журнал лидов</div>
+                    <div class="nav_btn" id="create_lid">Создать лида</div>
+                    <div class="nav_btn" id="create_inq">Сформировать запрос</div>
+                    <div class="nav_btn">Отправить в архив</div>
+                </div>
+            </div>
             <div class="journal_lid_conteiner"></div>
-            <div class="hor_line"></div>
             <div class="inq_list_conteiner" value="0"></div>
         </div>
         <div class="lid_info_conteiner">
             <div class="name_lid_block lid_string">
-                <input type="text" name="name_lid" placeholder="Введите название лида" class="lid_name_inpt edit_info_inpt" id="lid_name_inpt">
+                <input type="text" name="name_lid" readonly placeholder="Введите название лида" class="lid_name_inpt edit_info_inpt lidDataInpt" id="lid_name_inpt">
                 <button id="btn_edit_lid_nav" class="btn">Редактировать лид</button>
                 <button id="btn_save_lid_nav" class="btn" value="old_lid" style="display: none">Сохранить лид</button>
             </div>
             <div class="status_lid_block lid_string">
                 <p>Статус</p>
-                <select disabled name="status_lid" id="status_lid" class="status_list dd_list">
-                    <option value="">Неразобран</option>
-                    <option value="">В работе</option>
-                    <option value="">Активный</option>
-                    <option value="">Архив</option>
+                <select disabled name="status_lid" id="status_lid" class="status_list dd_list lidDataSel">
+                    <option value="1">Неразобран</option>
+                    <option value="2">В работе</option>
+                    <option value="3">Активный</option>
+                    <option value="4">Архив</option>
                 </select>
             </div>
             <div class="lid_string">
                 <p>Ответственный</p>
-                <p class="respon_list">Имя пользователя</p>
+                <p class="respon_list lidDataInpt" name="respon_lid" >Имя пользователя</p>
             </div>
             <div class="lid_string">
                 <p>Источник</p>
-                <select disabled name="source_lid" id="" class="source_list dd_list">
-                    <option value="">Поиск в интернете</option>
-                    <option value="">Рекомендации клиентов</option>
-                    <option value="">Выставка</option>
-                    <option value="">Таможенная база</option>
+                <select disabled name="source_lid" id="" class="source_list dd_list lidDataSel">
+                    <option value="1">Поиск в интернете</option>
+                    <option value="2">Рекомендации клиентов</option>
+                    <option value="3">Выставка</option>
+                    <option value="4">Таможенная база</option>
                 </select>
             </div>
             <div class="lid_string">
                 <p>Дата создания</p>
-                <p class="time_creation">15:32 21.01.2019</p>
+                <p class="time_creation lidDataInpt" name="date_creating_lid">15:32 21.01.2019</p>
             </div>
-            <div class="horizontal_line"></div>
-            <textarea name="" id="" readonly class="dop_info" placeholder="Введите описание лида"></textarea>
+            <div class="lid_string">
+                <p>Отрасль</p>
+                <select disabled name="industry_lid" id="" class="dd_list lidDataSel">
+                    <option value="1">пример отрасли</option>
+                    <option value="2">пример отрасли 2</option>
+                    <option value="3">пример отрасли 3</option>
+                </select>
+            </div>
+            <textarea name="dop_info_lid" id="" readonly class="dop_info lidDataInpt" placeholder="Введите описание лида"></textarea>
             <div class="hor_line"></div>
             <h1 class="company_header">Компания</h1>
             <form class="lid_info_company_block">
                     <div class="info_string">
                         <p>Название</p>
                         <div class="edit_block">
-                            <input type="text" readonly name="name_company" placeholder="Введите имя кампании" class="company_info_inpt edit_info_inpt" id="name_company_inpt">
-                            <input type="button" name="name_company" id="del_name_company" class="del_btn del_btn_comp">
+                            <input type="text" readonly name="name_company" placeholder="Введите имя кампании" class="company_info_inpt edit_info_inpt compDataInpt" id="name_company_inpt">
+                            <input type="button"id="del_name_company" class="del_btn del_btn_comp">
                         </div>
                     </div>
                     <div class="info_string">
                         <p>ИНН</p>
                         <div class="edit_block">
-                            <input type="number" readonly name="inn_company" placeholder="Введите ИНН" class="company_info_inpt edit_info_inpt" id="inn_company_inpt">
-                            <input type="button" name="inn_company" id="del_inn_company" class="del_btn del_btn_comp">
+                            <input type="number" readonly name="inn_company" placeholder="Введите ИНН" class="company_info_inpt edit_info_inpt compDataInpt" id="inn_company_inpt">
+                            <input type="button"id="del_inn_company" class="del_btn del_btn_comp">
                         </div>
                     </div>
                     <div class="tel_company_conteiner" value="0">
@@ -84,24 +90,24 @@
                             <p>Тел.</p>
                             <div class="edit_block">
                                 <input type="button" class="add_btn add_btn_info" id="add_company_tel">
-                                <input type="number" readonly name="dob_numb_company" placeholder="доб" class="company_info_inpt edit_info_inpt" id="dob_numb_company_inpt">
-                                <input type="number" readonly name="numb_company" placeholder="Введите номер" class="company_info_inpt edit_info_inpt" id="numb_company_inpt">
-                                <input type="button" name="numb_company" id="del_numb_company" class="del_btn del_btn_comp">
+                                <input type="number" readonly name="dob_numb_company" placeholder="доб" class="company_info_inpt edit_info_inpt compDataInpt" id="dob_numb_company_inpt">
+                                <input type="number" readonly name="numb_company" placeholder="Введите номер" class="company_info_inpt edit_info_inpt compDataInpt" id="numb_company_inpt">
+                                <input type="button" id="del_numb_company" class="del_btn del_btn_comp">
                             </div>
                         </div>
                     </div>
                     <div class="info_string">
                         <p>Почта</p>
                         <div class="edit_block">
-                            <input type="text" readonly name="mail_company" placeholder="Введите почту" class="company_info_inpt edit_info_inpt" id="mail_company_inpt">
-                            <input type="button" name="mail_company" id="del_mail_company" class="del_btn del_btn_comp">
+                            <input type="text" readonly name="mail_company" placeholder="Введите почту" class="company_info_inpt edit_info_inpt compDataInpt" id="mail_company_inpt">
+                            <input type="button" id="del_mail_company" class="del_btn del_btn_comp">
                         </div>
                     </div>
                     <div class="info_string">
                         <p>Сайт</p>
                         <div class="edit_block">
-                            <input type="text" readonly name="site_company" placeholder="Укажите сайт" class="company_info_inpt edit_info_inpt" id="site_company_inpt">
-                            <input type="button" name="site_company" id="del_site_company" class="del_btn del_btn_comp">
+                            <input type="text" readonly name="site_company" placeholder="Укажите сайт" class="company_info_inpt edit_info_inpt compDataInpt" id="site_company_inpt">
+                            <input type="button" id="del_site_company" class="del_btn del_btn_comp">
                         </div>
                     </div>
                     <div class="social_company_conteiner" value="0">
@@ -109,8 +115,8 @@
                             <p>Соц. сети</p>
                             <div class="edit_block">
                                 <input type="button" class="add_btn add_btn_info" id="add_company_social">
-                                <input type="text" readonly name="social_company_inpt" placeholder="Укажите соц. сеть" class="company_info_inpt edit_info_inpt" id="social_company_inpt">
-                                <input type="button" name="social_company" id="del_social_company" class="del_btn del_btn_comp">
+                                <input type="text" readonly name="social_company" placeholder="Укажите соц. сеть" class="company_info_inpt edit_info_inpt compDataInpt" id="social_company_inpt">
+                                <input type="button" id="del_social_company" class="del_btn del_btn_comp">
                             </div>
                         </div>
                     </div>
@@ -161,12 +167,6 @@
                 </div>
             </div>
             <div class="hor_line"></div>
-            <div class="lid_string">
-                <p>Отрасль</p>
-                <select disabled name="industry_lid" id="" class="dd_list">
-                    <option value="">пример отрасли</option>
-                </select>
-            </div>
             <div class="horizontal_line"></div>
             <div class="lid_tags_block">
                 <div class="header_contacts">

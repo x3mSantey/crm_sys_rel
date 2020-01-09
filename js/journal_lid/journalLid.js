@@ -49,10 +49,17 @@ export class JournalLid {
                 }
             },
             onRowDoubleClicked: function(params) {
-                window.open('file://D:/PROJECTS/CRM_sys_rel/page_lid/page_lid.html')
+                window.open('../../page_lid/page_lid.html')
             },
-            resizable: true,
-            animateRows: true
+            onGridReady: function (params) {
+                params.api.sizeColumnsToFit();
+        
+                window.addEventListener('resize', function() {
+                  setTimeout(function() {
+                    params.api.sizeColumnsToFit();
+                  })
+                })
+            }
         }
     }
     showJournalLid(id_conteiner) {

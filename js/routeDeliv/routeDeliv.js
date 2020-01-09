@@ -1,16 +1,9 @@
-
-
 export class RouteOfTheDelivery{
     constructor() {
-        this.name
         this.journalColW = {
-            items_route: 50,
-            country_route: 150,
-            index_route: 50,
-            quadr_route: 50,
-            town_route: 150,
-            adres_route: 148,
-            adres_tamoj: 150
+            items_route: 70,
+            index_route: 70,
+            quadr_route: 70,
         }
         this.columnListRoute = [
             {
@@ -21,55 +14,39 @@ export class RouteOfTheDelivery{
                     'color': '#fff',
                     'outline': 'none',
                     'background-color': '#0070B2'
-                },            
-                resizable: true,
-                autoHeight: true,
+                }
             },
             {
                 headerName: 'Страна',
                 field: 'country_route',
-                width: this.journalColW.country_route,
-                editable: true,
-                resizable: true,
-                autoHeight: true,
+                editable: true
             },
             {
                 headerName: 'индекс',
                 field: 'index_route',
                 width: this.journalColW.index_route,
-                editable: true,
-                resizable: true,
-                autoHeight: true,
+                editable: true
             },
             {
                 headerName: 'квадрат',
-                field: 'quadr_route',
                 width: this.journalColW.quadr_route,
-                editable: true,
-                resizable: true,
-                autoHeight: true,
+                field: 'quadr_route',
+                editable: true
             },
             {
                 headerName: 'Город',
                 field: 'town_route',
-                width: this.journalColW.town_route,
                 editable: true,
-                resizable: true,
-                autoHeight: true,
             },
             {
                 headerName: 'Адрес',
                 field: 'adres_route',
-                width: this.journalColW.adres_route,
-                editable: true,
-                resizable: true
+                editable: true
             },
             {
                 headerName: 'Адреса таможни',
                 field: 'adres_tamoj',
-                width: this.journalColW.adres_tamoj,
-                editable: true,
-                resizable: true
+                editable: true
             }
         ]
         this.rowDataListRoute = [
@@ -104,7 +81,7 @@ export class RouteOfTheDelivery{
         this.renderJournalRouteDel(i)
     }
     renderJournalRouteDel(i) {
-        $(`.route-block__table`).prepend(`<div id="list_route_deliv${i}" class="list_route__grid ag-theme-balham"></div>`)
+        $(`.route-block__table${i}`).prepend(`<div id="list_route_deliv${i}" class="list_route__grid ag-theme-balham"></div>`)
         let gridDiv = $(`#list_route_deliv${i}`)[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
     }
@@ -138,29 +115,39 @@ export class RouteOfTheDelivery{
         $('.list_route_conteiner').append(`<div class="list-route__item item_route_${val}"></div>`)
         $(`.item_route_${val}`).append(`<div class="main_info_route main_info_route_${val}"></div>`)
         $(`.main_info_route_${val}`).append(`<h2>Маршрут из ${town1}, куда ${town2}</h2>`)
-        $(`.main_info_route_${val}`).append(`<button id="show_route_info_${val}" class="btn" onclick="routeDeliv.showRouteInfo(${val})">развернуть</button>`)
-        $(`.main_info_route_${val}`).append(`<button id="hide_route_info_${val}" class="btn" onclick="routeDeliv.hideRouteInfo(${val})" style="display: none">свернуть</button>`)
-
+        $(`.main_info_route_${val}`).append(`<button id="show_route_info_${val}" class="btn">развернуть</button>`)
+        $(`.main_info_route_${val}`).append(`<button id="hide_route_info_${val}" class="btn" style="display: none">свернуть</button>`)
         
-        $(`.item_route_${val}`).append(`<div class="route_block_${val}" style="display: none"></div>`)
-        $(`.route_block_${val}`).prepend(`<div class="route-block__table${val}"></div>`)
+        $(`.item_route_${val}`).append(`<div id="route_block_${val}"></div>`)
+        $(`#route_block_${val}`).prepend(`<div class="route-block__table${val}"></div>`)
         $(`.route-block__table${val}`).prepend(`<div class="dop__adres-tamoj${val}"></div>`)
         $(`.dop__adres-tamoj${val}`).append(`<div class="adres-tamoj__points adres-tamoj${val}"></div>`)
-
-        let tableRoute = new DeliveryPath(rowData)
-        tableRoute.showRoutePath(val)
         
+        $(`#route_block_${val}`).prepend(`<div class="otdel-perevoz-block_${val}"></div>`)
+
+        $(`.otdel-perevoz-block_${val}`).prepend(`<div class="rates-block_${val}"><button class="btn" id="showRates_${val}">Ставки</button></div>`)
+        $(`.otdel-perevoz-block_${val}`).prepend(`<div class="tranzit-block_${val} inq_string"><textarea name="" id="" placeholder="Информация по транзиту" readonly></textarea></div>`)
+        $(`.otdel-perevoz-block_${val}`).prepend(`<div class="delivery-block_${val} inq_string"><textarea name="" id="" placeholder="Укажите срок поставки" readonly></textarea></div>`)                        
+         
+        $(`#show_route_info_${val}`).on('click', () => {this.showRouteInfo(val)})
+        $(`#hide_route_info_${val}`).on('click', () => {this.hideRouteInfo(val)})
+
+        this.renderJournalRouteDel(val)
+        //let tableRoute = new DeliveryPath(rowData)
+        //tableRoute.showRoutePath(val)
+        debugger
+        
+
         ++val
         $(`.list_route_conteiner`).attr('value', val)
     }
     showRouteInfo(i) {
-        $(`.route_block_${i}`).css({'display':'block'})
+        $(`#route_block_${i}`).css({'display':'block'})
         $(`#hide_route_info_${i}`).css({'display':'block'})
         $(`#show_route_info_${i}`).css({'display':'none'})
-        
     }
     hideRouteInfo(i) {
-        $(`.route_block_${i}`).css({'display':'none'})
+        $(`route_block_${i}`).css({'display':'none'})
         $(`#show_route_info_${i}`).css({'display':'block'})
         $(`#hide_route_info_${i}`).css({'display':'none'})
     }

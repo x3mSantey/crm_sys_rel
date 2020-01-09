@@ -52,7 +52,10 @@ h4 {
   color: #fff;
   background-color: #292929;
   border: 1px solid #faa916;
-  transition-duration: 0.5s;
+  transition-duration: 0.5;
+}
+.btn:active {
+  background-color: #292929;
 }
 /*--------------------------------
 
@@ -76,17 +79,27 @@ h4 {
 }
 .journal_type_btn_conteiner {
   display: flex;
-  width: 100%;
-  height: 25px;
+  position: relative;
+  left: 50%;
+  width: 500px;
+  height: 35px;
+  margin-left: -250px;
   text-align: center;
 }
 .journal_type_btn_conteiner .btn {
   width: 150px;
+  height: 30px;
   margin-right: 10px;
+  padding-top: 5px;
 }
 .journal_type_btn_conteiner .btn:hover {
   width: 148px;
-  height: 23px;
+  height: 28px;
+}
+#btn_selected {
+  background-color: #292929;
+  border-bottom: 2px solid #faa916;
+  color: #fff;
 }
 .table_conteiner {
   width: 100%;

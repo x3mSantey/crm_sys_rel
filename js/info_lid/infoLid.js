@@ -1,59 +1,12 @@
 export class InfoLid {
-    constructor () {
+    constructor (dataLids) {
         this.inptInn = $('#company_inn_inpt').val()
         this.warningInn = $('#warning_inn')
 
-        this.btnSaveLid = $('#btn_save_lid_nav')
-        this.currentLidInfo = {
-            name_lid: "",
-            status_lid: "",
-            industry_lid: "",
-            responsible_user_lid: "",
-            source_lid: "",
-            date_creating_lid: '',
-            dop_info: '',
-            industry_lid: "",
-            tags_lid: {},
-            access_list: {}
-        }
-        this.lidInformation = {
-            name_lid: "",
-            status_lid: "",
-            industry_lid: "",
-            responsible_user_lid: "",
-            source_lid: "",
-            date_creating_lid: '',
-            dop_info: '',
-            name_company: "",
-            inn_company: "",
-            numb_company: "",
-            mail_company: "",
-            site_company: "",
-            social_company: "",
-            name_contact: "",
-            numb_contact: "",
-            mail_contact: "",
-            social_contact: "",
-            industry_lid: "",
-            tags_lid: {},
-            access_list: {}
-        }
-        this.comapnyBlock = { 
-            name_company: "",
-            inn_company: "",
-            numb_company: "",
-            mail_company: "",
-            site_company: "",
-            social_company: ""
-        }
-        this.contactBlocks = [
-            {
-                name_contact: "",
-                numb_contact: "",
-                mail_contact: "",
-                social_contact: "",
-            }
-        ]
+        //Объекты хранящие информацию по лиду
+        this.currentLidInfo = dataLids
+        this.variableLidInfo = dataLids
+
     }
     createNewLid() {
         journalLid.showJournalLid()
@@ -73,12 +26,11 @@ export class InfoLid {
         $('.lid_new_tags_conteiner').css({'display': 'flex'})
         $('input[type=number]').removeAttr('readonly')
         $('input[type=text]').removeAttr('readonly')
-        
     }
     lidEditModeOff() {
         this.showOrHideBtns('none')
         this.switchBtnInNav('block', 'none')
-        this.checkAllInpts()
+        //this.checkAllInpts()
         $('select').attr('disabled', 'disabled')
         $('textarea').attr('readonly', 'readonly')
         $('.add_block').css({'display': 'none'})
@@ -101,9 +53,8 @@ export class InfoLid {
         } else if ($('#btn_save_lid_nav').val() === 'old_lid') {
             companyBlock.saveInfoChanges()
             this.checkStatus()
-            this.checkAllInpts()
+            //this.checkAllInpts()
             this.lidEditModeOff()
-            //Заглушка для редактирования существующего лида
         }
     }
     showOrHideBtns (evt) {
@@ -148,15 +99,24 @@ export class InfoLid {
                 break
          }
     }
-    createInq() {
+    createInq(typeInq, nameInq, numbInq,typeTrans) {
+        let date = new Date()
+        let hours = date.getHours()
+        let min = date.getMinutes()
+        let day = date.getDate()
+        let month = date.getMonth() +1
+        let year = date.getFullYear()
+        
         let val = $('.inq_list_conteiner').val()
         ++val
-        $('.inq_list_conteiner').val(val)
+             
+        $('.inq_list_conteiner').val(val);
         $('.inq_list_conteiner').append(`<a href="../page_inquiry/page_inquiry.html" class="lid_inq_${val}"></a>`)
         $(`.lid_inq_${val}`).append(`<div class="inquire_info_block inq_block_${val}" title="Перейти на страницу запроса"></div>`)
-        $(`.inq_block_${val}`).append(`<div class="lid_string"><h4>Импорт / Пометка по запросу</h4><select name="" id=""><option value="">Черновик</option><option value="">Не обработан</option><option value="">В обработке</option><option value="">Возврат/уточнение</option><option value="">Обработан</option><option value="">Ожидание обратной связи</option><option value="">Завершен</option><option value="">Перспективы</option></select></div>`)
-        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Номер запроса - 321312442132</p></div>`)
-        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Вид транспорта - Не габарит</p><p>12:15  12.06.2129</p></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><h4>${typeInq} / ${nameInq}</h4><select name="" id=""><option value="">Черновик</option><option value="">Не обработан</option><option value="">В обработке</option><option value="">Возврат/уточнение</option><option value="">Обработан</option><option value="">Ожидание обратной связи</option><option value="">Завершен</option><option value="">Перспективы</option></select></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Номер запроса - ${numbInq}</p></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Вид транспорта - ${typeTrans}</p><p>${hours}:${min} / ${day}.${month}.${year}</p></div>`)
+
     }
     addNewTag() {
         let inpt = $('.journal_tags_block input:checked')
@@ -180,5 +140,21 @@ export class InfoLid {
     }
     delExistTag(id) {
         $(`#tag_block_${id}`).remove()
+    }
+    fillFields() {
+        let listInpt = $(`.lidDataInpt`)
+        let listSel = $(`.lidDataSel`)
+
+        //Подставляет в селекты значения к соответствующим именам
+        listSel.each((el) => {
+            let name = $(listSel[el]).attr('name')
+            $(listSel[el]).val(this.variableLidInfo[name])
+        })
+
+        //Подставляет в инпуты значения к соответствующим именам
+        listInpt.each((el) => {
+            let name = $(listInpt[el]).attr('name')
+            $(listInpt[el]).val(this.variableLidInfo[name])
+        })
     }
 }

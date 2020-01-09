@@ -44,7 +44,16 @@ export class JournalInq {
                 }
             },
             onRowDoubleClicked: function(params) {
-                window.open('file://D:/PROJECTS/CRM_sys_rel/page_inquiry/page_inquiry.html')
+                window.open('file://D:/PROJECTS/crm_sys_rel/page_inquiry/page_inquiry.html')
+            },
+            onGridReady: function (params) {
+                params.api.sizeColumnsToFit();
+        
+                window.addEventListener('resize', function() {
+                  setTimeout(function() {
+                    params.api.sizeColumnsToFit();
+                  })
+                })
             }
         }    
     }

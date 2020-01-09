@@ -8,15 +8,15 @@ import { RouteOfTheDelivery } from "./routeDeliv/routeDeliv";
 import { InquireInfo } from "./inqInfo/inqInfo";
 import { RatesTable } from "./ratesTable/ratestable";
 import { KpForm } from "./kpForm/kpForm";
-import { DeliveryPath } from "./delivPathBlock/delPathBlock";
 import { CompanyBlock } from "./company_block/companyBlock"
 import { AccessBlock } from "./accessBlock/accessBlock";
+import { dataLids } from './info_lid/dataLids'
 
 
 const journalLid = new JournalLid(data)
 const journalInq = new JournalInq(dataInq)
 const contactBlock = new ContactBlock()
-const infoLid = new InfoLid()
+const infoLid = new InfoLid(dataLids.lidNumberOne) 
 const routeDeliv = new RouteOfTheDelivery()
 const inqInfo = new InquireInfo()
 const recomRatesTable = new RatesTable('recomm_rates__table', 'recom_rates_table')
@@ -31,12 +31,29 @@ $(document).ready(function() {
     //recomRatesTable.showJournal()
     //carrierRatesTable.showJournal()
 
+    //Заполнить поля из полученного объекта
+    infoLid.fillFields()
+
+    //Нажатие на кнопки навигации
     $('.lid_journal_btn').on('click', function () {
+        $('.btn').attr('id','')
+        $('.lid_journal_btn').attr('id','btn_selected')
+        $('.table_conteiner').empty()
         journalLid.showJournalLid('.table_conteiner')
     })
     $('.inq_journal_btn').on('click', function() {
+        $('.btn').attr('id','')
+        $('.inq_journal_btn').attr('id','btn_selected')
+        $('.table_conteiner').empty()
         journalInq.showJournalInq('.table_conteiner')
     })
+    $('.op_journal_btn').on('click', function() {
+        $('.btn').attr('id','')
+        $('.op_journal_btn').attr('id','btn_selected')
+        $('.table_conteiner').empty()
+        alert('список запросов для оперативного отдела')
+    })
+
 
     
     //редактирование запроса

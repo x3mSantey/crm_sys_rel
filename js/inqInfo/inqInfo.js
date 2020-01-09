@@ -64,4 +64,5 @@ export class InquireInfo {
     createKp() {
         $('.comm_offer_conteiner').css({'display': 'block'})
     }
+    
 }

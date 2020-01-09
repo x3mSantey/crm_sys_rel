@@ -82,52 +82,36 @@ p {
   margin: 0;
 }
 .header_conteiner {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: fixed;
-  top: 0;
   width: 100%;
-  height: 50px;
-  background-color: #1d1f25;
-  border-bottom: 3px solid #30bced;
-  z-index: 999;
+  height: 35px;
 }
 .header_conteiner .nav_btn_block {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
+  width: 100%;
 }
 .header_conteiner .nav_btn {
-  width: 150px;
-  height: 35px;
-  padding-top: 15px;
-  text-align: center;
-  color: #fff;
+  line-height: 35px;
+  padding: 0 10px 0 10px;
+  margin-right: 10px;
+  color: #000;
   font-family: ProductSans;
+  font-size: 14px;
+  background-color: #faa916;
 }
 .header_conteiner .nav_btn:hover {
-  background-color: #faa916;
-  color: #000;
+  background-color: #1d1f25;
+  color: #fff;
   transition-duration: 0.5s;
   cursor: pointer;
 }
-#create_inq {
-  padding-top: 8px;
-  height: 42px;
-}
-#create_contr {
-  padding: 5px 15px 10px 15px;
-}
 .main_conteiner {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   position: relative;
-  left: 50%;
-  width: 60%;
-  box-sizing: content-box;
-  margin: 100px 0 20px -605px;
+  top: 50px;
+  left: 5%;
+  width: 90%;
 }
 /*--------------------------------
 
@@ -137,9 +121,7 @@ p {
 
 ----------------------------------*/
 .list_lid_conteiner {
-  width: 750px;
-  max-height: 835px;
-  box-sizing: content-box;
+  width: inherit;
   padding: 0 10px 0 10px;
   background-color: #fff;
 }
@@ -162,16 +144,15 @@ p {
   box-sizing: content-box;
 }
 .inquire_info_block {
-  width: 720px;
   box-sizing: content-box;
   background-color: #292929;
   border: 1px solid #faa916;
   transition-duration: 0.5s;
-  padding: 10px 15px 5px 15px;
-  margin-top: 15px;
+  margin-top: 16px;
+  padding: 12px 8px 6px 8px;
 }
 .inquire_info_block .lid_string {
-  width: 720px;
+  width: 100%;
   margin-bottom: 5px;
 }
 .inquire_info_block h4 {
@@ -211,8 +192,9 @@ p {
   flex-direction: row;
   justify-content: space-between;
   width: 400px;
-  height: 20px;
-  margin-bottom: 10px;
+  height: 25px;
+  margin-bottom: 12px;
+  line-height: 25px;
 }
 #lid_name_inpt {
   font-family: TheCapt;
@@ -225,7 +207,7 @@ p {
 }
 .name_lid_block {
   position: sticky;
-  top: 53px;
+  top: 0;
   height: 32px;
   padding: 15px 0 12px 0;
   margin-bottom: 10px;
@@ -350,8 +332,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   width: 400px;
-  height: 25px;
-  margin-bottom: 17px;
+  height: 53px;
 }
 .header_contacts p {
   padding-top: 8px;

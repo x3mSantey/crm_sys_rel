@@ -130,39 +130,29 @@ p {
 
 ----------------------------------*/
 .header_conteiner {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: fixed;
-  top: 0;
   width: 100%;
-  height: 50px;
-  background-color: #1d1f25;
-  border-bottom: 3px solid #30bced;
-  z-index: 999;
+  height: 35px;
 }
 .header_conteiner .nav_btn_block {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
+  width: 100%;
 }
 .header_conteiner .nav_btn {
-  width: 150px;
-  height: 35px;
-  padding-top: 15px;
-  text-align: center;
-  color: #fff;
+  line-height: 35px;
+  padding: 0 10px 0 10px;
+  margin-right: 10px;
+  color: #000;
   font-family: ProductSans;
+  font-size: 14px;
+  background-color: #faa916;
 }
 .header_conteiner .nav_btn:hover {
-  background-color: #faa916;
-  color: #000;
+  background-color: #1d1f25;
+  color: #fff;
   transition-duration: 0.5s;
   cursor: pointer;
-}
-#create_inq {
-  padding-top: 8px;
-  height: 42px;
 }
 /*--------------------------------
 
@@ -173,11 +163,10 @@ p {
 ----------------------------------*/
 .main_conteiner {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-  box-sizing: content-box;
-  margin-top: 75px;
+  position: relative;
+  top: 50px;
+  left: 5%;
+  width: 90%;
 }
 /*--------------------------------
 
@@ -187,10 +176,8 @@ p {
 
 ----------------------------------*/
 .list_inq_conteiner {
-  width: 50%;
-  margin: 25px 0 25px 25px;
-  padding: 10px;
-  box-sizing: content-box;
+  width: inherit;
+  padding: 0 10px 0 10px;
   background-color: #fff;
 }
 .list_inq__grid {
@@ -219,7 +206,6 @@ p {
 }
 .info_inq_conteiner {
   width: 630px;
-  margin: 25px 25px 25px 0;
   box-sizing: content-box;
 }
 .info-inq__block {
@@ -368,8 +354,9 @@ textarea {
   height: 25px;
 }
 .list_route_conteiner {
-  width: 560px;
-  max-height: 400px;
+  width: 100%;
+  max-width: 750px;
+  box-sizing: content-box;
 }
 .list-route__item {
   width: 540px;
