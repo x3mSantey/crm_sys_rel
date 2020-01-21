@@ -1,8 +1,8 @@
-export class cargoInfoTable {
+export class CargoInfoTable {
     constructor() {
         this.columnListRoute = [
             {
-                headerName: 'Хаактер груза',
+                headerName: 'Характер груза',
                 field: 'type',
                 editable: true
             },
@@ -74,12 +74,12 @@ export class cargoInfoTable {
         }
     }
     showJournalRoute(i) {
-        $(`#list_route_deliv${i}`).remove()    
+        $(`#list_route_deliv_${i}`).remove()    
         this.renderJournalRouteDel(i)
     }
     renderJournalRouteDel(i) {
-        $(`.route-block__table${i}`).prepend(`<div id="list_route_deliv${i}" class="list_route__grid ag-theme-balham"></div>`)
-        let gridDiv = $(`#list_route_deliv${i}`)[0]
+        $(`#route_block_${i}`).append(`<div id="list_route_deliv_${i}" class="list_route__grid ag-theme-balham" style="height: 85px;"></div>`)
+        let gridDiv = $(`#list_route_deliv_${i}`)[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
     }
 }

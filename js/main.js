@@ -11,20 +11,23 @@ import { KpForm } from "./kpForm/kpForm";
 import { CompanyBlock } from "./company_block/companyBlock"
 import { AccessBlock } from "./accessBlock/accessBlock";
 import { dataLids } from './info_lid/dataLids'
-import { cargoInfoTable } from './cargoInfoTable/cargoInfoTable'
+import { CargoInfoTable } from './cargoInfoTable/cargoInfoTable'
+import { TablePointsRoute } from './tablePointsRoute/tablePointsRoute'
 
 
 const journalLid = new JournalLid(data)
 const journalInq = new JournalInq(dataInq)
 const contactBlock = new ContactBlock()
 const infoLid = new InfoLid(dataLids.lidNumberOne) 
-const routeDeliv = new RouteOfTheDelivery()
 const inqInfo = new InquireInfo()
 const recomRatesTable = new RatesTable('recomm_rates__table', 'recom_rates_table')
 const carrierRatesTable = new RatesTable('carrier_rates__table', 'carrier_rates_table')
 const kpForm = new KpForm()
 const companyBlock = new CompanyBlock()
 const accessBlock = new AccessBlock()
+const tablePointsRoute = new TablePointsRoute()
+const cargoInfoTable = new CargoInfoTable()
+const routeDeliv = new RouteOfTheDelivery( cargoInfoTable, tablePointsRoute)
 
 
 $(document).ready(function() {
@@ -63,7 +66,7 @@ $(document).ready(function() {
 
     //добавить маршрут в запросе
     $('#add_point_route').on('click', function() {routeDeliv.addPointRoute()})
-    $('#create_route').on('click', function() {routeDeliv.createRoute(cargoInfoTable)})
+    $('#create_route').on('click', function() {routeDeliv.createRoute()})
 
     //показать страницу ставок
     $('#showRates').on('click', function() {inqInfo.showRatesBlock()})  
