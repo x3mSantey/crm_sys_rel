@@ -7,32 +7,32 @@ export class InquireInfo {
         let sel = $('.info-inq__block select')
         let inpt = $('.info-inq__block input[type=text]')
         let textarea = $('.info-inq__block textarea')
-        sel.each(function() {$(this).removeAttr('disabled')})
-        inpt.each(function() {$(this).removeAttr('readonly')})
-        textarea.each(function() {$(this).removeAttr('readonly')})
+        sel.each(function() { $(this).removeAttr('disabled') })
+        inpt.each(function() { $(this).removeAttr('readonly') })
+        textarea.each(function() { $(this).removeAttr('readonly') })
     }
     InqEditModeOff() {
         this.showOrHideBtn('none', 'block')
-        //this.getInformation()
-        $('.info-inq__block select').each(function() {$(this).attr('disabled', 'disabled')})
+            //this.getInformation()
+        $('.info-inq__block select').each(function() { $(this).attr('disabled', 'disabled') })
         console.log($('.info-inq__block select'))
-        $('.info-inq__block input[type=text]').each(function() {$(this).attr('readonly', 'readonly')})
-        $('.info-inq__block textarea').each(function() {$(this).attr('readonly', 'readonly')})
+        $('.info-inq__block input[type=text]').each(function() { $(this).attr('readonly', 'readonly') })
+        $('.info-inq__block textarea').each(function() { $(this).attr('readonly', 'readonly') })
     }
     showOrHideBtn(show, hide) {
-        $('.del_btn').css({'display': show})
-        $('#btn_edit_inq').css({'display': hide})
-        $('#btn_save_inq').css({'display': show})
+        $('.del_btn').css({ 'display': show })
+        $('#btn_edit_inq').css({ 'display': hide })
+        $('#btn_save_inq').css({ 'display': show })
     }
     getInformation() {
         let sel_val = $('.info-inq__block select')
         let inpt_val = $('.info-inq__block input[type=text]')
-        inpt_val.each(function () {
+        inpt_val.each(function() {
             let key = $(this).attr('name')
             let val = $(this).val()
             inqInfo.inqInformation[key] = val
         })
-        sel_val.each(function () {
+        sel_val.each(function() {
             let key = $($(this)[0]).attr('name')
             let val = $($(this)[$(this)[0].selectedIndex]).val()
             inqInfo.inqInformation[key] = val
@@ -49,21 +49,17 @@ export class InquireInfo {
         $('#text_last_connect').text(`${hours}:${min} / ${day}.${month}.${year}`)
     }
     showAccessWindow() {
-        $('.access_users_conteiner').css({'display': 'block'})
+        $('.access_users_conteiner').css({ 'display': 'block' })
     }
     closeAccessWindow() {
-        $('.access_users_conteiner').css({'display': 'none'})
+        $('.access_users_conteiner').css({ 'display': 'none' })
     }
     showRatesBlock() {
-        $('.name_block').css({'display': 'none'})
-        $('.rates_conteiner').css({'display': 'block'})
-    }
-    hideRatesBlock() {
-        $('.name_block').css({'display': 'block'})
-        $('.rates_conteiner').css({'display': 'none'})
+        $('.name_block').css({ 'display': 'none' })
+        $('.rates_conteiner').css({ 'display': 'block' })
     }
     createKp() {
-        $('.comm_offer_conteiner').css({'display': 'block'})
+        $('.comm_offer_conteiner').css({ 'display': 'block' })
     }
-    
+
 }

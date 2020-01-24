@@ -520,7 +520,6 @@ textarea {
 
 ----------------------------------*/
 .rates_conteiner {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;

@@ -17,6 +17,7 @@
 
     <title>Запрос</title>
 </head>
+
 <body>
     <div class="main_conteiner">
         <div class="list_inq_conteiner">
@@ -31,8 +32,7 @@
         <div class="info_inq_conteiner">
             <div class="info-inq__block">
                 <div class="name_block inq_string">
-                    <input type="text" id="name-block__inpt" placeholder="Введите название запроса" name='name_inq'
-                        readonly>
+                    <input type="text" id="name-block__inpt" placeholder="Введите название запроса" name='name_inq' readonly>
                     <button id="btn_edit_inq" class="btn">Редактировать</button>
                     <button id="btn_save_inq" class="btn" style="display: none">Сохранить</button>
                 </div>
@@ -240,36 +240,7 @@
                 </div>
             </div>
         </div>
-        <div class="rates_conteiner">
-            <div class="rates_background" onclick="inqInfo.hideRatesBlock()"></div>
-            <div class="rates_block">
-                <div class="rates_item">
-                    <div class="recomm_rates__header rates_header">
-                        <p>Рекомендованная ставка</p>
-                    </div>
-                    <div class="recomm_rates__table rates_table"></div>
-                    <div class="recomm_rates__edit rates_edit_block">
-                    </div>
-                </div>
-                <div class="hor_line"></div>
-                <div class="rates_item">
-                    <div class="carrier_rates__header rates_header">
-                        <p>Ставки перевозчиков</p>
-                    </div>
-                    <div class="carrier_rates__table rates_table"></div>
-                    <div class="carrier_rates__edit rates_edit_block">
-                        <input type="text" placeholder="сумма" id="summ_carr_rate">
-                        <select name="" id="carr_currency_list">
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                        </select>
-                        <button class="btn"
-                            onclick="carrierRatesTable.addNewRate('summ_carr_rate', 'carr_currency_list')">Добавить
-                            ставку</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="comm_offer_conteiner">
             <div class="comm_offer__background"></div>
             <div class="main_offer_conteiner">
@@ -287,8 +258,7 @@
                     <div src="" alt="" class="comm_offer__logo"></div>
                     <div class="adresant_block">
                         <h4 class="redct_span adresant_text">В адрес компании %имя компании%</h4>
-                        <input type="text" name="adresant_text" class="adresant_inpt"
-                            value="В адрес компании %имя компании%">
+                        <input type="text" name="adresant_text" class="adresant_inpt" value="В адрес компании %имя компании%">
                     </div>
                     <div class="header_comm_offer_block">
                         <span class="redct_span header_comm_offer">Уважаемый, %Имя%</span>
@@ -297,33 +267,28 @@
                     <span class="redct_span" class="header_info">На основе предоставленной вами информации, мы
                         подготовили коммерческое предложение. Если у вас возникнут вопросы, будем рады на них
                         ответить.</span>
-                    <textarea type="text" name="header_info"
-                        class="header_info_inpt">На основе предоставленной вами информации, мы подготовили коммерческое предложение. Если у вас возникнут вопросы, будем рады на них ответить.</textarea>
+                    <textarea type="text" name="header_info" class="header_info_inpt">На основе предоставленной вами информации, мы подготовили коммерческое предложение. Если у вас возникнут вопросы, будем рады на них ответить.</textarea>
                     <div class="price_table_block"></div>
                     <div class="stavka_fraxta_block points_block">
                         <h4>Ставка фрахта включает:</h4>
                         <div class="item">
                             <span class="redct_span stavka_fraxta_span_1">• подача транспортных средств, соответствующих
                                 всем техническим требованием в адрес погрузки;</span>
-                            <textarea type="text" name="stavka_fraxta_1"
-                                class="stavka_fraxta_inpt_1">подача транспортных средств, соответствующих всем техническим требованием в адрес погрузки;</textarea>
+                            <textarea type="text" name="stavka_fraxta_1" class="stavka_fraxta_inpt_1">подача транспортных средств, соответствующих всем техническим требованием в адрес погрузки;</textarea>
                         </div>
                         <div class="item">
                             <span class="redct_span stavka_fraxta_2">• контроль погрузки и размещения груза на
                                 транспортном средстве;</span>
-                            <textarea type="text" name="stavka_fraxta_2"
-                                class="stavka_fraxta_inpt_2">контроль погрузки и размещения груза на транспортном средстве;</textarea>
+                            <textarea type="text" name="stavka_fraxta_2" class="stavka_fraxta_inpt_2">контроль погрузки и размещения груза на транспортном средстве;</textarea>
                         </div>
                         <div class="item">
                             <span class="redct_span stavka_fraxta_3">• оформление ЭПИ – до 10 кодов ТНВЭД;</span>
-                            <textarea type="text" name="stavka_fraxta_3"
-                                class="stavka_fraxta_inpt_3">оформление ЭПИ – до 10 кодов ТНВЭД;</textarea>
+                            <textarea type="text" name="stavka_fraxta_3" class="stavka_fraxta_inpt_3">оформление ЭПИ – до 10 кодов ТНВЭД;</textarea>
                         </div>
                         <div class="item">
                             <span class="redct_span stavka_fraxta_4">• оформление транзитной декларации по территории
                                 ЕАЭС;</span>
-                            <textarea type="text" name="stavka_fraxta_4"
-                                class="stavka_fraxta_inpt_4">оформление транзитной декларации по территории ЕАЭС;</textarea>
+                            <textarea type="text" name="stavka_fraxta_4" class="stavka_fraxta_inpt_4">оформление транзитной декларации по территории ЕАЭС;</textarea>
                         </div>
                     </div>
                     <div class="uslovia_oplati_block points_block">
@@ -331,16 +296,14 @@
                         <div class="item">
                             <span class="redct_span">• Оплата в рублях по курсу ЦБ РФ на дату оплаты, возможна фиксация
                                 курса на дату загрузки или выгрузки;</span>
-                            <textarea
-                                type="text">Оплата в рублях по курсу ЦБ РФ на дату оплаты, возможна фиксация курса на дату загрузки или выгрузки;</textarea>
+                            <textarea type="text">Оплата в рублях по курсу ЦБ РФ на дату оплаты, возможна фиксация курса на дату загрузки или выгрузки;</textarea>
                         </div>
                         <div class="item">
                             <span class="redct_span">• Предоставление закрывающих бухгалтерских документов (акт
                                 выполненных работ и счет-фактура по форме универсального передаточного документа) в
                                 сканированном виде на следующий день после доставки вашего груза, оригиналов в течение 7
                                 дней после доставки груза.</span>
-                            <textarea
-                                type="text">Предоставление закрывающих бухгалтерских документов (акт выполненных работ и счет-фактура по форме универсального передаточного документа) в сканированном виде на следующий день после доставки вашего груза, оригиналов в течение 7 дней после доставки груза.</textarea>
+                            <textarea type="text">Предоставление закрывающих бухгалтерских документов (акт выполненных работ и счет-фактура по форме универсального передаточного документа) в сканированном виде на следующий день после доставки вашего груза, оригиналов в течение 7 дней после доставки груза.</textarea>
                         </div>
                     </div>
                     <div class="dop_uslugi_block points_block">
@@ -348,14 +311,12 @@
                         <div class="item">
                             <span class="redct_span">• Оформление в Евросоюзе экспортной таможенной декларации EX-1 (от
                                 50 евро)</span>
-                            <textarea
-                                type="text">Оформление в Евросоюзе экспортной таможенной декларации EX-1 (от 50 евро)</textarea>
+                            <textarea type="text">Оформление в Евросоюзе экспортной таможенной декларации EX-1 (от 50 евро)</textarea>
                         </div>
                         <div class="item">
                             <span class="redct_span">• Страхование грузов от всех видов рисков с полным возмещением -
                                 0,18 % от стоимости груза.</span>
-                            <textarea
-                                type="text">Страхование грузов от всех видов рисков с полным возмещением - 0,18 % от стоимости груза.</textarea>
+                            <textarea type="text">Страхование грузов от всех видов рисков с полным возмещением - 0,18 % от стоимости груза.</textarea>
                         </div>
                     </div>
                     <div class="footer_kp_block">
