@@ -1,0 +1,49 @@
+p {
+  margin: 0;
+}
+.ivent_conteiner {
+  width: 700px;
+  box-sizing: content-box;
+  background-color: #808080;
+}
+.item_ivent {
+  display: flex;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  background-color: #f00;
+}
+.date_info_conteiner {
+  display: flex;
+}
+.time_info {
+  position: relative;
+  left: 12px;
+}
+.date_info {
+  position: relative;
+  left: 24px;
+}
+.date_info:hover {
+  cursor: pointer;
+  border-bottom: 1px solid #00f;
+  color: #00f;
+}
+.ivent_text_info {
+  display: flex;
+  position: relative;
+  left: 64px;
+}
+.ivent_text_info p {
+  font-size: 16px;
+}
+.status_item_block {
+margin-top
+  box-sizing: content-box;
+  height: 24px;
+  background-color: #85ab70;
+  border-radius: 5px;
+  padding: 0 5px 0 5px;
+  font-size: 16px;
+  line-height: 24px;
+}

@@ -10,7 +10,6 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background-color: #e2e2e2;
 }
 a {
   text-decoration: none;
@@ -88,7 +87,7 @@ select {
   background-color: #30bced;
 }
 p {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   color: #fff;
   margin: 0;
@@ -161,6 +160,7 @@ p {
 ----------------------------------*/
 .main_conteiner {
   display: flex;
+  justify-content: center;
   position: relative;
   top: 50px;
   left: 5%;
@@ -174,7 +174,7 @@ p {
 
 ----------------------------------*/
 .list_inq_conteiner {
-  width: inherit;
+  width: 700px;
   padding: 0 10px 0 10px;
   background-color: #fff;
 }
@@ -194,7 +194,7 @@ p {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   line-height: inherit;
 }
 .info_inq_conteiner {
@@ -203,7 +203,7 @@ p {
 }
 .info-inq__block {
   width: 400px;
-  padding: 0 15px 5px 15px;
+  padding: 0 20px 0 20px;
   background-color: #292929;
 }
 .name_block {
@@ -227,7 +227,10 @@ p {
   color: #fff;
   border: none;
 }
-#btn_edit_inq_nav {
+#btn_edit_inq {
+  width: 150px;
+}
+#btn_save_inq {
   width: 150px;
 }
 .tender_block {
@@ -243,12 +246,25 @@ p {
   justify-content: flex-end;
   width: 150px;
 }
+.title_route_text {
+  display: flex;
+}
+.title_route_text h2 {
+  padding: 0;
+}
+.title_route_text h4 {
+  padding: 10px 5px 0 0;
+}
 .route-block__text {
   display: flex;
   justify-content: space-between;
 }
 .route-block__text h2 {
   width: 200px;
+}
+.title_route_points {
+  display: flex;
+  margin: 16px 0 0 0;
 }
 .route-block__table {
   width: 600px;
@@ -274,29 +290,12 @@ p {
   margin-left: 5px;
   width: 75px;
 }
-.cargo-info {
-  padding: 5px 20px 5px 20px;
-  margin-bottom: 15px;
-  background-color: #e2e2e2;
+.title_route_cargo {
+  display: flex;
+  margin: 16px 0 6px 0;
 }
-.cargo-info .inq_string_big {
-  width: 560px;
-  margin-bottom: 5px;
-}
-.cargo-info p {
-  width: 220px;
-  color: #000;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 5px 0 0 0;
-}
-.edit_info_inpt {
-  width: 220px;
-}
-.cargo_text {
-  display: none;
-  width: 200px;
-  text-align: right;
+.title_route_cargo h4 {
+  margin-bottom: 6px;
 }
 .otdel-perevoz-block {
   display: flex;
@@ -341,7 +340,8 @@ textarea {
 .create_btn_block {
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 400px;
+  padding-bottom: 12px;
 }
 #create_kp {
   width: 145px;
@@ -357,23 +357,19 @@ textarea {
   box-sizing: content-box;
 }
 .list-route__item {
-  width: 680px;
+  width: 660px;
   box-sizing: content-box;
   margin-top: 10px;
-  padding: 10px;
+  padding: 16px 20px 16px 20px;
   background-color: #292929;
 }
 .list-route__item:first-child {
   margin-top: 25px;
 }
-.list-route__item h2 {
-  height: 30px;
-  padding: 0 0 0 15px;
-}
 .main_info_route {
   display: flex;
   justify-content: space-between;
-  width: 540px;
+  width: 100%;
   margin-bottom: 15px;
 }
 .main_info_route button {
@@ -568,7 +564,7 @@ textarea {
 }
 .rates_table {
   width: 100%;
-  max-height: 200px;
+  max-height: 350px;
   margin-bottom: 15px;
   overflow-y: scroll;
 }

@@ -48,6 +48,7 @@ export class JournalLid {
                         return {'background-color': '#fff', color: '#000', 'border': '2px solid #000'}
                 }
             },
+            rowHeight: 40,
             onRowDoubleClicked: function(params) {
                 window.open('../../page_lid/page_lid.html')
             },
@@ -59,7 +60,7 @@ export class JournalLid {
                     params.api.sizeColumnsToFit();
                   })
                 })
-            }
+            },
         }
     }
     showJournalLid(id_conteiner) {
@@ -67,11 +68,22 @@ export class JournalLid {
         this.renderJournalLid(id_conteiner)
     }
     renderJournalLid(id_conteiner) {
+        
         $(id_conteiner).append('<div id="list_lid" class="list_lid__grid ag-theme-balham"></div>')
         let gridDiv = $('#list_lid')[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
+
+        
+        //$(`.navigation_table`).append(`<input type="text" value="" oninput="console.log('was')" id="filter_text_table" placeholder="Поиск" class="filter_table"/>`)
+        //debugger
+        //$(`#filter_text_table`).attr(`oninput`, `${() => {this.onFilterTextBoxChanged()}}`)
+        //$('#filter_text_table').on('oninput', () => {this.onFilterTextBoxChanged()})
     }
     showThisLid(info) {
         console.log(infoLid.lidInformation)
+    }
+    onFilterTextBoxChanged() {
+        console.log('was')
+        this.gridOptions.api.setQuickFilter($('#filter_text_table').val())
     }
 }

@@ -75,7 +75,7 @@ export class AccessBlock {
         this.executorsUsers = []
     }
     showAccessBlock() {
-        $(`.name_lid_block`).css({'display': 'none'})
+        $(`.name_lid_block`).attr('style', 'display: none')
         $(`.main_conteiner`).append(`<div class="access_users_conteiner"></div>`)
 
         $(`.access_users_conteiner`).append(`<div class="access_user__background"></div>`)
@@ -99,24 +99,25 @@ export class AccessBlock {
         $(`#del_user_executor`).on('click', () => {this.delExecutors()})
     }
     hideAccessBlock() {
-        $(`.name_lid_block`).css({'display': 'block'})
+        $(`.name_lid_block`).attr('style', '')
         $(`.access_users_conteiner`).remove()
     }
     loadUsersInJournal(conteiner, list) {
         $(list).each((el) => {
-            this.createUserBlock(conteiner, el)
+            this.createUserBlock(conteiner, el, list)
         })
     }
     createUserBlock(conteiner, el, arr) {
-        $(conteiner).append(`<div class="user_item_block" id="user_item_${this.allSysUsers[el].id}"></div>`)
+        $(conteiner).append(`<div class="user_item_block" id="user_item_${arr[el].id}"></div>`)
 
-        $(`#user_item_${this.allSysUsers[el].id}`).append(`<input id="${arr[el].id}" class="user_selector" type="checkbox">`)
-        $(`#user_item_${this.allSysUsers[el].id}`).append(`<label for="${arr[el].id}" class="selector_indicator" id="selector_indicator_${this.allSysUsers[el].id}"></label>`)
-        $(`#user_item_${this.allSysUsers[el].id}`).append(`<div class="user_item_photo"><img src="${this.allSysUsers[el].url_img}"/></div>`)
-        $(`#user_item_${this.allSysUsers[el].id}`).append(`<div class="user_info_block" id="user_info_block_${this.allSysUsers[el].id}"></div>`)
+        $(`#user_item_${arr[el].id}`).append(`<input id="${arr[el].id}" class="user_selector" type="checkbox">`)
+        $(`#user_item_${arr[el].id}`).append(`<label for="${arr[el].id}" class="selector_indicator" id="selector_indicator_${arr[el].id}"></label>`)
+        $(`#user_item_${arr[el].id}`).append(`<div class="user_item_photo"><img src="${arr[el].url_img}"/></div>`)
+        $(`#user_item_${arr[el].id}`).append(`<div class="user_info_block" id="user_info_block_${arr[el].id}"></div>`)
         
-        $(`#user_info_block_${this.allSysUsers[el].id}`).append(`<div class="user_info_name">${this.allSysUsers[el].name}</div>`)
-        $(`#user_info_block_${this.allSysUsers[el].id}`).append(`<div class="user_info_position">${this.allSysUsers[el].position}</div>`)        
+        $(`#user_info_block_${arr[el].id}`).append(`<div class="user_info_name">${arr[el].name}</div>`)
+        $(`#user_info_block_${arr[el].id}`).append(`<div class="user_info_position">${arr[el].position}</div>`)        
+        setTimeout(()=> {}, 10)
     }
     addNewExecutors() {
         let check = $(`.all_users_list .user_selector:checkbox:checked`)
@@ -132,16 +133,16 @@ export class AccessBlock {
             this.allSysUsers[index].status = 'executor'
             this.executorsUsers.push(this.allSysUsers[index])
 
-            this.createUserBlock('.executor_list', index)
+            let length = this.executorsUsers.length - 1
+
+            this.createUserBlock('.executor_list', length, this.executorsUsers)
 
             //Удаляет из объект пользователя из списка всех сотрудников полученного от базы
             this.allSysUsers.splice(index, 1)      
         })    
-        
-        console.log(this.allSysUsers)  
-        console.log(this.executorsUsers) 
     }
     delExecutors() {
+        debugger
         let check = $(`.executor_list .user_selector:checkbox:checked`)
 
         check.each((el) => {
@@ -156,13 +157,12 @@ export class AccessBlock {
             this.allSysUsers.push(this.executorsUsers[index])
 
             //Удаляет из объект пользователя из списка всех сотрудников полученного от базы
+
+            let length = this.allSysUsers.length - 1
+
+            this.createUserBlock('.all_users_list', length, this.allSysUsers)  
+            
             this.executorsUsers.splice(index, 1)
-
-            index = this.allSysUsers.length
-
-            this.createUserBlock('.all_users_list', index)  
         })
-        console.log(this.allSysUsers)  
-        console.log(this.executorsUsers) 
     }
 }

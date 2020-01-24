@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    
+
     <script src="https://unpkg.com/ag-grid-enterprise@21.2.2/dist/ag-grid-enterprise.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="../dist/bundle.js"></script>
@@ -14,92 +15,84 @@
     <link rel="stylesheet" href="https://unpkg.com/@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css">
     <link rel="stylesheet" href="style/s.css">
 
-    <title>Запросы</title>
+    <title>Запрос</title>
 </head>
 <body>
     <div class="main_conteiner">
         <div class="list_inq_conteiner">
             <div class="header_conteiner">
-                <div class="nav_btn_block"> 
-                    <div class="nav_btn" id="create_route" value="0">Создать запрос</div>
+                <div class="nav_btn_block">
+                    <div class="nav_btn" id="create_route" value="0">Добавить маршрут</div>
                     <div class="nav_btn">Отправить в архив</div>
                 </div>
             </div>
             <div class="list_route_conteiner" value="0"></div>
         </div>
         <div class="info_inq_conteiner">
-                <div class="info-inq__block">
-                    <div class="name_block inq_string">
-                        <input type="text" id="name-block__inpt" placeholder="Введите название запроса" name='name_inq' readonly>
-                        <button id="btn_edit_inq_nav" class="btn" >Редактировать запрос</button>
-                        <button id="btn_save_inq_nav" class="btn" style="display: none" >Сохранить запрос</button>
-                    </div>
-                        <div class="refNumb_block inq_string">
-                            <p>Референсный номер</p>
-                            <p name="red_number_inq">2321321312312</p>
-                        </div> 
-                        <div class="status_block inq_string">
-                            <p>Статус</p>
-                            <select name="status_inq" id="" disabled>
-                                <option value="Черновик">Черновик</option>
-                                <option value="Не обработан">Не обработан</option>
-                                <option value="В обработке">В обработке</option>
-                                <option value="Возврат/уточнение">Возврат/уточнение</option>
-                                <option value="Обработан">Обработан</option>
-                                <option value="Ожидание обратной связи">Ожидание обратной связи</option>
-                                <option value="Завершен">Завершен</option>
-                                <option value="Перспективы">Перспективы</option>
-                            </select>
-                        </div>
-                        <div class="service_block inq_string">
-                            <p>Услуга</p>
-                            <select name="service_inq" id="" disabled>
-                                <option value="Таможенное оформление">Таможенное оформление</option>
-                                <option value="Импорт">Импорт</option>
-                                <option value="Экспорт">Экспорт</option>
-                                <option value="РФ">РФ</option>
-                                <option value="Международная гп.">Международная гп.</option>
-                            </select>
-                        </div>
-                        <div class="transport_block inq_string">
-                            <p>Вид транспорта</p>
-                            <select name="view_trans_inq" id="" disabled>
-                                <option value="FTL">FTL</option>
-                                <option value="LTL">LTL</option>
-                                <option value="FCL">FCL</option>
-                                <option value="Не габарит">Не габарит</option>
-                            </select>
-                        </div>
-                        <div class="tender_block inq_string">
-                            <p>Тендер</p>
-                            <div class="add_tender">
-                                <input type="text" name="url_tender" placeholder="Вставте ссылку" readonly>
-                                <input type="file">
-                            </div>
-                        </div>
-                        <div class="inq_string">
-                            <p class="">Дата создания</p>
-                            <p class="date_inq">21.12.2019</p>
-                        </div>
-                    <div class="hor_line"></div>
-                        <div class="otdel-prodaj-block">
-                            <div class="inq_string">
-                                <p>Доступность</p>
-                                <button id="show_list_access" class="btn">посмотреть список &gt;</button>
-                            </div>
-                            <div class="inq_string">
-                                <p>Последний контакт</p>
-                                <div class="last_connect">
-                                    <p id="text_last_connect">hh:mm / dd.mm.yyyy</p>
-                                    <button id="update_last_connect" class="btn">Обновить</button>
-                                </div>
-                            </div>
-                            <div class="create_btn_block">
-                                <button id="create_kp" class="btn">Сделать КП</button>
-                                <button id="create_order" class="btn">Сформировать заказ</button>
-                            </div>
-                        </div>
+            <div class="info-inq__block">
+                <div class="name_block inq_string">
+                    <input type="text" id="name-block__inpt" placeholder="Введите название запроса" name='name_inq'
+                        readonly>
+                    <button id="btn_edit_inq" class="btn">Редактировать</button>
+                    <button id="btn_save_inq" class="btn" style="display: none">Сохранить</button>
                 </div>
+                <div class="refNumb_block inq_string">
+                    <p>Референсный номер</p>
+                    <p name="red_number_inq">2321321312312</p>
+                </div>
+                <div class="status_block inq_string">
+                    <p>Статус</p>
+                    <select name="status_inq" id="" disabled>
+                        <option value="Черновик">Черновик</option>
+                        <option value="Не обработан">Не обработан</option>
+                        <option value="В обработке">В обработке</option>
+                        <option value="Возврат/уточнение">Возврат/уточнение</option>
+                        <option value="Обработан">Обработан</option>
+                        <option value="Ожидание обратной связи">Ожидание обратной связи</option>
+                        <option value="Завершен">Завершен</option>
+                        <option value="Перспективы">Перспективы</option>
+                    </select>
+                </div>
+                <div class="service_block inq_string">
+                    <p>Услуга</p>
+                    <select name="service_inq" id="" disabled>
+                        <option value="Таможенное оформление">Таможенное оформление</option>
+                        <option value="Импорт">Импорт</option>
+                        <option value="Экспорт">Экспорт</option>
+                        <option value="РФ">РФ</option>
+                        <option value="Международная гп.">Международная гп.</option>
+                    </select>
+                </div>
+                <div class="tender_block inq_string">
+                    <p>Тендер</p>
+                    <div class="add_tender">
+                        <input type="text" name="url_tender" placeholder="Вставте ссылку" readonly>
+                        <input type="file">
+                    </div>
+                </div>
+                <div class="inq_string">
+                    <p class="">Дата создания</p>
+                    <p class="date_inq">21.12.2019</p>
+                </div>
+                <div class="hor_line"></div>
+                <div class="otdel-prodaj-block">
+                    <div class="inq_string">
+                        <p>Доступность</p>
+                        <button id="show_list_access" class="btn">посмотреть список &gt;</button>
+                    </div>
+                    <div class="inq_string">
+                        <p>Последний контакт</p>
+                        <div class="last_connect">
+                            <p id="text_last_connect">hh:mm / dd.mm.yyyy</p>
+                            <button id="update_last_connect" class="btn">Обновить</button>
+                        </div>
+                    </div>
+                    <div class="create_btn_block">
+                        <button id="create_kp" class="btn">Сделать КП</button>
+                        <button id="create_order" class="btn">Сформировать заказ</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="access_users_conteiner">
             <div class="access_user__background" onclick="inqInfo.closeAccessWindow()"></div>
@@ -119,13 +112,15 @@
                         </div>
                         <div class="observer_list access__list">
                             <div class="user_item_block">
-                                    <input id="user_selector" class="user_selector" type="checkbox">
-                                    <label for="user_selector" class="selector_indicator"></label>
+                                <input id="user_selector" class="user_selector" type="checkbox">
+                                <label for="user_selector" class="selector_indicator"></label>
                                 <div class="user_item_photo">
-                                    <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                    <a href="#"><img src="http://placehold.it/60x60" /></a>
                                 </div>
                                 <div class="user_info_block">
-                                    <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                    <a href="#">
+                                        <div class="user_info_name">Имя пользователя</div>
+                                    </a>
                                     <div class="user_info_position">должность</div>
                                 </div>
                             </div>
@@ -138,90 +133,106 @@
                     </div>
                     <div class="access__list all_users_list">
                         <div class="user_item_block">
-                                <input id="user_selector" class="user_selector" type="checkbox">
-                                <label for="user_selector" class="selector_indicator"></label>
+                            <input id="user_selector" class="user_selector" type="checkbox">
+                            <label for="user_selector" class="selector_indicator"></label>
                             <div class="user_item_photo">
-                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                <a href="#"><img src="http://placehold.it/60x60" /></a>
                             </div>
                             <div class="user_info_block">
-                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <a href="#">
+                                    <div class="user_info_name">Имя пользователя</div>
+                                </a>
                                 <div class="user_info_position">должность</div>
                             </div>
                         </div>
                         <div class="user_item_block">
-                                <input id="user_selector" class="user_selector" type="checkbox">
-                                <label for="user_selector" class="selector_indicator"></label>
+                            <input id="user_selector" class="user_selector" type="checkbox">
+                            <label for="user_selector" class="selector_indicator"></label>
                             <div class="user_item_photo">
-                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                <a href="#"><img src="http://placehold.it/60x60" /></a>
                             </div>
                             <div class="user_info_block">
-                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <a href="#">
+                                    <div class="user_info_name">Имя пользователя</div>
+                                </a>
                                 <div class="user_info_position">должность</div>
                             </div>
                         </div>
                         <div class="user_item_block">
-                                <input id="user_selector" class="user_selector" type="checkbox">
-                                <label for="user_selector" class="selector_indicator"></label>
+                            <input id="user_selector" class="user_selector" type="checkbox">
+                            <label for="user_selector" class="selector_indicator"></label>
                             <div class="user_item_photo">
-                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                <a href="#"><img src="http://placehold.it/60x60" /></a>
                             </div>
                             <div class="user_info_block">
-                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <a href="#">
+                                    <div class="user_info_name">Имя пользователя</div>
+                                </a>
                                 <div class="user_info_position">должность</div>
                             </div>
                         </div>
                         <div class="user_item_block">
-                                <input id="user_selector" class="user_selector" type="checkbox">
-                                <label for="user_selector" class="selector_indicator"></label>
+                            <input id="user_selector" class="user_selector" type="checkbox">
+                            <label for="user_selector" class="selector_indicator"></label>
                             <div class="user_item_photo">
-                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                <a href="#"><img src="http://placehold.it/60x60" /></a>
                             </div>
                             <div class="user_info_block">
-                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <a href="#">
+                                    <div class="user_info_name">Имя пользователя</div>
+                                </a>
                                 <div class="user_info_position">должность</div>
                             </div>
                         </div>
                         <div class="user_item_block">
-                                <input id="user_selector" class="user_selector" type="checkbox">
-                                <label for="user_selector" class="selector_indicator"></label>
+                            <input id="user_selector" class="user_selector" type="checkbox">
+                            <label for="user_selector" class="selector_indicator"></label>
                             <div class="user_item_photo">
-                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                <a href="#"><img src="http://placehold.it/60x60" /></a>
                             </div>
                             <div class="user_info_block">
-                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <a href="#">
+                                    <div class="user_info_name">Имя пользователя</div>
+                                </a>
                                 <div class="user_info_position">должность</div>
                             </div>
                         </div>
                         <div class="user_item_block">
-                                <input id="user_selector" class="user_selector" type="checkbox">
-                                <label for="user_selector" class="selector_indicator"></label>
+                            <input id="user_selector" class="user_selector" type="checkbox">
+                            <label for="user_selector" class="selector_indicator"></label>
                             <div class="user_item_photo">
-                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                <a href="#"><img src="http://placehold.it/60x60" /></a>
                             </div>
                             <div class="user_info_block">
-                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <a href="#">
+                                    <div class="user_info_name">Имя пользователя</div>
+                                </a>
                                 <div class="user_info_position">должность</div>
                             </div>
                         </div>
                         <div class="user_item_block">
-                                <input id="user_selector" class="user_selector" type="checkbox">
-                                <label for="user_selector" class="selector_indicator"></label>
+                            <input id="user_selector" class="user_selector" type="checkbox">
+                            <label for="user_selector" class="selector_indicator"></label>
                             <div class="user_item_photo">
-                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                <a href="#"><img src="http://placehold.it/60x60" /></a>
                             </div>
                             <div class="user_info_block">
-                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <a href="#">
+                                    <div class="user_info_name">Имя пользователя</div>
+                                </a>
                                 <div class="user_info_position">должность</div>
                             </div>
                         </div>
                         <div class="user_item_block">
-                                <input id="user_selector" class="user_selector" type="checkbox">
-                                <label for="user_selector" class="selector_indicator"></label>
+                            <input id="user_selector" class="user_selector" type="checkbox">
+                            <label for="user_selector" class="selector_indicator"></label>
                             <div class="user_item_photo">
-                                <a href="#"><img src="http://placehold.it/60x60"/></a>
+                                <a href="#"><img src="http://placehold.it/60x60" /></a>
                             </div>
                             <div class="user_info_block">
-                                <a href="#"><div class="user_info_name">Имя пользователя</div></a>
+                                <a href="#">
+                                    <div class="user_info_name">Имя пользователя</div>
+                                </a>
                                 <div class="user_info_position">должность</div>
                             </div>
                         </div>
@@ -238,12 +249,6 @@
                     </div>
                     <div class="recomm_rates__table rates_table"></div>
                     <div class="recomm_rates__edit rates_edit_block">
-                        <input type="text" placeholder="сумма" id="summ_rec_rate">
-                        <select name="" id="rec_currency_list">
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                        </select>
-                        <button class="btn" onclick="recomRatesTable.addNewRate('summ_rec_rate', 'rec_currency_list')">Добавить ставку</button>
                     </div>
                 </div>
                 <div class="hor_line"></div>
@@ -258,7 +263,9 @@
                             <option value="USD">USD</option>
                             <option value="EUR">EUR</option>
                         </select>
-                        <button class="btn" onclick="carrierRatesTable.addNewRate('summ_carr_rate', 'carr_currency_list')">Добавить ставку</button>
+                        <button class="btn"
+                            onclick="carrierRatesTable.addNewRate('summ_carr_rate', 'carr_currency_list')">Добавить
+                            ставку</button>
                     </div>
                 </div>
             </div>
@@ -280,54 +287,75 @@
                     <div src="" alt="" class="comm_offer__logo"></div>
                     <div class="adresant_block">
                         <h4 class="redct_span adresant_text">В адрес компании %имя компании%</h4>
-                        <input type="text" name="adresant_text" class="adresant_inpt" value="В адрес компании %имя компании%">
+                        <input type="text" name="adresant_text" class="adresant_inpt"
+                            value="В адрес компании %имя компании%">
                     </div>
                     <div class="header_comm_offer_block">
                         <span class="redct_span header_comm_offer">Уважаемый, %Имя%</span>
                         <input type="text" name="header_comm_offer" class="header_inpt" value="Уважаемый %Имя%">
                     </div>
-                    <span class="redct_span" class="header_info">На основе предоставленной вами информации, мы подготовили коммерческое предложение. Если у вас возникнут вопросы, будем рады на них ответить.</span>
-                    <textarea type="text" name="header_info" class="header_info_inpt">На основе предоставленной вами информации, мы подготовили коммерческое предложение. Если у вас возникнут вопросы, будем рады на них ответить.</textarea>
+                    <span class="redct_span" class="header_info">На основе предоставленной вами информации, мы
+                        подготовили коммерческое предложение. Если у вас возникнут вопросы, будем рады на них
+                        ответить.</span>
+                    <textarea type="text" name="header_info"
+                        class="header_info_inpt">На основе предоставленной вами информации, мы подготовили коммерческое предложение. Если у вас возникнут вопросы, будем рады на них ответить.</textarea>
                     <div class="price_table_block"></div>
                     <div class="stavka_fraxta_block points_block">
                         <h4>Ставка фрахта включает:</h4>
                         <div class="item">
-                            <span class="redct_span stavka_fraxta_span_1">•	подача транспортных средств, соответствующих всем техническим требованием в адрес погрузки;</span>
-                            <textarea type="text" name="stavka_fraxta_1" class="stavka_fraxta_inpt_1">подача транспортных средств, соответствующих всем техническим требованием в адрес погрузки;</textarea>
+                            <span class="redct_span stavka_fraxta_span_1">• подача транспортных средств, соответствующих
+                                всем техническим требованием в адрес погрузки;</span>
+                            <textarea type="text" name="stavka_fraxta_1"
+                                class="stavka_fraxta_inpt_1">подача транспортных средств, соответствующих всем техническим требованием в адрес погрузки;</textarea>
                         </div>
                         <div class="item">
-                            <span class="redct_span stavka_fraxta_2">•	контроль погрузки и размещения груза на транспортном средстве;</span>
-                            <textarea type="text" name="stavka_fraxta_2" class="stavka_fraxta_inpt_2">контроль погрузки и размещения груза на транспортном средстве;</textarea>
+                            <span class="redct_span stavka_fraxta_2">• контроль погрузки и размещения груза на
+                                транспортном средстве;</span>
+                            <textarea type="text" name="stavka_fraxta_2"
+                                class="stavka_fraxta_inpt_2">контроль погрузки и размещения груза на транспортном средстве;</textarea>
                         </div>
                         <div class="item">
-                            <span class="redct_span stavka_fraxta_3">•	оформление ЭПИ – до 10 кодов ТНВЭД;</span>
-                            <textarea type="text" name="stavka_fraxta_3" class="stavka_fraxta_inpt_3">оформление ЭПИ – до 10 кодов ТНВЭД;</textarea>
+                            <span class="redct_span stavka_fraxta_3">• оформление ЭПИ – до 10 кодов ТНВЭД;</span>
+                            <textarea type="text" name="stavka_fraxta_3"
+                                class="stavka_fraxta_inpt_3">оформление ЭПИ – до 10 кодов ТНВЭД;</textarea>
                         </div>
                         <div class="item">
-                            <span class="redct_span stavka_fraxta_4">•	оформление транзитной декларации по территории ЕАЭС;</span>
-                            <textarea type="text" name="stavka_fraxta_4" class="stavka_fraxta_inpt_4">оформление транзитной декларации по территории ЕАЭС;</textarea>
+                            <span class="redct_span stavka_fraxta_4">• оформление транзитной декларации по территории
+                                ЕАЭС;</span>
+                            <textarea type="text" name="stavka_fraxta_4"
+                                class="stavka_fraxta_inpt_4">оформление транзитной декларации по территории ЕАЭС;</textarea>
                         </div>
                     </div>
                     <div class="uslovia_oplati_block points_block">
-                    <h4>Условия оплаты:</h4>
+                        <h4>Условия оплаты:</h4>
                         <div class="item">
-                            <span class="redct_span">•	Оплата в рублях по курсу ЦБ РФ на дату оплаты, возможна фиксация курса на дату загрузки или выгрузки;</span>
-                            <textarea type="text">Оплата в рублях по курсу ЦБ РФ на дату оплаты, возможна фиксация курса на дату загрузки или выгрузки;</textarea>
+                            <span class="redct_span">• Оплата в рублях по курсу ЦБ РФ на дату оплаты, возможна фиксация
+                                курса на дату загрузки или выгрузки;</span>
+                            <textarea
+                                type="text">Оплата в рублях по курсу ЦБ РФ на дату оплаты, возможна фиксация курса на дату загрузки или выгрузки;</textarea>
                         </div>
                         <div class="item">
-                            <span class="redct_span">•	Предоставление закрывающих бухгалтерских документов (акт выполненных работ и счет-фактура по форме универсального передаточного документа) в сканированном виде на следующий день после доставки вашего груза, оригиналов в течение 7 дней после доставки груза.</span>
-                            <textarea type="text">Предоставление закрывающих бухгалтерских документов (акт выполненных работ и счет-фактура по форме универсального передаточного документа) в сканированном виде на следующий день после доставки вашего груза, оригиналов в течение 7 дней после доставки груза.</textarea>
+                            <span class="redct_span">• Предоставление закрывающих бухгалтерских документов (акт
+                                выполненных работ и счет-фактура по форме универсального передаточного документа) в
+                                сканированном виде на следующий день после доставки вашего груза, оригиналов в течение 7
+                                дней после доставки груза.</span>
+                            <textarea
+                                type="text">Предоставление закрывающих бухгалтерских документов (акт выполненных работ и счет-фактура по форме универсального передаточного документа) в сканированном виде на следующий день после доставки вашего груза, оригиналов в течение 7 дней после доставки груза.</textarea>
                         </div>
                     </div>
                     <div class="dop_uslugi_block points_block">
                         <h4>Дополнительные услуги:</h4>
                         <div class="item">
-                            <span class="redct_span">•	Оформление в Евросоюзе экспортной таможенной декларации EX-1 (от 50 евро)</span>
-                            <textarea type="text">Оформление в Евросоюзе экспортной таможенной декларации EX-1 (от 50 евро)</textarea>
+                            <span class="redct_span">• Оформление в Евросоюзе экспортной таможенной декларации EX-1 (от
+                                50 евро)</span>
+                            <textarea
+                                type="text">Оформление в Евросоюзе экспортной таможенной декларации EX-1 (от 50 евро)</textarea>
                         </div>
                         <div class="item">
-                            <span class="redct_span">•	Страхование грузов от всех видов рисков с полным возмещением - 0,18 % от стоимости груза.</span>
-                            <textarea type="text">Страхование грузов от всех видов рисков с полным возмещением - 0,18 % от стоимости груза.</textarea>
+                            <span class="redct_span">• Страхование грузов от всех видов рисков с полным возмещением -
+                                0,18 % от стоимости груза.</span>
+                            <textarea
+                                type="text">Страхование грузов от всех видов рисков с полным возмещением - 0,18 % от стоимости груза.</textarea>
                         </div>
                     </div>
                     <div class="footer_kp_block">
@@ -352,7 +380,8 @@
             </div>
         </div>
     </div>
-    
-    
+
+
 </body>
+
 </html>

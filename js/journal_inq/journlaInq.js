@@ -43,6 +43,7 @@ export class JournalInq {
                         return {'background-color': '#fff', color: '#000', 'border': '2px solid #000'}
                 }
             },
+            rowHeight: 40,
             onRowDoubleClicked: function(params) {
                 window.open('file://D:/PROJECTS/crm_sys_rel/page_inquiry/page_inquiry.html')
             },
@@ -62,7 +63,7 @@ export class JournalInq {
         this.renderJournalInq(id_conteiner)
     }
     renderJournalInq(id_conteiner) {
-        $(id_conteiner).prepend('<div id="list_inq" class="list_inq__grid ag-theme-balham"></div>')
+        $(id_conteiner).append('<div id="list_inq" class="list_inq__grid ag-theme-balham"></div>')
         let gridDiv = $('#list_inq')[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
     }

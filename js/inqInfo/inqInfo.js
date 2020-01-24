@@ -13,15 +13,16 @@ export class InquireInfo {
     }
     InqEditModeOff() {
         this.showOrHideBtn('none', 'block')
-        this.getInformation()
+        //this.getInformation()
         $('.info-inq__block select').each(function() {$(this).attr('disabled', 'disabled')})
+        console.log($('.info-inq__block select'))
         $('.info-inq__block input[type=text]').each(function() {$(this).attr('readonly', 'readonly')})
         $('.info-inq__block textarea').each(function() {$(this).attr('readonly', 'readonly')})
     }
     showOrHideBtn(show, hide) {
         $('.del_btn').css({'display': show})
-        $('#btn_edit_inq_nav').css({'display': hide})
-        $('#btn_save_inq_nav').css({'display': show})
+        $('#btn_edit_inq').css({'display': hide})
+        $('#btn_save_inq').css({'display': show})
     }
     getInformation() {
         let sel_val = $('.info-inq__block select')

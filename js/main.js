@@ -13,6 +13,7 @@ import { AccessBlock } from "./accessBlock/accessBlock";
 import { dataLids } from './info_lid/dataLids'
 import { CargoInfoTable } from './cargoInfoTable/cargoInfoTable'
 import { TablePointsRoute } from './tablePointsRoute/tablePointsRoute'
+//import { IventBlock } from './iventBlock/iventBlock'
 
 
 const journalLid = new JournalLid(data)
@@ -20,20 +21,21 @@ const journalInq = new JournalInq(dataInq)
 const contactBlock = new ContactBlock()
 const infoLid = new InfoLid(dataLids.lidNumberOne) 
 const inqInfo = new InquireInfo()
-const recomRatesTable = new RatesTable('recomm_rates__table', 'recom_rates_table')
-const carrierRatesTable = new RatesTable('carrier_rates__table', 'carrier_rates_table')
+const recomRatesTable = new RatesTable('recomm_rates__table', 'recom_rates_table', 80)
+const carrierRatesTable = new RatesTable('carrier_rates__table', 'carrier_rates_table', 350)
 const kpForm = new KpForm()
 const companyBlock = new CompanyBlock()
 const accessBlock = new AccessBlock()
 const tablePointsRoute = new TablePointsRoute()
 const cargoInfoTable = new CargoInfoTable()
-const routeDeliv = new RouteOfTheDelivery( cargoInfoTable, tablePointsRoute)
+//const iventBlock = new IventBlock()
+const routeDeliv = new RouteOfTheDelivery( cargoInfoTable, tablePointsRoute, inqInfo)
 
 
 $(document).ready(function() {
     //routeDeliv.showJournalRoute(0)
-    //recomRatesTable.showJournal()
-    //carrierRatesTable.showJournal()
+    recomRatesTable.showJournal()
+    carrierRatesTable.showJournal()
 
     //Заполнить поля из полученного объекта
     infoLid.fillFields()
@@ -61,15 +63,13 @@ $(document).ready(function() {
 
     
     //редактирование запроса
-    $('#btn_edit_inq_nav').on('click', function() {inqInfo.InqEditModeOn()})
-    $('#btn_save_inq_nav').on('click', function() {inqInfo.InqEditModeOff()})
+    $('#btn_edit_inq').on('click', function() {inqInfo.InqEditModeOn()})
+    $('#btn_save_inq').on('click', function() {inqInfo.InqEditModeOff()})
 
     //добавить маршрут в запросе
     $('#add_point_route').on('click', function() {routeDeliv.addPointRoute()})
     $('#create_route').on('click', function() {routeDeliv.createRoute()})
-
-    //показать страницу ставок
-    $('#showRates').on('click', function() {inqInfo.showRatesBlock()})  
+ 
     //показать страницу доступности
     $('#show_list_access').on('click', function() {inqInfo.showAccessWindow()})
 
@@ -129,9 +129,9 @@ $(document).ready(function() {
 
     
     //Добавить пользователя в список соисполнители
-    $('#add_user_executor').on('click', () => {
+    /*$('#add_user_executor').on('click', () => {
         $('.executor_list').append('<div class="user_item_block"><input id="user_selector" class="user_selector" type="checkbox"><label for="user_selector" class="selector_indicator"></label><div class="user_item_photo"><a href="#"><img src="http://placehold.it/60x60"/></a></div><div class="user_info_block"><a href="#"><div class="user_info_name">Имя пользователя</div></a><div class="user_info_position">должность</div></div></div>')
-    })
+    })*/
 
     //Кнопки очистить или удалить поля компании у Лида
     companyBlock.clearInpt()
@@ -146,12 +146,8 @@ $(document).ready(function() {
     $('#del_social_contact').on('click', () => {$('#contact_social_inpt').val('')})
     
 
-    $('.del_tag').on('click', () => {
-        console.log($('.del_tag'))
-    })
+    $('.del_tag').on('click', () => {console.log($('.del_tag'))})
     
     //Добавить в список тегов,новый тег
-    $('#add_in_journal_tag').on('click', () => {
-        infoLid.createNewTag()
-    })
+    $('#add_in_journal_tag').on('click', () => {infoLid.createNewTag()})
 })

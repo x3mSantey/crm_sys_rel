@@ -9,13 +9,12 @@ export class InfoLid {
 
     }
     createNewLid() {
-        journalLid.showJournalLid()
         $('#btn_save_lid_nav').val('new_lid')
         $('.lid_info_conteiner').css({'display': 'block'})
         $('select').val('')
         $('textarea').val('')
         $('input').val('')
-        infoLid.lidEditModeOn()
+        this.lidEditModeOn()
     }
     lidEditModeOn() {
         this.showOrHideBtns('block')
@@ -40,19 +39,15 @@ export class InfoLid {
     }
     saveChangesInLid (journalLid, companyBlock) {
         if ($('#btn_save_lid_nav').val() === 'new_lid') {
-            this.checkStatus()
-            this.checkAllInpts()
-            journalLid.rowDataListLid.push({name_lid: `${this.lidInformation.name_lid}`,
-                                            responsible_user_lid: `${this.lidInformation.response}`,
-                                            date_creating_lid: `${this.lidInformation.date_creating}`,
-                                            status_lid: `${this.lidInformation.status_lid}`})
-            journalLid.showJournalLid()
+            //this.checkStatus()
+            //this.checkAllInpts()
+
             $('#btn_save_lid_nav').val('old_lid')
             this.lidEditModeOff()
             //Заглушка для создания первого лида
         } else if ($('#btn_save_lid_nav').val() === 'old_lid') {
             companyBlock.saveInfoChanges()
-            this.checkStatus()
+            //this.checkStatus()
             //this.checkAllInpts()
             this.lidEditModeOff()
         }
@@ -71,6 +66,7 @@ export class InfoLid {
         $('input[type=number]').attr('readonly', 'readonly')
     }
     checkAllInpts () {
+        debugger
         let arrInputLid = $('.edit_info_inpt')
         let arrTextLid = $('.edit_info_text')
         let arrSelectLid = $('.dd_list')
@@ -83,8 +79,8 @@ export class InfoLid {
         }
         console.log(this.lidInformation)
     }
-    checkStatus() {
-         switch ($('#status_lid')[0].options[$('#status_lid')[0].selectedIndex].innerHTML) {
+    /*checkStatus() {
+         switch () {
             case 'Не разобран':
                 //изменения если лид перешел в статус
                 break
@@ -98,7 +94,7 @@ export class InfoLid {
                 //изменения если лид перешел в статус
                 break
          }
-    }
+    }*/
     createInq(typeInq, nameInq, numbInq,typeTrans) {
         let date = new Date()
         let hours = date.getHours()
@@ -113,7 +109,7 @@ export class InfoLid {
         $('.inq_list_conteiner').val(val);
         $('.inq_list_conteiner').append(`<a href="../page_inquiry/page_inquiry.html" class="lid_inq_${val}"></a>`)
         $(`.lid_inq_${val}`).append(`<div class="inquire_info_block inq_block_${val}" title="Перейти на страницу запроса"></div>`)
-        $(`.inq_block_${val}`).append(`<div class="lid_string"><h4>${typeInq} / ${nameInq}</h4><select name="" id=""><option value="">Черновик</option><option value="">Не обработан</option><option value="">В обработке</option><option value="">Возврат/уточнение</option><option value="">Обработан</option><option value="">Ожидание обратной связи</option><option value="">Завершен</option><option value="">Перспективы</option></select></div>`)
+        $(`.inq_block_${val}`).append(`<div class="lid_string"><h4>${typeInq} / ${nameInq}</h4><select name="" id="" disabled><option value="">Черновик</option><option value="">Не обработан</option><option value="">В обработке</option><option value="">Возврат/уточнение</option><option value="">Обработан</option><option value="">Ожидание обратной связи</option><option value="">Завершен</option><option value="">Перспективы</option></select></div>`)
         $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Номер запроса - ${numbInq}</p></div>`)
         $(`.inq_block_${val}`).append(`<div class="lid_string"><p>Вид транспорта - ${typeTrans}</p><p>${hours}:${min} / ${day}.${month}.${year}</p></div>`)
 

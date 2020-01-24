@@ -81,8 +81,25 @@ export class TablePointsRoute {
         this.renderJournalRouteDel(i)
     }
     renderJournalRouteDel(i) {
-        $(`#route_block_${i}`).append(`<div id="list_route_deliv${i}" class="list_route__grid ag-theme-balham"></div>`)
+        $(`#points_table_conteiner_${i}`).append(`<div id="list_route_deliv${i}" class="list_route__grid ag-theme-balham"></div>`)
         let gridDiv = $(`#list_route_deliv${i}`)[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
+    }
+    addPointRoute(y) {
+        let val = $(`#add_point_route_${y}`).val()
+
+            $(`#add_point_route_${y}`).val(++val)
+            let i = this.rowDataListRoute.length
+            let n = i-1
+            this.rowDataListRoute.push(this.rowDataListRoute[n]) 
+            this.rowDataListRoute[n] = {
+                items_route: `пункт ${n}`,
+                country_route: '',
+                index_route: '',
+                quadr_route: '',
+                town_route: '',
+                adres_route: ''
+            }
+        this.showJournalRoute(y)
     }
 }

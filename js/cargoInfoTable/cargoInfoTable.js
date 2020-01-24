@@ -78,7 +78,7 @@ export class CargoInfoTable {
         this.renderJournalRouteDel(i)
     }
     renderJournalRouteDel(i) {
-        $(`#route_block_${i}`).append(`<div id="list_route_deliv_${i}" class="list_route__grid ag-theme-balham" style="height: 85px;"></div>`)
+        $(`#cargo_table_conteiner_${i}`).append(`<div id="list_route_deliv_${i}" class="list_route__grid ag-theme-balham" style="height: 85px;"></div>`)
         let gridDiv = $(`#list_route_deliv_${i}`)[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
     }

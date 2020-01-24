@@ -1,7 +1,8 @@
 export class RatesTable {
-    constructor(conteiner, table) {
+    constructor(conteiner, table, height_table) {
         this.id_conteiner = conteiner
         this.id_table = table
+        this.height_table = height_table
 
         this.journalColW = {
             user_op: 120,
@@ -70,7 +71,7 @@ export class RatesTable {
         this.renderJournalRouteDel()
     }
     renderJournalRouteDel() {
-        $(`.${this.id_conteiner}`).prepend(`<div id="${this.id_table}" class="list_rates__grid ag-theme-balham"></div>`)
+        $(`.${this.id_conteiner}`).prepend(`<div id="${this.id_table}" style="height: ${this.height_table}px" class="list_rates__grid ag-theme-balham"></div>`)
         let gridDiv = $(`#${this.id_table}`)[0]
         new agGrid.Grid(gridDiv, this.gridOptions)
     }
@@ -78,7 +79,6 @@ export class RatesTable {
         let summ = $(`#${sum_id}`).val()
         let cur = $(`#${cur_id} :selected`).val()
         // let user - узнать кто авториз пользователь
-
 
         let dt = new Date()
         let hours = dt.getHours()
