@@ -156,7 +156,7 @@ p
     .nav_btn
         line-height 35px
         padding 0 10px 0 10px
-        margin-right 10px
+        margin-left 10px
         color $black
         font-family ProductSans
         font-size 14px
@@ -226,7 +226,7 @@ p
 
 .info-inq__block
     width 400px
-    padding 0 20px 0 20px
+    padding 0 20px 10px 20px
     background-color $sec-color
     
 .name_block 
@@ -274,7 +274,7 @@ p
     h2
         padding 0
     h4
-        padding 10px 5px 0 0
+        padding 7px 5px 0 0
 
 .route-block__text
     display flex
@@ -347,7 +347,6 @@ textarea
 
 .last_connect
     width 150px
-    height 50px 
     
 #text_last_connect
     width 150px
@@ -357,20 +356,6 @@ textarea
     width 75px
     height 20px
     margin-left 75px
-        
-.create_btn_block
-    display flex
-    justify-content space-between
-    width 400px
-    padding-bottom 12px
-
-#create_kp
-    width 145px
-    height 25px
-
-#create_order
-    width 145px
-    height 25px
 
 .list_route_conteiner
     width 100%
@@ -405,7 +390,6 @@ textarea
 
 ----------------------------------*/
 .access_users_conteiner 
-    display none
     position fixed
     top 0
     left 0
@@ -434,10 +418,38 @@ textarea
     background-color $sec-color
     box-shadow 0 0 20px 5px $sec-color
 
-.list_users_all_conteiner
+.list_all_users_conteiner
     box-sizing content-box
     margin 20px
     overflow hidden
+
+.access_users__executor_block
+    box-sizing content-box
+    margin 20px 
+    overflow hidden
+
+.access__title
+    display flex 
+    flex-direction row
+    justify-content space-between
+    width 348px
+    height 35px
+    h4
+        margin 8px 0 0 15px
+    input 
+        display block
+        margin-top 8px
+
+.access_title__nav
+    display flex
+    justify-content space-between
+    width 170px
+
+.access_title__nav_view
+    display flex
+    justify-content space-between
+    width 170px
+
 
 .access_users__block
     width 350px
@@ -470,15 +482,24 @@ textarea
         margin-top 8px
 
 #add_user_executor
-    width 100px
+    width 80px
     margin-top 5px
     
-#add_user_observer
-    width 100px
+#del_user_executor
+    width 80px
+    margin-top 5px
+
+#add_user_view
+    width 80px
+    margin-top 5px
+
+#del_user_view 
+    width 80px
     margin-top 5px
 
 .access__list
     width 350px
+    max-height 515px
     margin-top 10px
     overflow-y scroll 
 
@@ -593,7 +614,11 @@ textarea
 .list_rates__grid
     width 683px
     height 200px
-    
+
+.rates_btn_block
+    display flex
+    justify-content space-between
+
 /*--------------------------------
 
 

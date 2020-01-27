@@ -6,13 +6,15 @@ import { dataInq } from "./journal_inq/dataInq";
 import { ContactBlock } from "./contact_block/contactBlock";
 import { RouteOfTheDelivery } from "./routeDeliv/routeDeliv";
 import { InquireInfo } from "./inqInfo/inqInfo";
-import { RatesTable } from "./ratesTable/ratestable";
+import { RatesTable } from "./ratesTable/ratesTable";
 import { KpForm } from "./kpForm/kpForm";
 import { CompanyBlock } from "./company_block/companyBlock"
 import { AccessBlock } from "./accessBlock/accessBlock";
 import { dataLids } from './info_lid/dataLids'
 import { CargoInfoTable } from './cargoInfoTable/cargoInfoTable'
 import { TablePointsRoute } from './tablePointsRoute/tablePointsRoute'
+import { CarrierTable } from './ratesTable/carrierTable/carrierTable'
+import { RecomTable } from './ratesTable/recomTable/recomTable'
 //import { IventBlock } from './iventBlock/iventBlock'
 
 
@@ -21,16 +23,19 @@ const journalInq = new JournalInq(dataInq)
 const contactBlock = new ContactBlock()
 const infoLid = new InfoLid(dataLids.lidNumberOne)
 const inqInfo = new InquireInfo()
-const recomRatesTable = new RatesTable('recomm_rates__table', 'recom_rates_table', 80)
-const carrierRatesTable = new RatesTable('carrier_rates__table', 'carrier_rates_table', 350)
+
+const recTable = new RecomTable()
+const carrierTable = new CarrierTable(recTable)
+const ratesBlock = new RatesTable(carrierTable, recTable)
+
 const kpForm = new KpForm()
 const companyBlock = new CompanyBlock()
 const accessBlock = new AccessBlock()
 const tablePointsRoute = new TablePointsRoute()
 const cargoInfoTable = new CargoInfoTable()
-    //const iventBlock = new IventBlock()
-const routeDeliv = new RouteOfTheDelivery(cargoInfoTable, tablePointsRoute, inqInfo, recomRatesTable, carrierRatesTable)
-console.log('was')
+
+//const iventBlock = new IventBlock()
+const routeDeliv = new RouteOfTheDelivery(cargoInfoTable, tablePointsRoute, inqInfo, ratesBlock)
 
 $(document).ready(function() {
     //routeDeliv.showJournalRoute(0)
@@ -70,8 +75,7 @@ $(document).ready(function() {
     $('#add_point_route').on('click', function() { routeDeliv.addPointRoute() })
     $('#create_route').on('click', function() { routeDeliv.createRoute() })
 
-    //показать страницу доступности
-    $('#show_list_access').on('click', function() { inqInfo.showAccessWindow() })
+
 
     $('#update_last_connect').on('click', function() { inqInfo.updateLastConnect() })
 
@@ -123,10 +127,12 @@ $(document).ready(function() {
 
 
 
-    //Открыть и закрыть окно пользователя
+    //Открыть окно доступности на странице лида
     $('#access_btn').on('click', () => { accessBlock.showAccessBlock() })
         //$('.access_user__background').on('click', () => {accessBlock.hideAccessBlock()})
 
+    //Открыть окно доступности на странице запроса
+    $('#show_list_access').on('click', () => { accessBlock.showAccessBlock(true) })
 
     //Добавить пользователя в список соисполнители
     /*$('#add_user_executor').on('click', () => {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,17 @@
     <script src="https://unpkg.com/ag-grid-enterprise@21.2.2/dist/ag-grid-enterprise.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="../dist/bundle.js"></script>
-    
-    <title>лид</title> 
+
+    <title>лид</title>
 </head>
+
 <body>
     <div class="main_conteiner">
         <div class="list_lid_conteiner">
             <div class="header_conteiner">
                 <div class="nav_btn_block">
-                    <div class="nav_btn" id="create_lid">Создать лида</div>
+                    <div class="nav_btn" id="create_lid">Новый лид</div>
                     <div class="nav_btn" id="create_inq">Сформировать запрос</div>
-                    <div class="nav_btn">Отправить в архив</div>
                 </div>
             </div>
             <div class="journal_lid_conteiner"></div>
@@ -43,7 +44,7 @@
             </div>
             <div class="lid_string">
                 <p>Ответственный</p>
-                <p class="respon_list lidDataInpt" name="respon_lid" >Имя пользователя</p>
+                <p class="respon_list lidDataInpt" name="respon_lid">Имя пользователя</p>
             </div>
             <div class="lid_string">
                 <p>Источник</p>
@@ -70,55 +71,55 @@
             <div class="hor_line"></div>
             <h1 class="company_header">Компания</h1>
             <form class="lid_info_company_block">
-                    <div class="info_string">
-                        <p>Название</p>
+                <div class="info_string">
+                    <p>Название</p>
+                    <div class="edit_block">
+                        <input type="text" readonly name="name_company" placeholder="Введите имя кампании" class="company_info_inpt edit_info_inpt compDataInpt" id="name_company_inpt">
+                        <input type="button" id="del_name_company" class="del_btn del_btn_comp">
+                    </div>
+                </div>
+                <div class="info_string">
+                    <p>ИНН</p>
+                    <div class="edit_block">
+                        <input type="number" readonly name="inn_company" placeholder="Введите ИНН" class="company_info_inpt edit_info_inpt compDataInpt" id="inn_company_inpt">
+                        <input type="button" id="del_inn_company" class="del_btn del_btn_comp">
+                    </div>
+                </div>
+                <div class="tel_company_conteiner" value="0">
+                    <div class="info_string" id="company_tel_block">
+                        <p>Тел.</p>
                         <div class="edit_block">
-                            <input type="text" readonly name="name_company" placeholder="Введите имя кампании" class="company_info_inpt edit_info_inpt compDataInpt" id="name_company_inpt">
-                            <input type="button"id="del_name_company" class="del_btn del_btn_comp">
+                            <input type="button" class="add_btn add_btn_info" id="add_company_tel">
+                            <input type="number" readonly name="dob_numb_company" placeholder="доб" class="company_info_inpt edit_info_inpt compDataInpt" id="dob_numb_company_inpt">
+                            <input type="number" readonly name="numb_company" placeholder="Введите номер" class="company_info_inpt edit_info_inpt compDataInpt" id="numb_company_inpt">
+                            <input type="button" id="del_numb_company" class="del_btn del_btn_comp">
                         </div>
                     </div>
+                </div>
+                <div class="info_string">
+                    <p>Почта</p>
+                    <div class="edit_block">
+                        <input type="text" readonly name="mail_company" placeholder="Введите почту" class="company_info_inpt edit_info_inpt compDataInpt" id="mail_company_inpt">
+                        <input type="button" id="del_mail_company" class="del_btn del_btn_comp">
+                    </div>
+                </div>
+                <div class="info_string">
+                    <p>Сайт</p>
+                    <div class="edit_block">
+                        <input type="text" readonly name="site_company" placeholder="Укажите сайт" class="company_info_inpt edit_info_inpt compDataInpt" id="site_company_inpt">
+                        <input type="button" id="del_site_company" class="del_btn del_btn_comp">
+                    </div>
+                </div>
+                <div class="social_company_conteiner" value="0">
                     <div class="info_string">
-                        <p>ИНН</p>
+                        <p>Соц. сети</p>
                         <div class="edit_block">
-                            <input type="number" readonly name="inn_company" placeholder="Введите ИНН" class="company_info_inpt edit_info_inpt compDataInpt" id="inn_company_inpt">
-                            <input type="button"id="del_inn_company" class="del_btn del_btn_comp">
+                            <input type="button" class="add_btn add_btn_info" id="add_company_social">
+                            <input type="text" readonly name="social_company" placeholder="Укажите соц. сеть" class="company_info_inpt edit_info_inpt compDataInpt" id="social_company_inpt">
+                            <input type="button" id="del_social_company" class="del_btn del_btn_comp">
                         </div>
                     </div>
-                    <div class="tel_company_conteiner" value="0">
-                        <div class="info_string" id="company_tel_block">
-                            <p>Тел.</p>
-                            <div class="edit_block">
-                                <input type="button" class="add_btn add_btn_info" id="add_company_tel">
-                                <input type="number" readonly name="dob_numb_company" placeholder="доб" class="company_info_inpt edit_info_inpt compDataInpt" id="dob_numb_company_inpt">
-                                <input type="number" readonly name="numb_company" placeholder="Введите номер" class="company_info_inpt edit_info_inpt compDataInpt" id="numb_company_inpt">
-                                <input type="button" id="del_numb_company" class="del_btn del_btn_comp">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info_string">
-                        <p>Почта</p>
-                        <div class="edit_block">
-                            <input type="text" readonly name="mail_company" placeholder="Введите почту" class="company_info_inpt edit_info_inpt compDataInpt" id="mail_company_inpt">
-                            <input type="button" id="del_mail_company" class="del_btn del_btn_comp">
-                        </div>
-                    </div>
-                    <div class="info_string">
-                        <p>Сайт</p>
-                        <div class="edit_block">
-                            <input type="text" readonly name="site_company" placeholder="Укажите сайт" class="company_info_inpt edit_info_inpt compDataInpt" id="site_company_inpt">
-                            <input type="button" id="del_site_company" class="del_btn del_btn_comp">
-                        </div>
-                    </div>
-                    <div class="social_company_conteiner" value="0">
-                        <div class="info_string">
-                            <p>Соц. сети</p>
-                            <div class="edit_block">
-                                <input type="button" class="add_btn add_btn_info" id="add_company_social">
-                                <input type="text" readonly name="social_company" placeholder="Укажите соц. сеть" class="company_info_inpt edit_info_inpt compDataInpt" id="social_company_inpt">
-                                <input type="button" id="del_social_company" class="del_btn del_btn_comp">
-                            </div>
-                        </div>
-                    </div>
+                </div>
             </form>
             <div class="hor_line"></div>
             <div class="lid_info__contact_conteiner">
@@ -174,14 +175,14 @@
                 </div>
                 <div class="lid_tags__list">
                 </div>
-                <div class="lid_new_tags_conteiner">                                
+                <div class="lid_new_tags_conteiner">
                     <div class="journal_tags_block">
                         <div class="journal_item_block" id="journal_tags_0">
                             <input type="checkbox" name="Название текста" id="journal_tags_check_0">
                             <p>Название текста</p>
                         </div>
                     </div>
-                    <div class="add_new_tag_block"> 
+                    <div class="add_new_tag_block">
                         <input type="text">
                         <button class="btn" id="add_in_journal_tag">Добавить новый тег</button>
                     </div>
@@ -193,7 +194,8 @@
                 <button id="access_btn" class="btn">посмотреть список &gt;</button>
             </div>
         </div>
-        
+
     </div>
 </body>
+
 </html>

@@ -1,7 +1,6 @@
 export class AccessBlock {
     constructor() {
-        this.allSysUsers = [
-            {
+        this.allSysUsers = [{
                 id: 221,
                 name: 'Test Name 1',
                 position: 'Менеджер',
@@ -73,9 +72,11 @@ export class AccessBlock {
             }
         ]
         this.executorsUsers = []
+        this.viewsUsers = []
     }
-    showAccessBlock() {
+    showAccessBlock(val) {
         $(`.name_lid_block`).attr('style', 'display: none')
+        $(`.name_block`).attr('style', 'display: none')
         $(`.main_conteiner`).append(`<div class="access_users_conteiner"></div>`)
 
         $(`.access_users_conteiner`).append(`<div class="access_user__background"></div>`)
@@ -83,20 +84,36 @@ export class AccessBlock {
 
         $(`.users_window_conteiner`).append(`<div class="access_users__executor_block"></div>`)
         $(`.users_window_conteiner`).append(`<div class="list_all_users_conteiner"></div>`)
-                    
-        $(`.access_users__executor_block`).append(`<div class="access__title"><h4>Соисполнители</h4><div class="access_title__nav"></div></div><div class="executor_list access__list"></div>`)
-        
+
+        $(`.access_users__executor_block`).append(`<div class="access_ex_conteiner"></div>`)
+        $(`.access_ex_conteiner`).append(`<div class="access__title"><h4>Соисполнители</h4><div class="access_title__nav"></div></div><div class="executor_list access__list"></div>`)
+
         $(`.list_all_users_conteiner`).append(`<div class="access__title"><h4>Все пользователи</h4></div><div class="access__list all_users_list"></div>`)
 
         $(`.access_title__nav`).append(`<button class="btn" id="add_user_executor">Добавить</button>`)
         $(`.access_title__nav`).append(`<button class="btn" id="del_user_executor">Удалить</button>`)
 
+        if (val) {
+            $(`.access_users__executor_block`).append(`<div class="hor_line"></div>`)
+
+            $(`.access_users__executor_block`).append(`<div class="access_view_conteiner"></div>`)
+            $(`.access_view_conteiner`).append(`<div class="access__title"><h4>Наблюдатели</h4><div class="access_title__nav_view"></div></div><div class="view_list access__list"></div>`)
+
+            $(`.access_title__nav_view`).append(`<button class="btn" id="add_user_view">Добавить</button>`)
+            $(`.access_title__nav_view`).append(`<button class="btn" id="del_user_view">Удалить</button>`)
+        }
+
+
         this.loadUsersInJournal('.all_users_list', this.allSysUsers)
         this.loadUsersInJournal('.executor_list', this.executorsUsers)
+        this.loadUsersInJournal('.view_list', this.viewsUsers)
 
-        $('.access_user__background').on('click', () => {this.hideAccessBlock()})
-        $(`#add_user_executor`).on('click', () => {this.addNewExecutors()})
-        $(`#del_user_executor`).on('click', () => {this.delExecutors()})
+        $('.access_user__background').on('click', () => { this.hideAccessBlock() })
+        $(`#add_user_executor`).on('click', () => { this.addNewExecutors(this.executorsUsers, '.executor_list') })
+        $(`#del_user_executor`).on('click', () => { this.delExecutors(this.executorsUsers, '.executor_list') })
+
+        $(`#add_user_view`).on('click', () => { this.addNewExecutors(this.viewsUsers, '.view_list') })
+        $(`#del_user_view`).on('click', () => { this.delExecutors(this.viewsUsers, '.view_list') })
     }
     hideAccessBlock() {
         $(`.name_lid_block`).attr('style', '')
@@ -114,55 +131,54 @@ export class AccessBlock {
         $(`#user_item_${arr[el].id}`).append(`<label for="${arr[el].id}" class="selector_indicator" id="selector_indicator_${arr[el].id}"></label>`)
         $(`#user_item_${arr[el].id}`).append(`<div class="user_item_photo"><img src="${arr[el].url_img}"/></div>`)
         $(`#user_item_${arr[el].id}`).append(`<div class="user_info_block" id="user_info_block_${arr[el].id}"></div>`)
-        
+
         $(`#user_info_block_${arr[el].id}`).append(`<div class="user_info_name">${arr[el].name}</div>`)
-        $(`#user_info_block_${arr[el].id}`).append(`<div class="user_info_position">${arr[el].position}</div>`)        
-        setTimeout(()=> {}, 10)
+        $(`#user_info_block_${arr[el].id}`).append(`<div class="user_info_position">${arr[el].position}</div>`)
+        setTimeout(() => {}, 10)
     }
-    addNewExecutors() {
+    addNewExecutors(nameList, classList) {
         let check = $(`.all_users_list .user_selector:checkbox:checked`)
 
         check.each((el) => {
-            let id = $(check[el]).attr('id')*1
+            let id = $(check[el]).attr('id') * 1
 
             $(`.access__list #user_item_${id}`).remove()
 
-            let index = this.allSysUsers.map( el => el.id).indexOf(id)
+            let index = this.allSysUsers.map(el => el.id).indexOf(id)
 
             //Добавляет объект пользователя в массив соисполнителей
             this.allSysUsers[index].status = 'executor'
-            this.executorsUsers.push(this.allSysUsers[index])
+            nameList.push(this.allSysUsers[index])
 
-            let length = this.executorsUsers.length - 1
+            let length = nameList.length - 1
 
-            this.createUserBlock('.executor_list', length, this.executorsUsers)
+            this.createUserBlock(classList, length, nameList)
 
             //Удаляет из объект пользователя из списка всех сотрудников полученного от базы
-            this.allSysUsers.splice(index, 1)      
-        })    
+            this.allSysUsers.splice(index, 1)
+        })
     }
-    delExecutors() {
-        debugger
-        let check = $(`.executor_list .user_selector:checkbox:checked`)
+    delExecutors(nameList, classList) {
+        let check = $(`${classList} .user_selector:checkbox:checked`)
 
         check.each((el) => {
-            let id = $(check[el]).attr('id')*1
+            let id = $(check[el]).attr('id') * 1
 
             $(`.access__list #user_item_${id}`).remove()
 
-            let index = this.executorsUsers.map( el => el.id).indexOf(id)
+            let index = nameList.map(el => el.id).indexOf(id)
 
             //Добавляет объект пользователя в массив всех юзеров
-            this.executorsUsers[index].status = 'god'
-            this.allSysUsers.push(this.executorsUsers[index])
+            nameList[index].status = 'god'
+            this.allSysUsers.push(nameList[index])
 
             //Удаляет из объект пользователя из списка всех сотрудников полученного от базы
 
             let length = this.allSysUsers.length - 1
 
-            this.createUserBlock('.all_users_list', length, this.allSysUsers)  
-            
-            this.executorsUsers.splice(index, 1)
+            this.createUserBlock('.all_users_list', length, this.allSysUsers)
+
+            nameList.splice(index, 1)
         })
     }
 }
